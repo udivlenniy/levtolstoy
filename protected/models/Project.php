@@ -25,8 +25,8 @@ class Project extends CActiveRecord
     public $uploadFile; // файл импорта с данными, для формирования задания копирайтору
 
     // список статусов для задания, их много ))
-    const CREATE_TASK = 1;//Задание создано – задание создано админом, исполнитель не выбран
-    const PERFORMER = 2; //Заданию назначен исполнитель
+    const CREATE_TASK = 1;//Задание создано – задание создано админом, исполнитель и редактор выбраны
+    //const PERFORMER = 2; //Заданию назначен исполнитель
 
 
 	/**
@@ -56,10 +56,12 @@ class Project extends CActiveRecord
             // обязательные параметры при добавлении и редактировании проекта
 			array('title, type_job, description, deadline, price_th, total_cost, total_num_char, uniqueness, category_id', 'required', 'on'=>'create, update'),
             array('UseTemplate', 'required', 'on'=>'create'),
-			array('price_th, total_cost, total_num_char, uniqueness, category_id', 'numerical', 'integerOnly'=>true, 'on'=>'create, update'),//deadline,
+			array('price_th, total_cost, total_num_char, uniqueness, category_id, status', 'numerical', 'integerOnly'=>true, 'on'=>'create, update'),//deadline,
 			array('title ,type_job, description', 'length', 'max'=>255, 'on'=>'create, update'),
             array('performer_login, performer_pass', 'length', 'max'=>255),
             array('uploadFile', 'file', 'types'=>'csv', 'maxSize'=>1024 * 1024 * 10, 'on'=>'create'),
+            // при создании проекта, проверяем есть ли активные редакторы
+            array('title', 'issetActiveRedactor'),
 			array('id, title, type_job, description, deadline, price_th, total_cost, total_num_char, uniqueness, category_id', 'safe', 'on'=>'search'),
 		);
 	}
@@ -68,17 +70,19 @@ class Project extends CActiveRecord
      * проверяем существуют ли в системе активные редакторы, чтобы было на кого подвязать проект
      */
     public function issetActiveRedactor(){
-        $sql = 'SELECT id
-                FROM {{users}}
-                WHERE role="'.User::ROLE_EDITOR.'"
-                    AND status="1"';
-        $data = Yii::app()->db->createCommand($sql)->queryRow();
+        if(!$this->hasErrors()){
+            $sql = 'SELECT id
+                    FROM {{users}}
+                    WHERE role="'.User::ROLE_EDITOR.'"
+                        AND status="1"';
+            $data = Yii::app()->db->createCommand($sql)->queryRow();
 
-        if(empty($data)){
-            $this->addError('','');
-            return false;
-        }else{
-            return true;
+            if(empty($data)){
+                $this->addError('title','Необходимо добавить хотя бы одного активного редактора в систему');
+                return false;
+            }else{
+                return true;
+            }
         }
     }
 
@@ -155,6 +159,7 @@ class Project extends CActiveRecord
 
 
                 //$this->author_id=Yii::app()->user->id;
+                $this->status = self::CREATE_TASK;
             }else{
                 //$this->update_time=time();
             }

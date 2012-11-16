@@ -189,6 +189,18 @@ class AdminController extends Controller{
 
                     Yii::app()->db->createCommand($sqlUpdate)->execute();
 
+                    //====подвязываем на менее загруженного РЕДАКТОРА к проекту=========================
+                    $redactor_Free = User::getFreeRedactor();
+                    $relationRedactor = new ProjectUsers();
+                    $relationRedactor->project_id = $model->id;
+                    $relationRedactor->user_id = $redactor_Free;// ID на менее загруженного РЕДАКТОРА
+                    $relationRedactor->save();
+                    //===============подвязываем текущего АДМИНА к проекту===========
+                    $relationAdmin = new ProjectUsers();
+                    $relationAdmin->project_id = $model->id;
+                    $relationAdmin->user_id = Yii::app()->user->id;
+                    $relationAdmin->save();
+
                     $this->redirect(array('view','id'=>$model->id));
                 }
             }

@@ -301,4 +301,22 @@ class User extends CActiveRecord
 
         return array('login'=>$rnd_login, 'pass'=>$rnd_pass);
     }
+
+    /*
+     * находим редактора, у которого меньше всего проектов в работе
+     * и на него будем вешать новый проект, подвязывать
+     */
+    public static function getFreeRedactor(){
+        $sql = 'SELECT COUNT(tbl_project.id) as count, tbl_users.id
+        FROM `tbl_project_users` , tbl_users,tbl_project
+        WHERE tbl_project.status='.Project::CREATE_TASK.'
+           AND tbl_project.id=tbl_project_users.project_id
+           AND tbl_users.id=tbl_project_users.user_id
+           AND tbl_users.role='.User::ROLE_EDITOR.'
+           GROUP BY  tbl_users.id
+           ORDER BY count ASC';
+
+        $data = Yii::app()->db->createCommand($sql)->queryRow($sql);
+        return $data['id'];
+    }
 }
