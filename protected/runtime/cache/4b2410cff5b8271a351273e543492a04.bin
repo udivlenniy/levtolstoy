@@ -1,0 +1,191 @@
+a:2:{i:0;a:2:{i:0;s:8952:"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+
+	<!-- blueprint CSS framework -->
+	<link rel="stylesheet" type="text/css" href="/css/screen.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" />
+	<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/css/form.css" />
+<!--    <link rel="stylesheet" type="text/css" href="--><!--/css/style.css" />-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="/assets/a1034da9/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/assets/a1034da9/css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="/assets/a1034da9/css/bootstrap-yii.css" />
+<link rel="stylesheet" type="text/css" href="/assets/a1034da9/css/jquery-ui-bootstrap.css" />
+<script type="text/javascript" src="/assets/a43e27a8/jquery.js"></script>
+<script type="text/javascript" src="/assets/a43e27a8/jquery.ba-bbq.js"></script>
+<script type="text/javascript" src="/assets/a1034da9/js/bootstrap.bootbox.min.js"></script>
+<script type="text/javascript" src="/assets/a1034da9/js/bootstrap.js"></script>
+<title>Система менеджмента копирайтеров - Admin</title>
+</head>
+
+<body>
+
+<div class="container" id="page">
+
+	<div id="header">
+		<div id="logo" style="margin: 0 auto;">Система менеджмента копирайтеров</div>
+	</div><!-- header -->
+
+	<div id="mainmenu">
+		<div class="portlet" id="yw3">
+<div class="portlet-content">
+<ul id="yw4" class="nav nav-pills"><li><a href="/">Профиль</a></li><li><a href="/user/profile/changepassword">Пароль</a></li><li><a href="/user/admin">Пользователи</a></li><li><a href="/category">Категории</a></li><li><a href="/project/admin">Задания</a></li><li><a href="/project/template">Шаблоны</a></li><li><a href="/user/logout">Выход (admin)</a></li></ul></div>
+</div>	</div><!-- mainmenu -->
+			<ul class="breadcrumbs breadcrumb"><li><a href="/">Home</a><span class="divider">/</span></li><li><a href="/project/admin/index">Задания</a><span class="divider">/</span></li><li class="active">Управление</li></ul><!-- breadcrumbs -->
+	
+	<!--<div class="span-19">-->
+	<div id="content">
+		
+<h2>Управление заданиями</h2>
+
+
+<a href="/project/admin/create">Создать задание</a>
+<div class="search-form" style="display:none">
+
+<div class="wide form">
+
+<form id="yw1" action="/project/admin/index" method="get">
+	<div class="row">
+		<label for="Project_id">ID</label>		<input name="Project[id]" id="Project_id" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_title">Название задания</label>		<input size="60" maxlength="255" name="Project[title]" id="Project_title" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_type_job">Тип работы</label>		<input size="60" maxlength="255" name="Project[type_job]" id="Project_type_job" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_description">Описание заказа</label>		<input size="60" maxlength="255" name="Project[description]" id="Project_description" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_deadline">Срок сдачи заказа</label>		<input name="Project[deadline]" id="Project_deadline" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_price_th">Стоимость 1 тыс. знаков без пробелов</label>		<input name="Project[price_th]" id="Project_price_th" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_total_cost">Стоимость проекта</label>		<input name="Project[total_cost]" id="Project_total_cost" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_total_num_char">Кол-во знаков в проекте</label>		<input name="Project[total_num_char]" id="Project_total_num_char" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_uniqueness">Уникальность</label>		<input name="Project[uniqueness]" id="Project_uniqueness" type="text" />	</div>
+
+	<div class="row">
+		<label for="Project_category_id">Тематика</label>		<input name="Project[category_id]" id="Project_category_id" type="text" />	</div>
+
+	<div class="row buttons">
+		<input type="submit" name="yt0" value="Search" />	</div>
+
+</form>
+</div><!-- search-form --></div><!-- search-form -->
+
+<div id="project-grid" class="grid-view">
+<table class="items table">
+<thead>
+<tr>
+<th id="project-grid_c0"><a class="sort-link" href="/project/admin/index/Project_sort/id">ID<span class="caret"></span></a></th><th id="project-grid_c1"><a class="sort-link" href="/project/admin/index/Project_sort/title">Название задания<span class="caret"></span></a></th><th id="project-grid_c2"><a class="sort-link" href="/project/admin/index/Project_sort/type_job">Тип работы<span class="caret"></span></a></th><th id="project-grid_c3"><a class="sort-link" href="/project/admin/index/Project_sort/total_cost">Стоимость проекта<span class="caret"></span></a></th><th id="project-grid_c4"><a class="sort-link" href="/project/admin/index/Project_sort/deadline">Срок сдачи заказа<span class="caret"></span></a></th><th id="project-grid_c5"><a class="sort-link" href="/project/admin/index/Project_sort/uniqueness">Уникальность<span class="caret"></span></a></th><th class="button-column" id="project-grid_c6">&nbsp;</th></tr>
+<tr class="filters">
+<td><div class="filter-container"><input name="Project[id]" type="text" /></div></td><td><div class="filter-container"><input name="Project[title]" type="text" /></div></td><td><div class="filter-container"><input name="Project[type_job]" type="text" /></div></td><td><div class="filter-container"><input name="Project[total_cost]" type="text" /></div></td><td><div class="filter-container"><input name="Project[deadline]" type="text" /></div></td><td><div class="filter-container"><input name="Project[uniqueness]" type="text" /></div></td><td>&nbsp;</td></tr>
+</thead>
+<tbody>
+<tr class="odd"><td>7</td><td>Название задания</td><td>Тип работы</td><td>555555</td><td>24/11/2012</td><td>77</td><td class="button-column"><a class="view" title="Просмотреть" rel="tooltip" href="/project/admin/view/id/7"><i class="icon-eye-open"></i></a> <a class="update" title="Редактировать" rel="tooltip" href="/project/admin/update/id/7"><i class="icon-pencil"></i></a> <a class="delete" title="Удалить" rel="tooltip" href="/project/admin/delete/id/7"><i class="icon-trash"></i></a></td></tr>
+</tbody>
+</table><div class="keys" style="display:none" title="/project/admin"><span>7</span></div>
+</div>	</div><!-- content -->
+<!--</div>-->
+<!--<div class="span-5 last" style="float: right;margin-top: -350px;">-->
+<!--	<div id="sidebar">-->
+<!--	--><!--	</div><!-- sidebar -->
+<!--</div>-->
+
+</div><!-- page -->
+<script type="text/javascript" src="/assets/9b6bede9/gridview/jquery.yiigridview.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+jQuery(function($) {
+jQuery('a[rel="tooltip"]').tooltip();
+jQuery('a[rel="popover"]').popover();
+
+$('.search-button').click(function(){
+	$('.search-form').toggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$.fn.yiiGridView.update('project-grid', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+
+$(document).on('click','#project-grid a.delete',function() {
+	if(!confirm('Вы уверены, что хотите удалить данный элемент?')) return false;
+	var th=this;
+	var afterDelete=function(){};
+	$.fn.yiiGridView.update('project-grid', {
+		type:'POST',
+		url:$(this).attr('href'),
+		success:function(data) {
+			$.fn.yiiGridView.update('project-grid');
+			afterDelete(th,true,data);
+		},
+		error:function(XHR) {
+			return afterDelete(th,false,XHR);
+		}
+	});
+	return false;
+});
+jQuery('#project-grid').yiiGridView({'ajaxUpdate':['project-grid'],'ajaxVar':'ajax','pagerClass':'pagination','loadingClass':'grid-view-loading','filterClass':'filters','tableClass':'items table','selectableRows':1,'enableHistory':false,'updateSelector':'{page}, {sort}','pageVar':'Project_page','afterAjaxUpdate':function() {
+			jQuery('.popover').remove();
+			jQuery('a[rel="popover"]').popover();
+			jQuery('.tooltip').remove();
+			jQuery('a[rel="tooltip"]').tooltip();
+		}});
+});
+/*]]>*/
+</script>
+</body>
+</html>
+";i:1;a:5:{i:0;a:3:{i:0;s:12:"clientScript";i:1;s:14:"registerScript";i:2;a:2:{i:0;s:6:"search";i:1;s:224:"
+$('.search-button').click(function(){
+	$('.search-form').toggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$.fn.yiiGridView.update('project-grid', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+";}}i:1;a:3:{i:0;s:12:"clientScript";i:1;s:14:"registerScript";i:2;a:2:{i:0;s:29:"CButtonColumn#project-grid_c6";i:1;s:502:"$(document).on('click','#project-grid a.delete',function() {
+	if(!confirm('Вы уверены, что хотите удалить данный элемент?')) return false;
+	var th=this;
+	var afterDelete=function(){};
+	$.fn.yiiGridView.update('project-grid', {
+		type:'POST',
+		url:$(this).attr('href'),
+		success:function(data) {
+			$.fn.yiiGridView.update('project-grid');
+			afterDelete(th,true,data);
+		},
+		error:function(XHR) {
+			return afterDelete(th,false,XHR);
+		}
+	});
+	return false;
+});";}}i:2;a:3:{i:0;s:12:"clientScript";i:1;s:18:"registerCoreScript";i:2;a:1:{i:0;s:3:"bbq";}}i:3;a:3:{i:0;s:12:"clientScript";i:1;s:18:"registerScriptFile";i:2;a:2:{i:0;s:47:"/assets/9b6bede9/gridview/jquery.yiigridview.js";i:1;i:2;}}i:4;a:3:{i:0;s:12:"clientScript";i:1;s:14:"registerScript";i:2;a:2:{i:0;s:22:"CGridView#project-grid";i:1;s:484:"jQuery('#project-grid').yiiGridView({'ajaxUpdate':['project-grid'],'ajaxVar':'ajax','pagerClass':'pagination','loadingClass':'grid-view-loading','filterClass':'filters','tableClass':'items table','selectableRows':1,'enableHistory':false,'updateSelector':'{page}, {sort}','pageVar':'Project_page','afterAjaxUpdate':function() {
+			jQuery('.popover').remove();
+			jQuery('a[rel="popover"]').popover();
+			jQuery('.tooltip').remove();
+			jQuery('a[rel="tooltip"]').tooltip();
+		}});";}}}}i:1;N;}

@@ -1,0 +1,62 @@
+a:2:{i:0;a:2:{i:0;s:2882:"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+
+	<!-- blueprint CSS framework -->
+	<link rel="stylesheet" type="text/css" href="/css/screen.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="/css/print.css" media="print" />
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" />
+	<![endif]-->
+
+	<link rel="stylesheet" type="text/css" href="/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="/css/form.css" />
+<!--    <link rel="stylesheet" type="text/css" href="--><!--/css/style.css" />-->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="/assets/a1034da9/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/assets/a1034da9/css/bootstrap-responsive.css" />
+<link rel="stylesheet" type="text/css" href="/assets/a1034da9/css/bootstrap-yii.css" />
+<link rel="stylesheet" type="text/css" href="/assets/a1034da9/css/jquery-ui-bootstrap.css" />
+<script type="text/javascript" src="/assets/a43e27a8/jquery.js"></script>
+<script type="text/javascript" src="/assets/a1034da9/js/bootstrap.bootbox.min.js"></script>
+<script type="text/javascript" src="/assets/a1034da9/js/bootstrap.js"></script>
+<title>Система менеджмента копирайтеров - Error</title>
+</head>
+
+<body>
+
+<div class="container" id="page">
+
+	<div id="header">
+		<div id="logo" style="margin: 0 auto;">Система менеджмента копирайтеров</div>
+	</div><!-- header -->
+
+	<div id="mainmenu">
+		<div class="portlet" id="yw1">
+<div class="portlet-content">
+<ul id="yw2" class="nav nav-pills"><li><a href="/">Профиль</a></li><li><a href="/user/profile/changepassword">Пароль</a></li><li><a href="/user/admin">Пользователи</a></li><li><a href="/category">Категории</a></li><li><a href="/project/admin">Задания</a></li><li><a href="/project/template">Шаблоны</a></li><li><a href="/user/logout">Выход (admin)</a></li></ul></div>
+</div>	</div><!-- mainmenu -->
+			<ul class="breadcrumbs breadcrumb"><li><a href="/">Home</a><span class="divider">/</span></li><li class="active">Error</li></ul><!-- breadcrumbs -->
+	
+	<div id="content">
+	
+<h2>Error 404</h2>
+
+<div class="error">
+Невозможно обработать запрос &quot;favicon.ico&quot;.</div></div><!-- content -->
+
+</div><!-- page -->
+<script type="text/javascript">
+/*<![CDATA[*/
+jQuery(function($) {
+jQuery('a[rel="tooltip"]').tooltip();
+jQuery('a[rel="popover"]').popover();
+});
+/*]]>*/
+</script>
+</body>
+</html>
+";i:1;N;}i:1;N;}
