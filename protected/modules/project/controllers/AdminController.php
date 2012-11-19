@@ -195,11 +195,11 @@ class AdminController extends Controller{
                     $relationRedactor->project_id = $model->id;
                     $relationRedactor->user_id = $redactor_Free;// ID на менее загруженного РЕДАКТОРА
                     $relationRedactor->save();
-                    //===============подвязываем текущего АДМИНА к проекту===========
-                    $relationAdmin = new ProjectUsers();
-                    $relationAdmin->project_id = $model->id;
-                    $relationAdmin->user_id = Yii::app()->user->id;
-                    $relationAdmin->save();
+                    //=========при создании проекта - записываем связь админа с проектом=================
+                    $adminRelation = new ProjectUsers();
+                    $adminRelation->user_id = Yii::app()->user->id;
+                    $adminRelation->project_id = $model->id;
+                    $adminRelation->save();
 
                     $this->redirect(array('view','id'=>$model->id));
                 }
@@ -300,27 +300,28 @@ class AdminController extends Controller{
         // удаляем все связанные данные с проектом:исполнителя,задания,тексты
 
         // находим список текстов по проекту и удаляем подвязанные даннные по текстам
-        $textList = Yii::app()->db->createCommand('SELECT id FROM {{text}} WHERE project_id="'.$id.'"');
+        $textList = Yii::app()->db->createCommand('SELECT id FROM {{text}} WHERE project_id="'.$id.'"')->queryAll();
         foreach($textList as $row){
             Yii::app()->db->createCommand('DELETE FROM {{text_data}} WHERE text_id="'.$row['id'].'"')->execute();
         }
+        Yii::app()->db->createCommand('DELETE FROM {{text}} WHERE project_id="'.$id.'"')->execute();
         // удаляем пользователей подвязанных к проекту(исполнители)
         $sqlFindCopyWriter = 'SELECT tbl_project_users.*
                             FROM `tbl_project_users` , tbl_users
                             WHERE  tbl_project_users.user_id=tbl_users.id
-                                 AND tbl_users.role='.User::ROLE_COPYWRITER.'
+                                 AND tbl_users.role="'.User::ROLE_COPYWRITER.'"
                                  AND tbl_project_users.project_id="'.$id.'"';
 
         // сначала находим созданного копирайтора в таблице юзеров и его удаляем, а потом подвязки юзеров к проекту
         $copyWriter = Yii::app()->db->createCommand($sqlFindCopyWriter)->queryRow();
 
         // удаляем пользователя из таблицы ЮЗЕРОВ(удаляем копирайтора)
-        if(empty($copyWriter)){
+        if(!empty($copyWriter)){
             Yii::app()->db->createCommand('DELETE FROM {{users}} WHERE id="'.$copyWriter['user_id'].'"')->execute();
         }
 
         // удаляем пользователей подвязанных к проекту(исполнители) - ПОДВЯЗКИ юзеров
-        Yii::app()->db->createCommand('DELETE FROM {{project_users}} WHERE project_id="'.$id.'"');
+        Yii::app()->db->createCommand('DELETE FROM {{project_users}} WHERE project_id="'.$id.'"')->execute();
 
    		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
    		if(!isset($_GET['ajax']))

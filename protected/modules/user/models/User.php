@@ -274,7 +274,7 @@ class User extends CActiveRecord
         //создаём доступы для копирайтора, по проекту
         $model=new User;
         $profile=new Profile;
-        //TODO пользователь не создаётся, нужно исправить!!! и далее по плану...
+
         $model->username = $rnd_login;
         $model->role = self::ROLE_COPYWRITER;
         $model->status = 1; // активированный пользователь
@@ -307,16 +307,29 @@ class User extends CActiveRecord
      * и на него будем вешать новый проект, подвязывать
      */
     public static function getFreeRedactor(){
+        //GROUP BY  tbl_users.id
         $sql = 'SELECT COUNT(tbl_project.id) as count, tbl_users.id
         FROM `tbl_project_users` , tbl_users,tbl_project
-        WHERE tbl_project.status='.Project::CREATE_TASK.'
+        WHERE tbl_project.status="'.Project::CREATE_TASK.'"
            AND tbl_project.id=tbl_project_users.project_id
            AND tbl_users.id=tbl_project_users.user_id
-           AND tbl_users.role='.User::ROLE_EDITOR.'
-           GROUP BY  tbl_users.id
+           AND tbl_users.role="'.User::ROLE_EDITOR.'"
+            GROUP BY  tbl_users.id
            ORDER BY count ASC';
 
-        $data = Yii::app()->db->createCommand($sql)->queryRow($sql);
+        //echo $sql.'<br>';
+        $data = Yii::app()->db->createCommand($sql)->queryRow();
+
+        // не нашли данных, - находим первого попавшегося РЕДАКТОРА и возращаем его
+        if(empty($data['id'])){
+            $sqlFindRedactor = 'SELECT id
+                                FROM tbl_users
+                                WHERE role="'.User::ROLE_EDITOR.'"
+                                ORDER BY id ASC';
+            $redactorFirst = Yii::app()->db->createCommand($sqlFindRedactor)->queryRow();
+            return $redactorFirst['id'];
+        }
+
         return $data['id'];
     }
 }

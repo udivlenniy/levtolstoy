@@ -154,16 +154,15 @@ class Project extends CActiveRecord
 
         if(parent::beforeSave()){
 
-            // преобразовываем выбранную дату в числовой формат
+            // новая запись
             if($this->isNewRecord){
-
 
                 //$this->author_id=Yii::app()->user->id;
                 $this->status = self::CREATE_TASK;
-            }else{
+            }else{// редактирование записи
                 //$this->update_time=time();
             }
-
+            // преобразовываем выбранную дату в числовой формат
             $parse_date = explode('/',$this->deadline);
 
             $this->deadline = mktime(0, 0, 0, $parse_date[1], $parse_date[0], $parse_date[2]);

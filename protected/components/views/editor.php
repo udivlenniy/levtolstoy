@@ -8,7 +8,7 @@ $this->widget('bootstrap.widgets.TbMenu',array(
 
                 array('label'=>'Проекты', 'items'=> array(
                     array('label'=>'Всего проектов обработано', 'url'=>'#'),
-                    array('label'=>'Проектов в проверке', 'url'=>'#'),
+                    array('label'=>'Проектов в проверке', 'url'=>'/project/redactor/check/'),
                     array('label'=>'Проектов на проверке к администратора', 'url'=>'#'),
                 )),
 

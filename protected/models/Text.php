@@ -17,6 +17,9 @@ class Text extends CActiveRecord
 
 
 
+    public $status_new;// для установки статуса редактором при проверке задания от копирайтора
+    public $status_new_text;// описание ошибки
+
     /*
      * выводим текстовое соответствие относительно текущего статуса текста
      */
@@ -56,12 +59,29 @@ class Text extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('project_id, status', 'required'),
+            // проверка заполнения текста ошибки, при выборе что есть ошибки в заполненной задании копирайтором
+            array('status_new_text', 'description_error'),
 			array('project_id, status', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, project_id, status', 'safe', 'on'=>'search'),
 		);
 	}
+    /*
+     * если редактор выбрал статус ошибки, то должен указать описание этой ошибки для проверяемого текста - задания копирайтора
+     */
+    public function description_error(){
+        file_put_contents('error.txt',$this->status_new);
+        // если редактор установил что есть ошибки, то должен указать описание ошибки
+        if($this->status_new=='error'){
+
+            // проверка на то, заполнил ли редактор описание ошибки
+            if(empty($this->status_new_text)){
+                $this->addError('status_new_text','Необходимо указать описание ошибок');
+                return false;
+            }
+        }
+    }
 
 	/**
 	 * @return array relational rules.
@@ -83,6 +103,7 @@ class Text extends CActiveRecord
 			'id' => 'ID',
 			'project_id' => 'Project',
 			'status' => 'Status',
+            'status_new_text'=>'Описание ошибки',
 		);
 	}
 
@@ -105,4 +126,21 @@ class Text extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    /*
+     * получаем кол-во текстов по проекту
+     */
+    public static function getCountTextByProject($project_id){
+        $sql = 'SELECT COUNT(id) as count
+                FROM {{text}}
+                WHERE {{text}}.project_id="'.$project_id.'"';
+
+        $data = Yii::app()->db->createCommand($sql)->queryRow();
+
+        if(empty($data['count'])){
+            return 0;
+        }else{
+            return $data['count'];
+        }
+    }
 }
