@@ -162,7 +162,17 @@ class qqFileUploader {
 
                 $checkBox = $checkBox1. $checkBox2. $checkBox3;
 
-                $row = '<div class="row"><label for="'.$column.'">Столбец('.$column.')</label>'.$select.$hidden.$checkBox.'</div>';
+                $id = uniqid();
+                $link = CHtml::link('Проверки', '#', array('class'=>$id,'onclick'=>'js:$("#'.$id.'").show();$("#'.$id.'").dialog({
+                      width: "500",
+                      height: "auto",
+                      title:"Список проверок по полю:'.$column.'",
+                      modal:"true",
+                  });'));
+
+                $forma = $link.'<div style="display:none;" id="'.$id.'">'.$column.'</div>';
+
+                $row = '<div class="row"><label for="'.$column.'">Столбец('.$column.')</label>'.$select.$hidden.$checkBox.$forma.'</div>';
 
                 $filels.=$row;
             }

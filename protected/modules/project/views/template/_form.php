@@ -145,3 +145,10 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<script type="text/javascript">
+    $(document).ready(function() {
+//        $('a').click(function (){
+//           alert('sdfsdf');
+//        });
+    });
+</script>

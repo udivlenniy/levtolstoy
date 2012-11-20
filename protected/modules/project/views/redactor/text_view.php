@@ -109,6 +109,9 @@
         <?php
             echo CHtml::label('Описание ошибки:', 'error_description');
             echo $form->textArea($model,'status_new_text',array('rows'=>5, 'cols'=>3, 'id'=>'status_new_text'));
+            echo '<br>';
+            echo CHtml::label('Тип ошибки:', 'error_type');
+            echo CHtml::listBox('type_error','1' , Errors::getListErrors(), array('size'=>1));
         ?>
     </div>
     <div class="row buttons">

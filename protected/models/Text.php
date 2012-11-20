@@ -28,7 +28,7 @@ class Text extends CActiveRecord
         if($status==self::TEXT_NEW){ return 'Новый'; }
 
         // прошёл автомат. проверки системой, после написания копирайтором всех полей
-        if($status==self::TEXT_NEW){ return 'Новый'; }
+        if($status==self::TEXT_ACCEPT_EDITOR){ return 'Проверенный'; }
     }
 
 
@@ -59,6 +59,7 @@ class Text extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('project_id, status', 'required'),
+            array('status_new','length', 'max'=>256),
             // проверка заполнения текста ошибки, при выборе что есть ошибки в заполненной задании копирайтором
             array('status_new_text', 'description_error'),
 			array('project_id, status', 'numerical', 'integerOnly'=>true),

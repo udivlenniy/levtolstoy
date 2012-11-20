@@ -109,31 +109,39 @@ class RedactorController extends  Controller{
 
         $data = Yii::app()->db->createCommand($sql)->queryAll();
 
-        //echo '<pre>'; print_r($_POST); die();
         // отправили POST на обновление данных по данному тексту
         if(isset($_POST['Text'])){
 
             $model->attributes = $_POST['Text'];
 
-            echo '<pre>'; print_r($model->attributes); die();
-
-            // если редактор выбрал статус ошибка, то проверим чтобы он указал текст ошибки
-            if($model->status_new=='success'){
-                // редактор принял выполненное задание копирайтором, всё отлично обновим статус
-                $model->status = Text::TEXT_ACCEPT_EDITOR;
-                $model->save();
-            }
-            if(!$model->hasErrors()){
+            if($_POST['Text']['status_new']=='error' && empty($_POST['Text']['status_new_text'])){
+                $model->addError('status_new_text','Необходимо указать описание ошибок');
+            }else{
+                // если редактор выбрал статус ошибка, то проверим чтобы он указал текст ошибки
+                if($_POST['Text']['status_new']=='success'){
+                    // редактор принял выполненное задание копирайтором, всё отлично обновим статус
+                    $model->status = Text::TEXT_ACCEPT_EDITOR;
+                    $model->save();
+                }
+                //===========записываем ошибку в БД по данному тексту==============
+                if($_POST['Text']['status_new']=='error' && !empty($_POST['Text']['status_new_text'])){
+                    // подвязываем ошибку к тексту
+                    $error = new Errors();
+                    $error->user_id = Yii::app()->user->id;
+                    $error->model = 'Text';
+                    $error->type = $_POST['type_error'];
+                    $error->error_text = $_POST['Text']['status_new_text'];
+                    $error->model_id = $model->id;
+                    $error->create = time();
+                    $error->save();
+                }
                 // цикл по полям, с обновлением значением полей
                 foreach($_POST['ImportVarsValue'] as $i=>$val){
                     // SQL запрос на обновление данных
                     $sql = 'UPDATE {{text_data}} SET import_var_value="'.$val.'" WHERE id="'.(int)$i.'"';
                     Yii::app()->db->createCommand($sql)->execute();
                 }
-                file_put_contents('valid.txt','yes');
                 $this->redirect(array('index'));
-            }else{
-                file_put_contents('not_valid.txt','yes');
             }
         }
 

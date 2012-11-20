@@ -26,8 +26,37 @@ class Project extends CActiveRecord
 
     // список статусов для задания, их много ))
     const CREATE_TASK = 1;//Задание создано – задание создано админом, исполнитель и редактор выбраны
-    //const PERFORMER = 2; //Заданию назначен исполнитель
+    const PERFORMER = 2; //Заданию назначен исполнитель
+    const PERFORMED = 3; //Выполняется исполнителем
+    const POSTED_TO_PERFORMED = 4;//Отправлено на проверку исполнителем
+    const TASK_CHEKING_REDACTOR = 5;//Задание проверяется редактором
+    const TASK_POSTED_TO_REWORK = 6 ;//Задание отправлено на доработку редактором
+    const TASK_AGREE_REDACTOR = 7;//Задание принято редактором
+    const TASK_CHEKING_ADMIN = 8;//Задание проверяется администратором
+    const TASK_CANCEL_ADMIN = 9;//Задание отклонено администратором
+    const TASK_AGREE_ADMIN = 10;//Задание принято администратором
 
+
+    /*
+     * степень готовности проекта, расчитываем по статусам
+     */
+    public static function readinessProject($status){
+        if($status==self::CREATE_TASK || $status==self::PERFORMER){
+            return 0;
+        }
+        if($status==self::PERFORMED || $status==self::POSTED_TO_PERFORMED){
+            return 30;
+        }
+        if($status==self::TASK_CHEKING_REDACTOR || $status==self::TASK_POSTED_TO_REWORK || $status==self::TASK_AGREE_REDACTOR){
+            return 60;
+        }
+        if($status==self::TASK_CHEKING_ADMIN || $status==self::TASK_CANCEL_ADMIN){
+            return 90;
+        }
+        if($status==self::TASK_AGREE_ADMIN){
+            return 100;
+        }
+    }
 
 	/**
 	 * Returns the static model of the specified AR class.

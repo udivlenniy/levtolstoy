@@ -13,6 +13,35 @@
  */
 class Errors extends CActiveRecord
 {
+
+    const PUNCTUATION = 1; //ошибка Пунктуации
+    const SPELLING = 2; //ошибка - Орфография
+    const UNIQUE = 3; //уникальность контента
+    const DENSITY_KEYS = 4; //Плотность вхождения ключей
+    const ACCURACY_KEYS = 5; //Точность вхождения ключей
+    const ORDER_KEYS = 6; //Порядок следования ключей
+    const DISTANCE_KEYWORDS = 7; //Расстояние между словами в ключевике
+    const UNIFORM_DISTRIBUTION = 8; //Равномерность распределения ключей
+    const OTHER = 9;// другой тип ошибки
+
+
+    /*
+     * список-массив типов-ошибок
+     */
+    public static function getListErrors(){
+        return array(
+            self::PUNCTUATION=>'Пунктуация',
+            self::SPELLING=>'Орфография',
+            self::UNIQUE=>'Уникальность контента',
+            self::DENSITY_KEYS=>'Плотность вхождения ключей',
+            self::ACCURACY_KEYS=>'Точность вхождения ключей',
+            self::ORDER_KEYS=>'Порядок следования ключей',
+            self::DISTANCE_KEYWORDS=>'Расстояние между словами в ключевике',
+            self::UNIFORM_DISTRIBUTION=>'Равномерность распределения ключей',
+            self::OTHER=>'Другой тип ошибки',
+        );
+    }
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -40,7 +69,7 @@ class Errors extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('user_id, model, error_text, model_id, create', 'required'),
-			array('user_id, model_id, create', 'numerical', 'integerOnly'=>true),
+			array('user_id, model_id, create, type', 'numerical', 'integerOnly'=>true),
 			array('model', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

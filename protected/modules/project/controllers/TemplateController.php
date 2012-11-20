@@ -58,6 +58,8 @@ class TemplateController extends Controller{
    	 */
    	public function actionCreate(){
 
+           Yii::app()->getClientScript()->registerCoreScript('jquery.ui');
+
    		$model = new DescriptionTemplate;
 
         $this->performAjaxValidation($model);
