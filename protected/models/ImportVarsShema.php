@@ -46,7 +46,7 @@ class ImportVarsShema extends CActiveRecord
 			array('import_var_id, shema_type, num_id, num, edit, visible, wysiwyg,label', 'required'),
 			array('import_var_id, shema_type, num_id, num, edit, visible, wysiwyg', 'numerical', 'integerOnly'=>true),
             array('label', 'length', 'max'=>255),
-            array('', 'boolean'),
+            //array('', 'boolean'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, import_var_id, shema_type, num_id, num, edit, visible, wysiwyg, label', 'safe', 'on'=>'search'),

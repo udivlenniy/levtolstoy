@@ -9,8 +9,10 @@
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'description-template-form',
     'enableAjaxValidation'=>true,
+    'htmlOptions'=>array('enctype'=>'multipart/form-data'),
    	'clientOptions'=>array(
    		'validateOnSubmit'=>true,
+           //'enctype' => 'multipart/form-data'
    	),
 )); ?>
 

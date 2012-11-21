@@ -58,20 +58,23 @@ class TemplateController extends Controller{
    	 */
    	public function actionCreate(){
 
-           Yii::app()->getClientScript()->registerCoreScript('jquery.ui');
-
    		$model = new DescriptionTemplate;
 
         $this->performAjaxValidation($model);
 
         // заполнили данные формы шаблона и выставили соотвествия полей, предварительно загрузив файл импорта
    		if(isset($_POST['DescriptionTemplate']) ){//&& isset($_POST['ImportVarsShema'])
-
+            $listCheking = CheckingImportVars::getChekingList();
+            //TODO доделать подвязку списка проверок к полю импорта из файла как в шаблоне так и в проекте - также при редактировании
    			$model->attributes = $_POST['DescriptionTemplate'];
 
    			if($model->validate()){
 
                $model->save();
+
+                // получаем список проверок
+                $listCheking = CheckingImportVars::getChekingList();
+
                // цикл по полям и их соотвествиям
                $cnt = 1;
                foreach($_POST['ImportVarsShema'] as $i=>$shemVar){
@@ -84,10 +87,8 @@ class TemplateController extends Controller{
                    $shema->num = $cnt;
                    //тип схемы - для проекта или шаблона(сейчас для ШАБЛОНА)
                    $shema->shema_type = ImportVarsShema::SHEMA_TYPE_TEMPLATE;
-
                    // название столбца в файле импорта
                    $shema->label = $_POST['label'][$i];
-
                    // галочки по полям
                    if($_POST['edit'][$i]==1){// редактирование
                         $shema->edit = 1;
@@ -109,9 +110,24 @@ class TemplateController extends Controller{
 
                    $shema->save();
 
+                   // сохраняем список проверок по полю
+                   $rowCheking = $_POST['ChekingVarID'][$i];// массив проверок поо полю
+                   for($k=1;$k<count($listCheking);$k++){
+                       $checking_import_vars = new CheckingImportVars();
+                       $checking_import_vars->type = 1;// шаблон
+                       $checking_import_vars->model_id = $model->id;
+                       $checking_import_vars->import_var_id = $shema->id;
+                       $checking_import_vars->checked_id = $k;// ID проверки
+                       // если выбрали галочкой проверку
+                       if($rowCheking[$k]==1){
+                           $checking_import_vars->selected = 1;
+                       }else{
+                           $checking_import_vars->selected = 0;
+                       }
+                       $checking_import_vars->save();
+                   }
                    $cnt++;
                }
-
                $this->redirect(array('view','id'=>$model->id));
             }
    		}
