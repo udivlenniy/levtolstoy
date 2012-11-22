@@ -16,6 +16,7 @@ class Uniformity{
 
     // запуск проверки по поиску ошибок пунктуации в тексте
     public function run(){
+        file_put_contents('Uniformity.txt','');
         return array('result'=>true, 'msg'=>'ok');
     }
 }

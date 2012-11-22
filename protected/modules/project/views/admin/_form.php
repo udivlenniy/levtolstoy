@@ -83,7 +83,9 @@
 
         $checkBox = $checkBox1. $checkBox2. $checkBox3;
 
-        $row = '<div class="row"><label for="'.$column['label'].'">Столбец('.$column['label'].')</label>'.$select.$hidden.$checkBox.'</div>';
+        $forma = CheckingImportVars::getFormChekingByField(2 ,$model->id ,$column['id'],$column['label']);
+
+        $row = '<div class="row"><label for="'.$column['label'].'">Столбец('.$column['label'].')</label>'.$select.$hidden.$checkBox.$forma.'</div>';
 
         $filels.=$row;
     }

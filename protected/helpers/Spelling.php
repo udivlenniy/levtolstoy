@@ -17,6 +17,7 @@ class Spelling{
 
     // запуск проверки по поиску ошибок орфографии  в тексте
     public function run(){
+        file_put_contents('Spelling.txt','');
         return array('result'=>true, 'msg'=>'ok');
     }
 }

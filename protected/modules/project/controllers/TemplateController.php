@@ -64,8 +64,9 @@ class TemplateController extends Controller{
 
         // заполнили данные формы шаблона и выставили соотвествия полей, предварительно загрузив файл импорта
    		if(isset($_POST['DescriptionTemplate']) ){//&& isset($_POST['ImportVarsShema'])
+
             $listCheking = CheckingImportVars::getChekingList();
-            //TODO доделать подвязку списка проверок к полю импорта из файла как в шаблоне так и в проекте - также при редактировании
+
    			$model->attributes = $_POST['DescriptionTemplate'];
 
    			if($model->validate()){
@@ -112,14 +113,17 @@ class TemplateController extends Controller{
 
                    // сохраняем список проверок по полю
                    $rowCheking = $_POST['ChekingVarID'][$i];// массив проверок поо полю
-                   for($k=1;$k<count($listCheking);$k++){
+                   for($k=0;$k<count($listCheking);$k++){
+
+                       $row = $listCheking[$k];
+
                        $checking_import_vars = new CheckingImportVars();
                        $checking_import_vars->type = 1;// шаблон
                        $checking_import_vars->model_id = $model->id;
                        $checking_import_vars->import_var_id = $shema->id;
-                       $checking_import_vars->checked_id = $k;// ID проверки
+                       $checking_import_vars->checked_id = $row['id'];// ID проверки
                        // если выбрали галочкой проверку
-                       if($rowCheking[$k]==1){
+                       if($rowCheking[$k+1]==1){//$k+1 - для корректности выбора по галочкам
                            $checking_import_vars->selected = 1;
                        }else{
                            $checking_import_vars->selected = 0;
@@ -172,7 +176,12 @@ class TemplateController extends Controller{
    			$model->attributes = $_POST['DescriptionTemplate'];
 
    			if($model->validate()){
+
                $model->save();
+
+               // получаем список проверок
+               $listCheking = CheckingImportVars::getChekingList();
+
                // цикл по полям и их соотвествиям
                $cnt = 1;
                foreach($_POST['ImportVarsShema'] as $i=>$shemVar){
@@ -201,6 +210,27 @@ class TemplateController extends Controller{
                    }
 
                    $shema->save();
+
+                   // обновление списка проверок по каждому полю из импортируемой схемы// сохраняем список проверок по полю
+                   $rowCheking = $_POST['ChekingVarID'][$i];// массив проверок поо полю
+                   for($k=0;$k<count($listCheking);$k++){
+
+                       $row = $listCheking[$k];
+
+                       // если выбрали галочкой проверку
+                       if($rowCheking[$k+1]==1){//$k+1 - для корректности выбора по галочкам
+                           $selected = 1;
+                       }else{
+                           $selected = 0;
+                       }
+                       $sql = 'UPDATE {{checking_import_vars}}
+                                SET selected="'.$selected.'"
+                                WHERE checked_id="'.$row['id'].'"
+                                    AND import_var_id="'.$i.'"
+                                    AND model_id="'.$model->id.'"
+                                    AND type="1"';
+                       Yii::app()->db->createCommand($sql)->execute();
+                   }
 
                    $cnt++;
                }

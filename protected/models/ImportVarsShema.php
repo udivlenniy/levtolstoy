@@ -125,8 +125,9 @@ class ImportVarsShema extends CActiveRecord
      * $num_id - id проекта или шаблона к которому подвязаны поля соотвествий
      * $shema_type - тип настроек или схемы(шаблон или проект)
      * $model_id - новая подвязка к ID шаблона или проекта(поле "num_id" в таблице)
+     * $templateId - ID шаблона к которому подвязан список проверок по полям(будем их копировать из этого шаблона)
      */
-    public static function copyTemplate($shems, $model_id){
+    public static function copyTemplate($shems, $model_id, $templateId){
 
         // перебираем поля соотвествий и сохраняем схему, для задания
         foreach($shems as $shema){
@@ -140,6 +141,22 @@ class ImportVarsShema extends CActiveRecord
             $shemaProject->wysiwyg = $shema['wysiwyg'];
             $shemaProject->label = $shema['label'];
             $shemaProject->save();
+            //находим настройки по данному полю относ. списка проверок из шаблона и записываем их к проекту
+            $sql = 'SELECT *
+                FROM {{checking_import_vars}}
+                WHERE model_id="'.$templateId.'"
+                    AND import_var_id="'.$shema['id'].'"
+                    AND type="1"';
+
+            $infoCheking = Yii::app()->db->createCommand($sql)->queryAll();
+            // записываем настройк НВОЫЕ для проекта через DAO
+            foreach($infoCheking as $row){
+                $insert = 'INSERT INTO {{checking_import_vars}}
+                        (type,model_id,import_var_id,selected,checked_id)
+                        VALUES("2","'.$model_id.'","'.$shemaProject->id.'","'.$row['selected'].'","'.$row['checked_id'].'")';
+
+                Yii::app()->db->createCommand($insert)->execute();
+            }
         }
     }
 

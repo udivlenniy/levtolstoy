@@ -97,22 +97,73 @@ class CheckingImportVars extends CActiveRecord
 	}
 
     /*
+     * проверка  - выбрана ли галочка по данной проверке, у конкретного поля в шаблоне|проекте
+     * checked_id - ID проверки из таблицы проверок
+     * $modelID - ID модели проекта или шаблона, зависит от типа
+     * $type - тип настройки - шаблон или проект
+     * $importVarId - ID внутренней переменной
+     */
+    static function isSelectedCheking($type, $modelID, $importVarId, $checked_id){
+        $sql = 'SELECT {{checking_import_vars}}.*
+                FROM {{checking_import_vars}}
+                WHERE type="'.$type.'"
+                    AND import_var_id="'.$importVarId.'"
+                    AND checked_id="'.$checked_id.'"
+                    AND model_id="'.$modelID.'"
+                    ';
+        //echo $sql.'<br>';
+        $result = Yii::app()->db->createCommand($sql)->queryRow();
+        return $result;
+    }
+
+    /*
      * формируем форму выбора или уже установленных галочек выборок по полю в выбранном проекте или шаблоне
      * т.е. форма скрыта - кликаем на ссылку - появляется диалоговое окно выбора списка проверок
      * $importVarId - ID поля для которого устанавливаем список проверок
      * $type - тип т.е. для проекта эта запись или для шаблона эта настройка
      * $modelID - ID записи в моделе(ID проекта либо ID шаблона, если ID пустой, значит данных нет по полю - НОВЫЙ список)
      */
-    //TODO доделать функцию возврата формы с диалоговым окном - ПРИ существующих данных
     public static function getFormChekingByField($type='',$modelID='',$importVarId='',$column=''){
         if(!empty($modelID) && !empty($type)){
             // проверка на существование уже выбранных позиций(выбранных галочек) по нкжному полю-столбцу
-            $sql = 'SELECT {{checking_import_vars}}.*
-                FROM {{checking_import_vars}}
-                WHERE type="'.$type.'"
-                    AND import_var_id="'.$importVarId.'"
-                    AND model_id="'.$modelID.'"';
+            $sql = 'SELECT *
+                    FROM {{checking_import_vars}}
+                    WHERE type="'.$type.'"
+                        AND import_var_id="'.$importVarId.'"
+                        AND model_id="'.$modelID.'"';
             $data = Yii::app()->db->createCommand($sql)->queryAll();
+            //echo $sql.'<br>';
+            //echo '<pre>'; print_r($data);
+            // получаем список проверок и формируем по ним список чекбоксов
+            $chekingList = CheckingImportVars::getChekingList();
+            $checkboxListForm = '';
+            foreach($chekingList as $j=>$box){
+
+                $selected = CheckingImportVars::isSelectedCheking($type, $modelID, $importVarId, $box['id']);
+
+                //$row = $data[$j+1];
+
+                if($selected['selected']==1){
+                    $checked = true;
+                }else{
+                    $checked = false;
+                }
+
+                $checkboxListForm.=CHtml::checkBox('ChekingVarID['.$importVarId.']['.$selected['checked_id'].']',$checked).$box['title'].'<br>';
+            }
+
+            // формируем форму диалогового окна
+            $id = uniqid();
+            $link = CHtml::link('Проверки', '#', array('class'=>$id, 'style'=>'margin-left:20px;', 'data-toggle'=>'modal', 'data-target'=>'#'.$id));//,'onclick'=>'js:$("#'.$id.'").show();'
+
+            $forma = '<div id="'.$id.'" class="modal fade">
+                        <div class="modal-header"><a class="close" data-dismiss="modal">×</a>
+                        <h4>Список проверок по полю:'.$column.'</h4>'.$checkboxListForm.'
+                     </div>';
+
+            $forma_ = $link.$forma;
+
+            return $forma_;
         }else{
             // получаем список проверок и формируем по ним список чекбоксов
             $chekingList = CheckingImportVars::getChekingList();
@@ -124,14 +175,8 @@ class CheckingImportVars extends CActiveRecord
 
             // формируем форму диалогового окна
             $id = uniqid();
-            $link = CHtml::link('Проверки', '#', array('class'=>$id,'data-toggle'=>'modal', 'data-target'=>'#'.$id));//,'onclick'=>'js:$("#'.$id.'").show();'
-//            $link = CHtml::link('Проверки', '#', array('class'=>$id,'onclick'=>'js:$("#'.$id.'").show();$("#'.$id.'").dialog({
-//                      width: "500",
-//                      height: "auto",
-//                      title:"Список проверок по полю:'.$column.'",
-//                      modal:"true",
-//                      position:{ my: "top", at: "top", of: window },
-//                  });'));
+            $link = CHtml::link('Проверки', '#', array('class'=>$id,'style'=>'margin-left:20px;','data-toggle'=>'modal', 'data-target'=>'#'.$id));//,'onclick'=>'js:$("#'.$id.'").show();'
+
             $forma = '<div id="'.$id.'" class="modal fade">
                         <div class="modal-header"><a class="close" data-dismiss="modal">×</a>
                         <h4>Список проверок по полю:'.$column.'</h4>'.$checkboxListForm.'
@@ -151,5 +196,13 @@ class CheckingImportVars extends CActiveRecord
         $sql = 'SELECT {{check}}.*
                 FROM {{check}}';
         return Yii::app()->db->createCommand($sql)->queryAll();
+    }
+
+    /*
+     * получаем список проверок по ID проекта
+     * т.е. находим  какие настройки указаны по проекту
+     */
+    public static function getChekingListByProject($text_id){
+        $sql = 'SELECT'
     }
 }

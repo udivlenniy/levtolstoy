@@ -16,6 +16,7 @@ class Accuracy{
 
     // запуск проверки по поиску ошибок пунктуации в тексте
     public function run(){
+        file_put_contents('Accuracy.txt','');
         return array('result'=>true, 'msg'=>'ok');
     }
 }

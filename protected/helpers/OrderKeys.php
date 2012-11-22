@@ -16,6 +16,7 @@ class OrderKeys{
 
     // запуск проверки по поиску ошибок пунктуации в тексте
     public function run(){
+        file_put_contents('OrderKeys.txt','');
         return array('result'=>true, 'msg'=>'ok');
     }
 }

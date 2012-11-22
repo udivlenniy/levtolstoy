@@ -177,7 +177,8 @@ class AdminController extends Controller{
                     $csvFile->processFileImport($shems, $model->id);
 
                     // копируем поля настроек и соотвествий из выбранного шаблона и подвязываем их к проекту, что записали
-                    ImportVarsShema::copyTemplate($shems, $model->id);
+                    // $model->UseTemplate - передаём, чтобы скопировать из шаблона правила проверок по полям и записать их к проекту
+                    ImportVarsShema::copyTemplate($shems, $model->id, $model->UseTemplate);
 
                     // поле создания проекта - генерируем логин и пасс для исполнителя и создаём копирайтора и подвязываем его к проекту
                     $access = User::createCopywriter($model->id);
@@ -244,7 +245,8 @@ class AdminController extends Controller{
 
    		if(isset($_POST['Project'])){
 
-            //echo '<pre>'; print_r($_POST); die();
+            // получаем список проверок
+            $listCheking = CheckingImportVars::getChekingList();
 
    			$model->attributes=$_POST['Project'];
    			if($model->save()){
@@ -277,6 +279,27 @@ class AdminController extends Controller{
 
                    $shema->save();
 
+                   // обновление списка проверок по каждому полю из импортируемой схемы// сохраняем список проверок по полю
+                   $rowCheking = $_POST['ChekingVarID'][$i];// массив проверок поо полю
+                   for($k=0;$k<count($listCheking);$k++){
+
+                       $row = $listCheking[$k];
+
+                       // если выбрали галочкой проверку
+                       if($rowCheking[$k+1]==1){//$k+1 - для корректности выбора по галочкам
+                           $selected = 1;
+                       }else{
+                           $selected = 0;
+                       }
+                       $sql = 'UPDATE {{checking_import_vars}}
+                                SET selected="'.$selected.'"
+                                WHERE checked_id="'.$row['id'].'"
+                                    AND import_var_id="'.$i.'"
+                                    AND model_id="'.$model->id.'"
+                                    AND type="2"';
+                       Yii::app()->db->createCommand($sql)->execute();
+                   }
+
                    $cnt++;
                }
                $this->redirect(array('view','id'=>$model->id));
@@ -305,6 +328,10 @@ class AdminController extends Controller{
             Yii::app()->db->createCommand('DELETE FROM {{text_data}} WHERE text_id="'.$row['id'].'"')->execute();
         }
         Yii::app()->db->createCommand('DELETE FROM {{text}} WHERE project_id="'.$id.'"')->execute();
+
+        // удаляем подвязаные к проекту настройки по проверке полей
+        $delFieldsCheking = 'DELETE FROM {{checking_import_vars}} WHERE type="2" AND model_id="'.$id.'"';
+
         // удаляем пользователей подвязанных к проекту(исполнители)
         $sqlFindCopyWriter = 'SELECT tbl_project_users.*
                             FROM `tbl_project_users` , tbl_users

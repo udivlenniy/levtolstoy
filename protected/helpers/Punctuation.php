@@ -17,6 +17,7 @@ class Punctuation{
 
     // запуск проверки по поиску ошибок пунктуации в тексте
     public function run(){
+        file_put_contents('Punctuation.txt','');
         return array('result'=>true, 'msg'=>'ok');
     }
 }

@@ -16,6 +16,7 @@ class Density{
 
     // запуск проверки по поиску ошибок уникальности  в тексте
     public function run(){
+        file_put_contents('Density.txt','');
         return array('result'=>true, 'msg'=>'ok');
     }
 }
