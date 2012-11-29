@@ -148,6 +148,8 @@ class qqFileUploader {
             $listColums = $csv->getColumnLema();
             $filels = '';
             $varsList = CHtml::listData(ImportVars::model()->findAll(), 'id', 'title');
+            // получаем список проверок и формируем по ним список чекбоксов
+            $chekingList = CheckingImportVars::getChekingList();
             foreach($listColums as $index=>$column){
 
                 //$shema = new ImportVarsShema();
@@ -161,7 +163,7 @@ class qqFileUploader {
 
 
                 $checkBox = $checkBox1. $checkBox2. $checkBox3;
-                $forma = CheckingImportVars::getFormChekingByField('','',$index,$column);
+                $forma = CheckingImportVars::getFormChekingByField('','',$index,$column,$chekingList);
 
                 $row = '<div class="row"><label for="'.$column.'">Столбец('.$column.')</label>'.$select.$hidden.$checkBox.$forma.'</div>';
 

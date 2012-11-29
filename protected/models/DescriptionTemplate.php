@@ -49,8 +49,8 @@ class DescriptionTemplate extends CActiveRecord
 		return array(
 			//array('category_id, title, title_job, type_job, description, deadline, price_th, uniqueness', 'required'),
             array('title,category_id', 'required'),
-			array(' category_id,  price_th, uniqueness', 'numerical', 'integerOnly'=>true),
-			array('deadline, title, title_job, type_job', 'length', 'max'=>255),
+			array('deadline, category_id,  price_th, uniqueness', 'numerical', 'integerOnly'=>true),
+			array(' title, title_job, type_job', 'length', 'max'=>255),
             array('description','length', 'max'=>6000),
 
             array('uploadfile_temp', 'uploaded_file'),
@@ -142,8 +142,6 @@ class DescriptionTemplate extends CActiveRecord
 
             // преобразовываем выбранную дату в числовой формат
             if($this->isNewRecord){
-
-
                 //$this->author_id=Yii::app()->user->id;
             }else{
                 //$this->update_time=time();
@@ -151,10 +149,7 @@ class DescriptionTemplate extends CActiveRecord
 
             //echo 'deadline='.$this->deadline.'<br>'; die();
 
-            if(!empty($this->deadline)){
-                $parse_date = explode('/',$this->deadline);
-                $this->deadline = mktime(0, 0, 0,  $parse_date[0],$parse_date[1], $parse_date[2]);
-            }
+
 
             return true;
         }else{

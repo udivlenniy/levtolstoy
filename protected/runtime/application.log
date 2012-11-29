@@ -5466,3 +5466,2051 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/favicon.ico
 ---
+2012/11/22 09:15:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 09:15:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 09:16:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 09:16:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 10:48:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 10:50:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 10:50:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:45:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:45:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:45:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:49:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:49:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:49:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:51:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:51:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 11:51:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:01:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:10:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:10:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:12:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:14:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:24:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:26:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:28:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:34:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:44:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:45:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:46:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:46:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:48:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:49:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:50:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 12:55:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 22:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 22:47:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 23:08:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/22 23:09:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:48:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:48:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:51:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:52:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:52:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:52:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:53:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:54:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 00:54:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 01:08:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 01:08:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 02:20:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 02:20:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 02:20:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 02:20:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 02:21:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 02:21:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:15:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:15:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:21:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:21:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:21:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:24:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:24:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:25:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:25:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:27:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:27:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:28:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:29:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:30:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:31:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:31:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:33:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:33:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:33:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:33:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:37:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:37:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:37:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:37:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:37:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:48:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:48:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:48:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:48:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:49:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:49:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:49:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:49:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:49:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:49:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:49:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:50:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:50:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:54:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:54:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 03:54:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:00:03 [warning] [application] Не удалось присвоить небезопасный атрибут "deadline" класса "DescriptionTemplate".
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (319)
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (172)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 04:00:10 [warning] [application] Не удалось присвоить небезопасный атрибут "deadline" класса "DescriptionTemplate".
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (319)
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (172)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 04:00:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:00:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:12:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:12:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:14:15 [warning] [application] Не удалось присвоить небезопасный атрибут "deadline" класса "DescriptionTemplate".
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (329)
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (172)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 04:14:28 [warning] [application] Не удалось присвоить небезопасный атрибут "deadline" класса "DescriptionTemplate".
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (329)
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (172)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 04:14:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:15:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:18:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:24:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:26:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:27:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:29:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:30:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:36:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:37:49 [error] [php] Cannot modify header information - headers already sent by (output started at Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php:178) (Z:\home\framework_1_12\web\CHttpRequest.php:763)
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php(251): TemplateController->redirect()
+#1 unknown(0): TemplateController->actionUpdate()
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams()
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): TemplateController->runAction()
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CAccessControlFilter->filter()
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): TemplateController->filterAccessControl()
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): TemplateController->runActionWithFilters()
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): TemplateController->run()
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController()
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CWebApplication->run()
+REQUEST_URI=/project/template/update/id/1
+in Z:\home\manager\www\protected\modules\project\controllers\TemplateController.php (251)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 04:37:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:38:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:38:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:38:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:42:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:42:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:48:29 [warning] [application] Не удалось присвоить небезопасный атрибут "uploadFile" класса "Project".
+in Z:\home\manager\www\protected\modules\project\controllers\AdminController.php (165)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 04:48:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:48:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:48:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:49:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:49:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:50:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:50:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:50:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 04:51:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 05:51:38 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Text".
+in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php (116)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 05:53:43 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Text".
+in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php (116)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 05:54:15 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Text".
+in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php (116)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 07:07:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:07:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:07:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:07:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:07:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:07:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:08:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:08:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:08:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:08:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:166
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(101): CopywriterController->loadModel('2')
+#1 [internal function]: CopywriterController->actionText('2')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/2
+---
+2012/11/23 07:11:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 07:11:55 [warning] [application] Не удалось присвоить небезопасный атрибут "uploadFile" класса "Project".
+in Z:\home\manager\www\protected\modules\project\controllers\AdminController.php (165)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 07:11:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 07:12:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 07:13:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php:167
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php(102): CopywriterController->loadModel('4')
+#1 [internal function]: CopywriterController->actionText('4')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(CopywriterController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(CopywriterController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/copywri...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/copywriter/text/id/4
+---
+2012/11/23 07:23:09 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Text".
+in Z:\home\manager\www\protected\modules\project\controllers\CopywriterController.php (117)
+in Z:\home\manager\www\index.php (13)
+2012/11/23 22:45:26 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 22:53:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 23:29:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/23 23:47:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/24 01:15:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/24 01:15:48 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/24 01:15:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/24 01:15:52 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/24 02:47:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/28 23:55:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/28 23:55:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/28 23:55:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/28 23:55:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:39:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:39:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:39:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:39:55 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:39:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:39:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:39:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:39:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:40:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:40:03 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:40:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:40:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:43:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:43:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:43:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:43:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:43:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:43:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:45:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:45:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:45:40 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:45:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:46:35 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:46:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:46:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:47:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:50:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:50:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:50:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 00:50:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:19:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:19:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:20:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:20:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:20:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:21:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:21:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:21:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:31:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:31:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:31:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:31:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:32:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:32:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:32:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:32:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:32:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:32:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:32:31 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:33:06 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Text".
+in Z:\home\manager\www\protected\modules\project\controllers\RedactorController.php (115)
+in Z:\home\manager\www\index.php (13)
+2012/11/29 01:33:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:33:38 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Text".
+in Z:\home\manager\www\protected\modules\project\controllers\RedactorController.php (115)
+in Z:\home\manager\www\index.php (13)
+2012/11/29 01:33:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index".' in Z:\home\framework_1_12\web\CController.php:484
+Stack trace:
+#0 Z:\home\framework_1_12\web\CController.php(271): CController->missingAction('index')
+#1 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('index')
+#2 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/redacto...')
+#3 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#4 Z:\home\manager\www\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/project/redactor/index
+HTTP_REFERER=http://manager/project/redactor/text/id/3
+---
+2012/11/29 01:33:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:34:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index".' in Z:\home\framework_1_12\web\CController.php:484
+Stack trace:
+#0 Z:\home\framework_1_12\web\CController.php(271): CController->missingAction('')
+#1 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('')
+#2 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/redacto...')
+#3 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#4 Z:\home\manager\www\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/project/redactor/
+---
+2012/11/29 01:34:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:34:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "index".' in Z:\home\framework_1_12\web\CController.php:484
+Stack trace:
+#0 Z:\home\framework_1_12\web\CController.php(271): CController->missingAction('index')
+#1 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('index')
+#2 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/redacto...')
+#3 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#4 Z:\home\manager\www\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/project/redactor/index
+HTTP_REFERER=http://manager/project/redactor/text/id/3
+---
+2012/11/29 01:34:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:34:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:34:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:34:37 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:44:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:44:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:45:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:55:18 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:55:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\RedactorController.php:88
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\RedactorController.php(103): RedactorController->loadModelText('4')
+#1 [internal function]: RedactorController->actionText('4')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(RedactorController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(RedactorController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/redacto...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/redactor/text/id/4
+HTTP_REFERER=http://manager/project/redactor/textlist/id/2
+---
+2012/11/29 01:55:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:55:24 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:55:34 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:55:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The requested page does not exist.' in Z:\home\manager\www\protected\modules\project\controllers\RedactorController.php:88
+Stack trace:
+#0 Z:\home\manager\www\protected\modules\project\controllers\RedactorController.php(103): RedactorController->loadModelText('3')
+#1 [internal function]: RedactorController->actionText('3')
+#2 Z:\home\framework_1_12\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(RedactorController), Array)
+#3 Z:\home\framework_1_12\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(RedactorController), Object(ReflectionMethod), Array)
+#4 Z:\home\framework_1_12\web\CController.php(309): CInlineAction->runWithParams(Array)
+#5 Z:\home\framework_1_12\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#6 Z:\home\framework_1_12\web\filters\CFilter.php(41): CFilterChain->run()
+#7 Z:\home\framework_1_12\web\CController.php(1146): CFilter->filter(Object(CFilterChain))
+#8 Z:\home\framework_1_12\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#9 Z:\home\framework_1_12\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#10 Z:\home\framework_1_12\web\CController.php(292): CFilterChain->run()
+#11 Z:\home\framework_1_12\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 Z:\home\framework_1_12\web\CWebApplication.php(283): CController->run('text')
+#13 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('project/redacto...')
+#14 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#15 Z:\home\manager\www\index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/project/redactor/text/id/3
+HTTP_REFERER=http://manager/project/redactor/textlist/id/2
+---
+2012/11/29 01:55:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:55:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:55:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:56:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:56:08 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 01:56:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 04:35:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2012/11/29 05:34:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in Z:\home\framework_1_12\web\CWebApplication.php:287
+Stack trace:
+#0 Z:\home\framework_1_12\web\CWebApplication.php(142): CWebApplication->runController('favicon.ico')
+#1 Z:\home\framework_1_12\base\CApplication.php(162): CWebApplication->processRequest()
+#2 Z:\home\manager\www\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---

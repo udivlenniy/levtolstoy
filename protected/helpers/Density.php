@@ -12,11 +12,11 @@
 class Density{
     // текст для проверки на ошибки, текст для обработки
     public $sourceText;
-
+    public $title; // заголовок поля, которое проверяем классом
 
     // запуск проверки по поиску ошибок уникальности  в тексте
     public function run(){
-        file_put_contents('Density.txt','');
+
         return array('result'=>true, 'msg'=>'ok');
     }
 }

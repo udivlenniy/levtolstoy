@@ -108,7 +108,14 @@
            ));
            ?>
    	</div>
-<?php $this->endWidget(); ?>
+<?php $this->endWidget();
+
+if(!empty($errors)){?>
+    <div class="error" style="color: #ff0000; width: 100%;">
+        <?php    echo $errors; ?>
+    </div>
+<?php } ?>
+
 
 </div><!-- form -->
 <script type="text/javascript">

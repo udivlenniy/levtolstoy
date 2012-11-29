@@ -320,7 +320,14 @@ class AdminController extends Controller{
    	{
         $this->loadModel($id)->delete();
 
-        // удаляем все связанные данные с проектом:исполнителя,задания,тексты
+        // удаляем все связанные данные с проектом:исполнителя,задания,тексты, список проверок по полям текста
+
+        $sqlDeleteChekers = 'DELETE FROM {{checking_import_vars}} WHERE type="2" AND model_id="'.$id.'"';
+        Yii::app()->db->createCommand($sqlDeleteChekers)->execute();
+
+        // удаляем схему импорта по данному проекту
+        $sqlShema = 'DELETE FROM {{import_vars_shema}} WHERE num_id="'.$id.'" AND shema_type="1"';
+        Yii::app()->db->createCommand($sqlShema);
 
         // находим список текстов по проекту и удаляем подвязанные даннные по текстам
         $textList = Yii::app()->db->createCommand('SELECT id FROM {{text}} WHERE project_id="'.$id.'"')->queryAll();

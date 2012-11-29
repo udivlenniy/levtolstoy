@@ -11,9 +11,11 @@
 class Text extends CActiveRecord
 {
     // список статуосв текста, в процессе его написнаия
+    const TEXT_NEW_DISABLED_COPY = -1;// необходимая метка для последовательного открытия доступа копирайтора к текстам
     const TEXT_NEW = 1; // новый текст, только что создали, после импорта файла
     const TEXT_AVTO_CHECK = 2; // прошёл автоматические проверки и нет ошибок по тексту
     const TEXT_ACCEPT_EDITOR = 3; // принят текст редактором
+    const TEXT_NOT_ACCEPT_EDITOR = 4; // задание не прияното редактором, есть ошибки
 
 
 
@@ -25,10 +27,14 @@ class Text extends CActiveRecord
      */
     public static function getStatus($status){
         // новый статус текста
-        if($status==self::TEXT_NEW){ return 'Новый'; }
+        if($status==self::TEXT_NEW || $status==self::TEXT_NEW_DISABLED_COPY ){ return 'Новый'; }
 
         // прошёл автомат. проверки системой, после написания копирайтором всех полей
-        if($status==self::TEXT_ACCEPT_EDITOR){ return 'Проверенный'; }
+        if($status==self::TEXT_AVTO_CHECK){ return 'Проверенный'; }
+
+        if($status==self::TEXT_ACCEPT_EDITOR){ return 'Принят редактором'; }
+
+        if($status==self::TEXT_NOT_ACCEPT_EDITOR){ return 'Не принят редактором'; }
     }
 
 
@@ -152,5 +158,14 @@ class Text extends CActiveRecord
      */
     public static function  runChekingText($textID){
 
+    }
+
+    /*
+     * установим новый статус у задания
+     * по его ID
+     */
+    public static function setNewStatusText($TextId, $status){
+        $sql = 'UPDATE {{text}} SET status="'.$status.'" WHERE id="'.$TextId.'"';
+        Yii::app()->db->createCommand($sql)->execute();
     }
 }

@@ -69,6 +69,12 @@ class TemplateController extends Controller{
 
    			$model->attributes = $_POST['DescriptionTemplate'];
 
+            // преобразование даты из формата 30/11/2012 в UNIXTIME
+            if(!empty($_POST['DescriptionTemplate']['deadline']) && $_POST['DescriptionTemplate']['deadline']!=0){
+               $parse_date = explode('/',$_POST['DescriptionTemplate']['deadline']);
+               $model->deadline = mktime(0, 0, 0,  $parse_date[1],$parse_date[0], intval($parse_date[2]));
+            }
+
    			if($model->validate()){
 
                $model->save();
@@ -174,6 +180,11 @@ class TemplateController extends Controller{
    		if(isset($_POST['DescriptionTemplate'])){
 
    			$model->attributes = $_POST['DescriptionTemplate'];
+            // преобразование даты из формата 30/11/2012 в UNIXTIME
+            if(!empty($_POST['DescriptionTemplate']['deadline']) && $_POST['DescriptionTemplate']['deadline']!=0){
+               $parse_date = explode('/',$_POST['DescriptionTemplate']['deadline']);
+               $model->deadline = mktime(0, 0, 0,  $parse_date[1],$parse_date[0], intval($parse_date[2]));
+            }
 
    			if($model->validate()){
 
@@ -251,6 +262,14 @@ class TemplateController extends Controller{
    	public function actionDelete($id)
    	{
    		$this->loadModel($id)->delete();
+        // удаляем список проверок по шаблону по его полям соотвествия
+        $sqlDeleteChekers = 'DELETE FROM {{checking_import_vars}} WHERE type="1" AND model_id="'.$id.'"';
+        Yii::app()->db->createCommand($sqlDeleteChekers)->execute();
+
+        // удаляем схему импорта по данному проекту
+        $sqlShema = 'DELETE FROM {{import_vars_shema}} WHERE num_id="'.$id.'" AND shema_type="2"';
+        Yii::app()->db->createCommand($sqlShema);
+
 
    		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
    		if(!isset($_GET['ajax']))

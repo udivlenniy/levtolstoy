@@ -85,6 +85,7 @@ class Project extends CActiveRecord
             // обязательные параметры при добавлении и редактировании проекта
 			array('title, type_job, description, deadline, price_th, total_cost, total_num_char, uniqueness, category_id', 'required', 'on'=>'create, update'),
             array('UseTemplate', 'required', 'on'=>'create'),
+            array('check_editor,check_copywriter', 'boolean'),
 			array('price_th, total_cost, total_num_char, uniqueness, category_id, status', 'numerical', 'integerOnly'=>true, 'on'=>'create, update'),//deadline,
 			array('title ,type_job, description', 'length', 'max'=>255, 'on'=>'create, update'),
             array('performer_login, performer_pass', 'length', 'max'=>255),
@@ -147,6 +148,8 @@ class Project extends CActiveRecord
             'uploadFile'=>'Файл с данными',
             'performer_login'=>'Логин(исполнителя)',
             'performer_pass'=>'Пароль(исполнителя)',
+            'check_editor'=>'Включить автопроверки для редактора',
+            'check_copywriter'=>'Включить автопроверки для копирайтора',
 		);
 	}
 

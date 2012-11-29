@@ -66,79 +66,89 @@ class CsvImport{
     public function processFileImport($shemaImport, $project_id){
         // для обработки файла импорта, при записи данных используем транзакции
 
-            // сперва преобразуем файл в массив
-            $arrayData = $this->get2DArrayFromCsv();
+        // сперва преобразуем файл в массив
+        $arrayData = $this->get2DArrayFromCsv();
 
-            $last_text_id = 0;
-            //на основании полученной схемы преобразоваем массив из файла в соотвествие внутренним-переменным системы
-            foreach($arrayData as $i=>$row){// цикл по строчкам файла импорта
+        $last_text_id = 0;
+        $counterText = 1;
+        //на основании полученной схемы преобразоваем массив из файла в соотвествие внутренним-переменным системы
+        foreach($arrayData as $i=>$row){// цикл по строчкам файла импорта
 
-                // пропускаем заголовки столбцов, для файла импорта
-                if($i==0){ continue; }
-                //$row - массив столбцов - 1 строка из файла импорта
+            // пропускаем заголовки столбцов, для файла импорта
+            if($i==0){ continue; }
+            //$row - массив столбцов - 1 строка из файла импорта
 
-                // если массив пустой, не указано в строке ни одного значения - ПРОПУСКАЕМ
-                $sizeRow = CsvImport::plenumArray($row);
-                // если одна строка - значит это ключевое слово, если 0 - значит пропускаем
-                if($sizeRow == 0){
-                    continue;
-                }elseif($sizeRow==1){
-                    // обработка ключевого слова по тексту
-                    // цикл по столбцам строки из файла
-                    for($j=0;$j<count($row);$j++){
+            // если массив пустой, не указано в строке ни одного значения - ПРОПУСКАЕМ
+            $sizeRow = CsvImport::plenumArray($row);
+            // если одна строка - значит это ключевое слово, если 0 - значит пропускаем
+            if($sizeRow == 0){
+                continue;
+            }elseif($sizeRow==1){
+                // обработка ключевого слова по тексту
+                // цикл по столбцам строки из файла
+                for($j=0;$j<count($row);$j++){
 
-                        // столбцы пустые и  не нужные для импортирования - пропускаем
-                        if(empty($row[$j]) || $shemaImport[$j]['title']=='Не импортировать'){ continue; }
+                    // столбцы пустые и  не нужные для импортирования - пропускаем
+                    if(empty($row[$j]) || $shemaImport[$j]['title']=='Не импортировать'){ continue; }
 
-                        // массив настроек для текущего столбца данных из файла импорта
-                        $rowShema = $shemaImport[$j];
+                    // массив настроек для текущего столбца данных из файла импорта
+                    $rowShema = $shemaImport[$j];
 
-                        $column = $row[$j];
+                    $column = $row[$j];
 
-                        // массив настроек и значений для текущ. обрабатываемого поля
-                        $shemaField = $shemaImport[$j];
+                    // массив настроек и значений для текущ. обрабатываемого поля
+                    $shemaField = $shemaImport[$j];
 
-                        // сохраняем импортируемые значения атрибутов к заданию на написание текста
-                        $dataText = new TextData();
-                        $dataText->import_var_id = $shemaField['import_var_id'];
-                        $dataText->text_id = $last_text_id;
-                        $dataText->import_var_value = $column;
-                        $dataText->save();
-                    }
-                }elseif($sizeRow>1){
-                    // создание нового текста - на задание
-                    // каждая строка - это новый текст, поэтому создаём текст и подвязываем к нему заполненные переменные
-                    $textTask = new Text();
-                    $textTask->project_id = $project_id;
-                    $textTask->status = Project::CREATE_TASK;
-                    $textTask->save();
-                    $last_text_id = $textTask->id;
-
-                    // цикл по столбцам строки из файла
-                    for($j=0;$j<count($row);$j++){
-
-                        // столбцы не нужные для импортирования - пропускаем
-                        // не пропускаем ПУСТЫЕ столбцы, это важно!
-                        if($shemaImport[$j]['title']='' || $shemaImport[$j]['title']=='Не импортировать'){ continue; }
-
-                        // массив настроек для текущего столбца данных из файла импорта
-                        $rowShema = $shemaImport[$j];
-
-                        $column = $row[$j];
-
-                        // массив настроек и значений для текущ. обрабатываемого поля
-                        $shemaField = $shemaImport[$j];
-
-                        // сохраняем импортируемые значения атрибутов к заданию на написание текста
-                        $dataText = new TextData();
-                        $dataText->import_var_id = $shemaField['import_var_id'];
-                        $dataText->text_id = $textTask->id;
-                        $dataText->import_var_value = $column;
-                        $dataText->save();
-                    }
+                    // сохраняем импортируемые значения атрибутов к заданию на написание текста
+                    $dataText = new TextData();
+                    $dataText->import_var_id = $shemaField['import_var_id'];
+                    $dataText->text_id = $last_text_id;
+                    $dataText->import_var_value = $column;
+                    $dataText->save();
                 }
+            }elseif($sizeRow>1){
+                // создание нового текста - на задание
+                // каждая строка - это новый текст, поэтому создаём текст и подвязываем к нему заполненные переменные
+                $textTask = new Text();
+                $textTask->project_id = $project_id;
+                // указываем статус, чтобы копирайтор, не имел доступа ко всем текста из проекта
+                $textTask->status = Text::TEXT_NEW_DISABLED_COPY;
+                $textTask->num = $counterText;// записываем тексты по порядку, как добавляем
+                $textTask->save();
+                $last_text_id = $textTask->id;
 
+                $counterText++;
+
+                // цикл по столбцам строки из файла
+                for($j=0;$j<count($row);$j++){
+
+                    // столбцы не нужные для импортирования - пропускаем
+                    // не пропускаем ПУСТЫЕ столбцы, это важно!
+                    if($shemaImport[$j]['title']='' || $shemaImport[$j]['title']=='Не импортировать'){ continue; }
+
+                    // массив настроек для текущего столбца данных из файла импорта
+                    $rowShema = $shemaImport[$j];
+
+                    $column = $row[$j];
+
+                    // массив настроек и значений для текущ. обрабатываемого поля
+                    $shemaField = $shemaImport[$j];
+
+                    // сохраняем импортируемые значения атрибутов к заданию на написание текста
+                    $dataText = new TextData();
+                    $dataText->import_var_id = $shemaField['import_var_id'];
+                    $dataText->text_id = $textTask->id;
+                    $dataText->import_var_value = $column;
+                    $dataText->save();
+                }
             }
+
+        }
+
+        // если добавляли задания по проекту, тогда обновим статус первого задания - сделаем его досутпным для копирайтора
+        if($counterText!=1){
+            Yii::app()->db->createCommand('UPDATE {{text}} SET status="'.Text::TEXT_NEW.'" WHERE project_id="'.$project_id.'" AND num="1"')->execute();
+        }
     }
 
     /*

@@ -81,7 +81,8 @@ class RedactorController extends  Controller{
         }
 
         // находим текст с учётом, что к данному тексту подвязан именно текущий юзер-копирайтор
-        $model = Text::model()->findByPk($id);
+        // редактор может открывать тексты лишь после того как они прошли автомат. проверки при обновлении записи копирайтором(статус-TEXT_AVTO_CHECK)
+        $model = Text::model()->findByPk($id);//, 'status=:status',array(':status'=>Text::TEXT_AVTO_CHECK)
 
         if($model===null){
             throw new CHttpException(404,'The requested page does not exist.');
@@ -125,6 +126,10 @@ class RedactorController extends  Controller{
                 }
                 //===========записываем ошибку в БД по данному тексту==============
                 if($_POST['Text']['status_new']=='error' && !empty($_POST['Text']['status_new_text'])){
+                    // установим новый статус, что НЕ принято редактором
+                    $model->status = Text::TEXT_NOT_ACCEPT_EDITOR;
+                    $model->save();
+
                     // подвязываем ошибку к тексту
                     $error = new Errors();
                     $error->user_id = Yii::app()->user->id;

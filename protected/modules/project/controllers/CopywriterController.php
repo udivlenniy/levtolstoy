@@ -60,19 +60,11 @@ class CopywriterController extends  Controller{
         $result = array();
         // перебираем массив для формирования ссылок на задания, чтобы копирайтер последовательно их мог выполнять
         // т.е.выполнил 2 задания перешёл на третье, а не любое на выбор
-        $beforeStatus = Text::TEXT_NEW;
-        foreach($data as $i=>$row){
-            // первый текст в списке это ВСЕГДА ссылка
-            if($i==0){
+          foreach($data as $i=>$row){
+            // если статус у задания НОВЫЙ, не_принят_редактором - т.е. доступный для копирайтора, тогда показываем ему ссылку на задание
+            if($row['status']==Text::TEXT_NEW || $row['status']==Text::TEXT_NOT_ACCEPT_EDITOR){
                 $row['title'] = CHtml::link($row["title"],array("copywriter/text","id"=>$row["id"]));
-            }else{
-                // если предыдущий текст был со статусом НЕ новый, тогда ссылка, иначе просто заголовок
-                if($beforeStatus!=Text::TEXT_NEW){
-                    $row['title'] = CHtml::encode(CHtml::link($row["title"],array("copywriter/text","id"=>$row["id"])));
-                }
             }
-
-            $beforeStatus = $row['status'];
 
             $result[] = $row;
         }
@@ -93,12 +85,12 @@ class CopywriterController extends  Controller{
      * $id - ID текста в таблице
      */
     public function actionText($id){
+        //скрипты для инициализации ВИЗИВИГ-редактора
         Yii::app()->bootstrap->registerAssetCss('redactor.css');
       	Yii::app()->bootstrap->registerAssetJs('redactor.min.js');
         Yii::app()->bootstrap->registerAssetJs('locales/redactor.ru.js');
         // используем данные из модели, для проверки соотвествия - проекта - тексту и доступов по юзеру
         $model = $this->loadModel($id);
-
         // sql-запрос на выборку полей с данными для выбранного текста
         $sql = 'SELECT {{text_data}}.id, {{text_data}}.import_var_value, {{import_vars}}.title,{{text_data}}.import_var_id
                 FROM {{text_data}},{{import_vars}}
@@ -107,22 +99,52 @@ class CopywriterController extends  Controller{
 
         $data = Yii::app()->db->createCommand($sql)->queryAll();
 
+        // ошибки при проверке задания по разным проверкам
+        $errors = '';
+
         // отправили POST на обновление данных по данному тексту
         if(isset($_POST['Text'])){
+            //echo '<pre>'; print_r($_POST); die();
             $model->attributes = $_POST['Text'];
-            // цикл по полям, с обновлением значением полей
-            foreach($_POST['ImportVarsValue'] as $i=>$val){
-                // SQL запрос на обновление данных
-                $sql = 'UPDATE {{text_data}} SET import_var_value="'.$val.'" WHERE id="'.(int)$i.'"';
-                Yii::app()->db->createCommand($sql)->execute();
-            }
 
-            $this->redirect(array('index'));
+            // если в настройках проекта указано, что для копирайтора включены проверки по полям, тогда проверяем поля по проверкам
+            $project = Yii::app()->db->createCommand('SELECT * FROM {{project}} WHERE check_copywriter="1" AND id="'.$model->project_id.'"')->queryRow();
+            if(!empty($project)){
+                // цикл по полям из формы, из задания с проверкой на ошибки
+                foreach($_POST['ImportVarsValue'] as $j=>$row){
+                    $errors.=CheckingImportVars::checkingFieldByRules($j, $row, $project['id']);
+                }
+
+            }
+            // нет ошибок, всё отлично - обновим содержимое задания
+            if(empty($errors)){
+                // цикл по полям, с обновлением значением полей
+                foreach($_POST['ImportVarsValue'] as $i=>$val){
+                    // SQL запрос на обновление данных
+                    $sql = 'UPDATE {{text_data}} SET import_var_value="'.$val.'" WHERE id="'.(int)$i.'"';
+                    Yii::app()->db->createCommand($sql)->execute();
+                }
+
+                //задание прошло все автомат. проверки, установим новый статус у задания(чтобы редактор мог его проверить)
+                Text::setNewStatusText($model->id, Text::TEXT_AVTO_CHECK);
+
+                // откроем на доступ следующее задание в списке заданий проекта
+                $numNext = $model->num+1;
+                Yii::app()->db->createCommand('UPDATE {{text}}
+                                                SET status="'.Text::TEXT_NEW.'"
+                                                WHERE num="'.$numNext.'"
+                                                    AND project_id="'.$model->project_id.'"')
+                                                ->execute();
+
+                // редирект на список заданий, а текущее становится не доступным
+                $this->redirect(array('index'));
+            }
         }
 
         $this->render('text_view',array(
             'data'=>$data,
             'model'=>$model,
+            'errors'=>$errors,
         ));
     }
 
@@ -138,7 +160,10 @@ class CopywriterController extends  Controller{
         }
 
         // находим текст с учётом, что к данному тексту подвязан именно текущий юзер-копирайтор
-   		$model = Text::model()->findByPk($id, 'project_id=:project_id', array(':project_id'=>$projectUser->project_id));
+   		$model = Text::model()->findByPk($id,
+                 'project_id=:project_id AND (status=:status OR status=:status1)',
+                 array(':project_id'=>$projectUser->project_id, ':status'=>Text::TEXT_NEW, ':status1'=>Text::TEXT_NOT_ACCEPT_EDITOR)
+        );
 
    		if($model===null){
             throw new CHttpException(404,'The requested page does not exist.');

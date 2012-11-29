@@ -28,6 +28,8 @@
         $filels = '';
         $varsList = CHtml::listData(ImportVars::model()->findAll(), 'id', 'title');
         // обновление данных
+        // получаем список проверок и формируем по ним список чекбоксов
+        $chekingList = CheckingImportVars::getChekingList();
 
         foreach($data as $i=>$column){
 
@@ -44,7 +46,7 @@
 
             $checkBox = $checkBox1. $checkBox2. $checkBox3;
 
-            $forma = CheckingImportVars::getFormChekingByField(1 ,$model->id ,$column['id'],$column['label']);
+            $forma = CheckingImportVars::getFormChekingByField(1 ,$model->id ,$column['id'],$column['label'], $chekingList);
 
             $row = '<div class="row"><label for="'.$column['label'].'">Столбец('.$column['label'].')</label>'.$select.$hidden.$checkBox.$forma.'</div>';
 

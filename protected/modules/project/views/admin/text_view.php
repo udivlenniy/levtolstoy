@@ -8,9 +8,13 @@
     <?php
     $formElements = '';
     $keyWords = '<div id="tbl_key_words" style="width: 750px; overflow: auto; height: 165px; border: 1px solid;"><table border="1">';
+    $counterKeyWords = 0;
+
     foreach($data as $i=>$row){
         //формируем элементы формы ключевики выводим сгруппировано
         if($row['import_var_id']==Yii::app()->params['key_words']){
+
+            $counterKeyWords++;
 
             $input = CHtml::textField('ImportVarsValue['.$row['id'].']',$row['import_var_value'], array('style'=>'width:300px'));
 
@@ -44,7 +48,11 @@
     $keyWords.='</table></div> ';
     echo $formElements;
     ?>
-    <?php echo $keyWords; ?>
+    <?php // если есть ключевые слова по тексту - выводим их
+        if($counterKeyWords!=0){
+            echo $keyWords;
+        }
+     ?>
 
     <div class="row">
    		<?php echo $form->hiddenField($model,'project_id'); ?>
@@ -72,7 +80,7 @@
             <div class="modal-body">
                 <?=CHtml::beginForm('','post',array('enctype'=>'multipart/form-data','id'=>'frmNewKeyWord','name'=>'editForm')); ?>
                 <?=CHtml::hiddenField("textId",$model->id,array('id'=>'catId')); ?>
-                <?=Yii::t('lan','Введите ключевое слово');?><br>
+                <?=Yii::t('lan','Введите ключевое слово');?>
                 <?=CHtml::textField("keyWordNew","",array('id'=>'keyWordNew')); ?><br>
                 <?=CHtml::endForm(); ?>
             </div>
@@ -88,6 +96,7 @@
                                           'error' => 'function(a){ alert("Ошибка обработки запроса"); }'
                                          ),
                                     array('type' => 'submit',
+                                            'style'=>'margin-left:40px;',
                                           'id'=>'btnEditCategory',
                                           'class'=>'btn btn-primary',
                                           'buttonType'=>'submit',

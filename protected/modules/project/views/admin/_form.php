@@ -64,7 +64,8 @@
     $filels = '';
     $varsList = CHtml::listData(ImportVars::model()->findAll(), 'id', 'title');
     // обновление данных
-
+    // получаем список проверок и формируем по ним список чекбоксов
+    $chekingList = CheckingImportVars::getChekingList();
     foreach($data as $i=>$column){
 
         //echo '<pre>'; print_r($data); die();
@@ -83,7 +84,7 @@
 
         $checkBox = $checkBox1. $checkBox2. $checkBox3;
 
-        $forma = CheckingImportVars::getFormChekingByField(2 ,$model->id ,$column['id'],$column['label']);
+        $forma = CheckingImportVars::getFormChekingByField(2 ,$model->id ,$column['id'],$column['label'],$chekingList);
 
         $row = '<div class="row"><label for="'.$column['label'].'">Столбец('.$column['label'].')</label>'.$select.$hidden.$checkBox.$forma.'</div>';
 
@@ -159,11 +160,18 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'uniqueness'); ?>
-		<?php
-            echo $form->textField($model,'uniqueness');
-        ?>
+		<?php echo $form->textField($model,'uniqueness');?>
 		<?php echo $form->error($model,'uniqueness'); ?>
 	</div>
+
+    <div class="row">
+        <?php echo $form->checkBox($model,'check_editor'); ?>
+        <?php echo $form->label($model,'check_editor', array('style'=>'width:350px;')); ?>
+    </div>
+    <div class="row">
+        <?php echo $form->checkBox($model,'check_copywriter'); ?>
+        <?php echo $form->label($model,'check_copywriter', array('style'=>'width:350px;')); ?>
+    </div>
 
     <div class="row buttons">
    		<?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');
