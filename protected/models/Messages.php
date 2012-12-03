@@ -39,12 +39,12 @@ class Messages extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('author_id, create, model, model_id, msg_text', 'required'),
-			array('author_id, create, model_id', 'numerical', 'integerOnly'=>true),
+			array('author_id, create, model, model_id, msg_text,recipient_id', 'required'),
+			array('author_id, create, model_id, is_new, recipient_id', 'numerical', 'integerOnly'=>true),
 			array('model', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, author_id, create, model, model_id, msg_text', 'safe', 'on'=>'search'),
+			array('id, author_id, create, model, model_id, msg_text, is_new', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,11 +66,12 @@ class Messages extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'author_id' => 'Author',
-			'create' => 'Create',
-			'model' => 'Model',
-			'model_id' => 'Model',
-			'msg_text' => 'Msg Text',
+			'author_id' => 'Автор',
+			'create' => 'Дата',
+			'model' => 'Модель',
+			'model_id' => 'ID Модель',
+			'msg_text' => 'Текст сообщения',
+            'recipient_id'=>'Получатель',
 		);
 	}
 

@@ -1,4 +1,5 @@
 <?php
+Yii::import("application.modules.user.UserModule");
 /**
  * Created by JetBrains PhpStorm.
  * User: Александр
@@ -9,7 +10,6 @@
 class RedactorController extends  Controller{
     public $defaultAction = 'index';
    	public $layout='//layouts/column2';
-
 
     private $_model;
 
@@ -146,7 +146,7 @@ class RedactorController extends  Controller{
                     $sql = 'UPDATE {{text_data}} SET import_var_value="'.$val.'" WHERE id="'.(int)$i.'"';
                     Yii::app()->db->createCommand($sql)->execute();
                 }
-                $this->redirect(array('index'));
+                $this->redirect(array('textlist', 'id'=>$model->project_id));
             }
         }
 
@@ -203,7 +203,41 @@ class RedactorController extends  Controller{
      * отображаем информацию редактору о выбранном проекте
      */
     public function actionView($id){
-        $model=$this->loadModel($id);
-        $this->render('view', array('model'=>$model));
+        // модель самого проекта
+        $model = $this->loadModel($id);
+        // модель личных сообщений
+        $msg = new Messages();
+        // заполняем нужными данными, для отправки сообщения
+        $msg->author_id = Yii::app()->user->id;
+        $msg->model = get_class($model);// к какой моделе подвязано сообщение
+        $msg->model_id = $model->id;
+        $msg->is_new = 1;
+
+        $this->performAjaxValidation($msg);
+
+        if(isset($_POST['Messages'])){
+            $msg->attributes=$_POST['Messages'];
+            $msg->create = time();
+            if($msg->validate()){
+
+                $msg->save();
+                Yii::app()->user->setFlash('msg','Спасибо, ваше сообщение успешно отправлено');
+                //$this->renderPartial('msg', array('msg'=>new Messages()));
+                //Yii::app()->end();
+            }
+        }
+
+        $this->render('view', array('model'=>$model, 'msg'=>$msg));
+    }
+    /*
+     * ajax - валидация формы данных при оптравке личных сообщений
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='messages-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
     }
 }

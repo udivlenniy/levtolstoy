@@ -211,4 +211,25 @@ class Project extends CActiveRecord
         parent::afterFind();
         $this->deadline = date('d/m/Y',$this->deadline);
     }
+
+    /*
+     * получаем список получателей личного сообщения для разных типов аккаунтов
+     * на основании роли пользователя - формируем список получателей его личного сообщения
+     */
+    public static function listRecipientFor($project_id){
+
+        // возможность отправить всем кроме себя
+        $sql  = 'SELECT {{users}}.id, {{users}}.role
+                FROM {{project_users}}, {{users}}
+                WHERE {{project_users}}.project_id="'.$project_id.'"
+                    AND {{users}}.id={{project_users}}.user_id
+                    AND {{users}}.id!="'.Yii::app()->user->id.'"';
+        $data = Yii::app()->db->createCommand($sql)->queryAll();
+        $result = array();
+        foreach($data as $row){
+            $result[$row['id']] = UserModule::t($row['role']);
+        }
+
+        return $result;
+    }
 }
