@@ -15,6 +15,7 @@
 </div>
 <?php endif; ?>
 <?php //else: ?>
+
         <div class="form">
             <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             'id'=>'messages-form',
@@ -25,7 +26,7 @@
         )); ?>
             <div class="row">
                 <?php echo $form->labelEx($msg,'recipient_id'); ?>
-                <?php echo $form->dropDownList($msg,'recipient_id', Project::listRecipientFor($model->id)); ?>
+                <?php echo $form->dropDownList($msg,'recipient_id', Project::listRecipientFor($model_id)); ?>
                 <?php echo $form->error($msg,'recipient_id'); ?>
             </div>
             <div class="row">
@@ -38,26 +39,11 @@
                 echo CHtml::ajaxSubmitButton('Отправить',
                         '#',
                         array(
-                        'type' => 'POST',
-                        //'enctype'=>'multipart/form-data',
-                        //'dataType'=>'json',
-                        //'data'=>'js:$("#upload-file-form").serialize()',
-                        //'data'=>'js:jQuery(this).parents("form").serialize()',
-                        'success'=>'js:function(data){ $("div.form").html(data); }',
+                            'type' => 'POST',
+                            'success'=>'js:function(data){ $("div.form").html(data); }',
                         ),
                         array('class'=>'btn btn-primary')
                     );
-//                $this->widget('bootstrap.widgets.TbButton', array(
-//                'type'=>'primary',
-//                'buttonType'=>'submit',
-//                //'buttonType'=>'button',
-//                'label'=>'Отправить',
-//                'url'=>'#',
-//                'htmlOptions'=>array(
-//                        //'data-dismiss'=>'modal'
-//                        'class'=>'btn btn-primary',
-//                    ),
-//                ));
                 ?>
                 <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'label'=>'Закрыть',

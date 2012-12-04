@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Ноя 29 2012 г., 08:17
+-- Время создания: Дек 04 2012 г., 08:15
 -- Версия сервера: 5.1.40
 -- Версия PHP: 5.3.1
 
@@ -890,6 +890,22 @@ INSERT INTO `tbl_checking_import_vars` (`id`, `type`, `model_id`, `import_var_id
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `tbl_comments`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `model` varchar(255) NOT NULL,
+  `model_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `create` int(11) NOT NULL,
+  `text` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='комментарии пользователей системы к проекту и заданиям' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `tbl_description_template`
 --
 
@@ -1088,8 +1104,34 @@ CREATE TABLE IF NOT EXISTS `tbl_messages` (
   `model_id` int(11) NOT NULL,
   `msg_text` text NOT NULL,
   `is_new` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'новое сообщение или прочитанное',
+  `recipient_id` int(11) NOT NULL COMMENT 'получатель сообщения',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='личные сообщения между частниками системы' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='личные сообщения между частниками системы' AUTO_INCREMENT=20 ;
+
+--
+-- Дамп данных таблицы `tbl_messages`
+--
+
+INSERT INTO `tbl_messages` (`id`, `author_id`, `create`, `model`, `model_id`, `msg_text`, `is_new`, `recipient_id`) VALUES
+(1, 10, 1354551398, 'Project', 2, 'sdfsdfdf', 1, 19),
+(2, 10, 1354551813, 'Project', 2, 'вапапвап', 1, 1),
+(3, 10, 1354551889, 'Project', 2, '444', 1, 1),
+(4, 10, 1354566332, 'Project', 2, 'тестовое сообщение', 1, 19),
+(5, 10, 1354566370, 'Project', 2, 'тестовое сообщение', 1, 19),
+(6, 10, 1354566401, 'Project', 2, 'тестовое сообщение2', 1, 1),
+(7, 10, 1354566406, 'Project', 2, 'тестовое сообщение2', 1, 1),
+(8, 10, 1354566417, 'Project', 2, 'тестовое сообщение2', 1, 1),
+(9, 10, 1354566564, 'Project', 2, '11111', 1, 19),
+(10, 10, 1354566639, 'Project', 2, '22222', 1, 19),
+(11, 10, 1354566758, 'Project', 2, '33333', 1, 19),
+(12, 10, 1354566780, 'Project', 2, 'выаываыва7777', 1, 1),
+(13, 1, 1354624605, 'Project', 2, 'проверка текста от админа проекта к редактору', 1, 10),
+(14, 1, 1354624605, 'Project', 2, 'проверка текста от админа проекта к редактору', 1, 10),
+(15, 1, 1354624738, 'Project', 1, 'редактор от админа - test2', 1, 10),
+(16, 1, 1354624808, 'Project', 1, '44444', 1, 10),
+(17, 1, 1354624893, 'Project', 1, '5555', 1, 10),
+(18, 19, 1354626105, 'Project', 2, 'текст от копирайтора', 1, 1),
+(19, 1, 1354626657, 'Project', 2, 'sdfsdfsdf', 1, 19);
 
 -- --------------------------------------------------------
 
@@ -1231,7 +1273,7 @@ INSERT INTO `tbl_text` (`id`, `project_id`, `status`, `num`) VALUES
 (1, 1, 1, 1),
 (2, 1, -1, 2),
 (3, 2, 4, 1),
-(4, 2, 1, 2);
+(4, 2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -1472,11 +1514,11 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `username`, `password`, `activkey`, `create_at`, `lastvisit_at`, `superuser`, `status`, `role`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '9a24eff8c15a6a141ece27eb6947da0f', '2012-10-17 06:40:52', '2012-11-21 23:14:19', 1, 1, 'super_administrator'),
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '9a24eff8c15a6a141ece27eb6947da0f', '2012-10-17 06:40:52', '2012-12-04 02:25:39', 1, 1, 'super_administrator'),
 (2, 'demo', 'fe01ce2a7fbac8fafaed7c982a04e229', '099f825543f7850cc038b90aaff39fac', '2012-10-17 06:40:52', '2012-10-18 05:30:34', 0, 1, 'administrator'),
-(10, 'redactor', '827ccb0eea8a706c4c34a16891f84e7b', 'd392f4538c6555bab1711e29c9bd88bf', '2012-11-18 21:55:52', '2012-11-28 23:31:42', 0, 1, 'editor'),
+(10, 'redactor', '827ccb0eea8a706c4c34a16891f84e7b', 'd392f4538c6555bab1711e29c9bd88bf', '2012-11-18 21:55:52', '2012-12-04 03:03:33', 0, 1, 'editor'),
 (18, '47kinftl', '036c692f75451bc8accbce76093a7921', '13e2108eb3438ef21bf84a1321ee1e59', '2012-11-23 02:48:30', '2012-11-23 05:06:33', 0, 1, 'copywriter'),
-(19, 'rl0h1xnzi', '9a4602883c2c6180c3ff9a2afc76060d', 'ad0c16b1ab91524e8a8ff6b2a7707b23', '2012-11-23 05:11:55', '2012-11-28 23:21:22', 0, 1, 'copywriter');
+(19, 'rl0h1xnzi', '9a4602883c2c6180c3ff9a2afc76060d', 'ad0c16b1ab91524e8a8ff6b2a7707b23', '2012-11-23 05:11:55', '2012-12-04 03:00:32', 0, 1, 'copywriter');
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

@@ -31,7 +31,7 @@ class AdminController extends Controller{
    	{
    		return array(
    			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-   				'actions'=>array('index','delete','create','update','view','uploadfile','selecttemplate','text','deletekeyword'),
+   				'actions'=>array('index','delete','create','update','view','uploadfile','selecttemplate','text','deletekeyword','textlist'),
    				'users'=>UserModule::getAdmins(),
    			),
    			array('deny',  // deny all users
@@ -47,8 +47,7 @@ class AdminController extends Controller{
    	 *выводим список ссылок на тексты по данному заданию
      * каждая ссылка это форма для написания текста, с полями и данными для этих полей
    	 */
-   	public function actionView($id)
-   	{
+    public function actionTextlist($id){
         // формируем запрос на выборку списка текстов с заголовками(TITLE)
         $sql = 'SELECT {{text}}.*,{{text_data}}.import_var_value as title
                 FROM {{text}}, {{text_data}}
@@ -56,7 +55,7 @@ class AdminController extends Controller{
                   AND {{text}}.project_id="'.(int)$id.'"
                   AND {{text_data}}.import_var_id='.Yii::app()->params['title'].'
                 GROUP BY tbl_text.id';
-           //import_var_id=3 - это у нас внутренняя переменная "TITLE"
+        //import_var_id=3 - это у нас внутренняя переменная "TITLE"
 
         // получаем массив данных, для отображения в таблице
         $data = Yii::app()->db->createCommand($sql)->queryAll();
@@ -70,6 +69,36 @@ class AdminController extends Controller{
         $this->render('text_list',array(
             'dataProvider'=>$dataProvider,
         ));
+    }
+
+   	public function actionView($id){
+           // модель самого проекта
+           $model = $this->loadModel($id);
+           // модель личных сообщений
+           $msg = new Messages();
+           // заполняем нужными данными, для отправки сообщения
+           $msg->author_id = Yii::app()->user->id;
+           $msg->model = get_class($model);// к какой моделе подвязано сообщение
+           $msg->model_id = $model->id;
+           $msg->is_new = 1;
+
+           $this->performAjaxValidation($msg);
+
+           if(isset($_POST['Messages'])){
+               $msg->attributes=$_POST['Messages'];
+               $msg->create = time();
+               if($msg->validate()){
+                   $msg->save();
+                   Yii::app()->user->setFlash('msg','Спасибо, ваше сообщение успешно отправлено');
+                   $this->renderPartial('msg', array('msg'=>new Messages(), 'model'=>$model));
+                   Yii::app()->end();
+               }else{
+                   $this->renderPartial('msg', array('msg'=>$msg, 'model'=>$model));
+                   Yii::app()->end();
+               }
+           }
+
+           $this->render('view', array('model'=>$model, 'msg'=>$msg));
    	}
 
     /*

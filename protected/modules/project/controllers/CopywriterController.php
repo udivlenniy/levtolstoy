@@ -6,6 +6,7 @@
  * Time: 12:32
  * To change this template use File | Settings | File Templates.
  */
+Yii::import("application.modules.user.UserModule");
 class CopywriterController extends  Controller{
     public $defaultAction = 'index';
    	public $layout='//layouts/column2';
@@ -74,9 +75,32 @@ class CopywriterController extends  Controller{
                 'pageSize'=>count($data),
             ),
         ));
+        // модель личных сообщений
+        $msg = new Messages();
+        // заполняем нужными данными, для отправки сообщения
+        $msg->author_id = Yii::app()->user->id;
+        $msg->model = 'Project';// к какой моделе подвязано сообщение
+        $msg->model_id = $projectUser->project_id;
+        $msg->is_new = 1;
+        $this->performAjaxValidation($msg);
 
+        if(isset($_POST['Messages'])){
+            $msg->attributes=$_POST['Messages'];
+            $msg->create = time();
+            if($msg->validate()){
+                $msg->save();
+                Yii::app()->user->setFlash('msg','Спасибо, ваше сообщение успешно отправлено');
+                $this->renderPartial('msg', array('dataProvider'=>$dataProvider,'msg'=>new Messages(), 'model_id'=>$projectUser->project_id));
+                Yii::app()->end();
+            }else{
+                $this->renderPartial('msg', array('dataProvider'=>$dataProvider,'msg'=>$msg, 'model_id'=>$projectUser->project_id));
+                Yii::app()->end();
+            }
+        }
         $this->render('text_list',array(
             'dataProvider'=>$dataProvider,
+            'model_id'=>$projectUser->project_id,
+            'msg'=>$msg,
         ));
     }
 
@@ -171,4 +195,17 @@ class CopywriterController extends  Controller{
 
    		return $model;
    	}
+
+    /**
+     * Performs the AJAX validation.
+     * @param CModel the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='messages-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
 }

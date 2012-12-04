@@ -15,6 +15,7 @@
 </div>
 <?php endif; ?>
 <?php //else: ?>
+
         <div class="form">
             <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             'id'=>'messages-form',

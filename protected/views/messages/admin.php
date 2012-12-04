@@ -1,4 +1,5 @@
 <?php
+
 /* @var $this MessagesController */
 /* @var $model Messages */
 
@@ -26,33 +27,46 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Messages</h1>
-
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
-
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<h3>Личные сообщения:</h3>
+<?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'messages-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	//'filter'=>,
+    'template'=>'{items}{pager}',
 	'columns'=>array(
-		'id',
-		'author_id',
-		'create',
-		'model',
-		'model_id',
-		'msg_text',
+		//'id',
+		//'author_id',
+        array(
+            'name'=>'author_id',
+            'type'=>'raw',
+            'value'=>'CHtml::link(UserModule::getUsernameByid($data->author_id),array("view","id"=>$data->id))',
+        ),
+		//'create',
+        array(
+            'name'=>'create',
+            'type'=>'raw',
+            'value'=>'CHtml::link($data->create,array("view","id"=>$data->id))',
+            'filter'=>'',
+        ),
+        array(
+            'name'=>'model',
+            'header'=>'Тип',
+            'type'=>'raw',
+            'value'=>'CHtml::link(Messages::getHeaderMsg($data->model, $data->model_id),array("view","id"=>$data->id))',
+            'filter'=>false,
+        ),
+        array(
+            'name'=>'msg_text',
+            'type'=>'raw',
+            'value'=>'CHtml::link(MyText::lenghtWords($data->msg_text,60),array("view","id"=>$data->id))',
+            'filter'=>false,
+        ),
+//		'model',
+//		'model_id',
+//		'msg_text',
 		array(
 			'class'=>'CButtonColumn',
+            'visible'=>false
 		),
 	),
 )); ?>

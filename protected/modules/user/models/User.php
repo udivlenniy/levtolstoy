@@ -332,4 +332,6 @@ class User extends CActiveRecord
 
         return $data['id'];
     }
+
+
 }

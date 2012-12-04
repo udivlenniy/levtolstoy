@@ -16,16 +16,27 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Messages #<?php echo $model->id; ?></h1>
+<h3>Информация о личном сообщении:</h3>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php $this->widget('bootstrap.widgets.TbDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
-		'author_id',
+		//'id',
+		//'author_id',
+        array(
+            'name'=>'author_id',
+            'type'=>'raw',
+            'value'=>UserModule::getUsernameByid($model->author_id),
+        ),
 		'create',
-		'model',
-		'model_id',
+		//'model',
+        array(
+            'name'=>'model',
+            'label'=>'Тип',
+            'type'=>'raw',
+            'value'=>Messages::getHeaderMsg($model->model, $model->model_id),
+        ),
+		//'model_id',
 		'msg_text',
 	),
 )); ?>

@@ -219,11 +219,13 @@ class RedactorController extends  Controller{
             $msg->attributes=$_POST['Messages'];
             $msg->create = time();
             if($msg->validate()){
-
                 $msg->save();
                 Yii::app()->user->setFlash('msg','Спасибо, ваше сообщение успешно отправлено');
-                //$this->renderPartial('msg', array('msg'=>new Messages()));
-                //Yii::app()->end();
+                $this->renderPartial('msg', array('msg'=>new Messages(), 'model'=>$model));
+                Yii::app()->end();
+            }else{
+                $this->renderPartial('msg', array('msg'=>$msg, 'model'=>$model));
+                Yii::app()->end();
             }
         }
 

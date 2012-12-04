@@ -5,7 +5,7 @@ $this->widget('bootstrap.widgets.TbMenu',array(
         'class' => 'bootstrap.widgets.TbMenu',
 
                 array('label'=>'Профиль', 'url'=>array('/site/index')),
-
+                array('label'=>'Сообщения', 'url'=>array('/messages/')),
                 array('label'=>'Проекты', 'items'=> array(
                     array('label'=>'Всего проектов обработано', 'url'=>'#'),
                     array('label'=>'Проектов в проверке', 'url'=>'/project/redactor/check/'),

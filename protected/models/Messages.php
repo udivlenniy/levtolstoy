@@ -92,9 +92,34 @@ class Messages extends CActiveRecord
 		$criteria->compare('model',$this->model,true);
 		$criteria->compare('model_id',$this->model_id);
 		$criteria->compare('msg_text',$this->msg_text,true);
+        $criteria->compare('recipient_id',Yii::app()->user->id);
+        $criteria->order = " id DESC";
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+            'pagination'=>array(
+                'pageSize'=>Yii::app()->params['perPage'],
+            ),
 		));
 	}
+
+    protected function afterFind()
+    {
+        parent::afterFind();
+        $this->create=date('d-m-Y H:i:s', $this->create);
+    }
+
+    /*
+     * на основании модели и её ID формируем запись описания сообщения
+     * $model - название модели, под которую подвязали сообщение
+     * $model_id - ID модели под котор. подвязали личное сообщение
+     * $model, $model_id - нужны, чтобы определить по какому проекту личное сообщение отправлено
+     */
+    public static function getHeaderMsg($model, $model_id){
+        if($model=='Project'){
+            return 'Проект №'.$model_id;
+        }
+    }
+
+
 }

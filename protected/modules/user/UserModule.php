@@ -263,4 +263,15 @@ class UserModule extends CWebModule
 	public function users() {
 		return User;
 	}
+    /*
+     * находим по ID пользователя его адрес почты
+     */
+    public static function getUsernameByid($user_id){
+
+        $sql = 'SELECT username FROM tbl_users WHERE id="'.$user_id.'"';
+
+        $user = Yii::app()->db->createCommand($sql)->queryRow();
+
+        return $user['username'];//
+    }
 }
