@@ -19,19 +19,41 @@ class CommentsWidget extends CWidget{
 
         $model = new Comments();
         $model->model = $this->model;
-        $model->create = time();
         $model->model_id = $this->model_id;
-        $model->user_id = Yii::app()->user->id;
 
         $criteria=new CDbCriteria;
-
-        //$criteria->compare('id',$this->id);
         $criteria->compare('model',$this->model,true);
         $criteria->compare('model_id',$this->model_id);
-        //$criteria->compare('user_id',$this->user_id);
-        //$criteria->compare('create',$this->create);
-        //$criteria->compare('text',$this->text,true);
         $criteria->order = 'id DESC';
+
+        // отправили POST запрос на добавление нового комментария
+//        if(isset($_POST['Comments'])){
+//            $model->attributes = $_POST['Comments'];
+//            if($model->validate()){
+//
+//                $model->save();
+//
+//                $dataProvider=new CActiveDataProvider('Comments', array(
+//                    'criteria'=>$criteria,
+//                    'pagination'=>array(
+//                        'pageSize'=>Yii::app()->params['perPage'],
+//                    ),
+//                ));
+//
+//                Yii::app()->user->setFlash('msg','Спасибо, ваш комментарий успешно отправлен');
+//                $this->renderPartial('comments', array('model'=>$model,'dataProvider'=>$dataProvider,));
+//                Yii::app()->end();
+//            }else{
+//                $dataProvider=new CActiveDataProvider('Comments', array(
+//                    'criteria'=>$criteria,
+//                    'pagination'=>array(
+//                        'pageSize'=>Yii::app()->params['perPage'],
+//                    ),
+//                ));
+//                $this->renderPartial('comments', array('model'=>$model,'dataProvider'=>$dataProvider,));
+//                Yii::app()->end();
+//            }
+//        }
 
         $dataProvider=new CActiveDataProvider('Comments', array(
             'criteria'=>$criteria,

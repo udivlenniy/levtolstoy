@@ -4,8 +4,8 @@
 /* @var $model Messages */
 
 $this->breadcrumbs=array(
-	'Messages'=>array('index'),
-	'Manage',
+	Yii::t('msg','Messages')=>array('index'),
+    Yii::t('msg','List'),
 );
 
 $this->menu=array(
@@ -33,10 +33,12 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	//'filter'=>,
     'template'=>'{items}{pager}',
+    'enableSorting'=>false,
 	'columns'=>array(
 		//'id',
 		//'author_id',
         array(
+            'filter'=>false,
             'name'=>'author_id',
             'type'=>'raw',
             'value'=>'CHtml::link(UserModule::getUsernameByid($data->author_id),array("view","id"=>$data->id))',

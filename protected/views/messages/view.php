@@ -3,7 +3,7 @@
 /* @var $model Messages */
 
 $this->breadcrumbs=array(
-	'Messages'=>array('index'),
+    Yii::t('msg','Messages')=>array('index'),
 	$model->id,
 );
 

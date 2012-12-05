@@ -18,6 +18,7 @@
  */
 return array (
   'Ctype extension' => 'Расширение Ctype',
+    'Messages'=>'Сообщения',
     'Description Templates'=>'Шаблоны описания',
     '<p class="note">Fields with <span class="required">*</span> are required.</p>'=>'<p class="note">Поля с <span class="required">*</span> обязательны к заполнению</p>',
   'GD extension with<br />FreeType support' => 'Расширение GD<br />с поддержкой FreeType',
@@ -132,6 +133,7 @@ return array (
    	'Please fill out the following form with your login credentials:' => 'Пожалуйста, заполните следующую форму с вашими Логин и паролем:',
    	'Fields with <span class="required">*</span> are required.' => '<span class="required">*</span> Обязательные поля.',
    	'List User' => 'Список пользователей',
+    'List'=>'Список',
    	'Edit' => 'Редактировать',
    	'Edit profile' => 'Редактирование профиля',
    	'Create User' => 'Новый',

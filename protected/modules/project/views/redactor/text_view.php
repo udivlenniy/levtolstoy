@@ -127,6 +127,7 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+<?php $this->widget('CommentsWidget',array('model_id'=>$model->id, 'model'=>get_class($model))); ?>
 <script type="text/javascript">
     $(document).ready(
         function(){

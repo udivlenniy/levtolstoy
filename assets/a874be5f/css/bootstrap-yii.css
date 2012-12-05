@@ -96,7 +96,7 @@
 .detail-view .null { color:#ffc0cb; }
 .detail-view th {
     text-align:right;
-    width:160px;
+    width:240px;
 }
 span.required { color:#ff0000; }
 .form-inline label.error, .form-horizontal label.error, .form-vertical label.error { color:#b94a48; }

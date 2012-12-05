@@ -227,3 +227,6 @@ div.search-form
 {
 	background: #80CFFF;
 }
+.detail-view th{
+    width: 250px;
+}

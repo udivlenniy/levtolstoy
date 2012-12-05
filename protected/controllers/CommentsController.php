@@ -60,23 +60,24 @@ class CommentsController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
+	public function actionCreate(){
+
 		$model=new Comments;
+        // отправили POST запрос на добавление нового комментария
+        if(isset($_POST['Comments'])){
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+            $model->attributes = $_POST['Comments'];
 
-		if(isset($_POST['Comments']))
-		{
-			$model->attributes=$_POST['Comments'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
+            if($model->validate()){
+                $model->save();
+                Yii::app()->user->setFlash('msg','Спасибо, ваш комментарий успешно отправлен');
+                $this->renderPartial('comments', array('model'=>new Comments));
+                Yii::app()->end();
+            }else{
+                $this->renderPartial('comments', array('model'=>$model), false, true);
+                Yii::app()->end();
+            }
+        }
 	}
 
 	/**

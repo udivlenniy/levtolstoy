@@ -66,11 +66,11 @@ class Comments extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'model' => 'Model',
-			'model_id' => 'Model',
-			'user_id' => 'User',
-			'create' => 'Create',
-			'text' => 'Text',
+			'model' => 'ID модели',
+			'model_id' => 'Модель',
+			'user_id' => 'Автор',
+			'create' => 'Дата',
+			'text' => 'Текст комментария',
 		);
 	}
 
@@ -96,4 +96,17 @@ class Comments extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function onBeforeValidate($event) {
+        // устанавливаем некие перменные, если они не указаны
+        if(empty($this->create)){ $this->create = time(); }
+
+        if(empty($this->user_id)){ $this->user_id = Yii::app()->user->id; }
+    }
+
+    protected function afterFind()
+    {
+        parent::afterFind();
+        $this->create = date('d-m-Y H:i:s' ,$this->create);
+    }
 }

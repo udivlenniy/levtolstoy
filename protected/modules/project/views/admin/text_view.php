@@ -110,6 +110,7 @@
 
     <a onclick="javascript:editCategory" data-toggle="modal" data-target="#myModal" style="color:green;font-size:8pt;text-decoration:none;border-bottom: 1px green dashed;" id="editCategory" href="javascript:void(0)">Добавить ключевое слово</a>
 </div><!-- form -->
+<?php $this->widget('CommentsWidget',array('model_id'=>$model->id, 'model'=>get_class($model))); ?>
 <script type="text/javascript">
     $('a.del_link')
 </script>

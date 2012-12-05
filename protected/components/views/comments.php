@@ -15,51 +15,38 @@ $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'commentsModal'));
 </div>
 
 <div class="modal-body">
-    <div class="form">
+    <div class="form-comments">
+
+        <?php  if(Yii::app()->user->hasFlash('msg')): ?>
+        <div class="flash-success">
+            <?php echo Yii::app()->user->getFlash('msg'); ?>
+        </div>
+        <?php endif; ?>
 
         <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
         'id'=>'comments-form',
         'enableAjaxValidation'=>false,
     )); ?>
 
-        <p class="note">Fields with <span class="required">*</span> are required.</p>
-
         <?php echo $form->errorSummary($model); ?>
-
-        <div class="row">
-            <?php echo $form->labelEx($model,'model'); ?>
-            <?php echo $form->textField($model,'model',array('size'=>60,'maxlength'=>255)); ?>
-            <?php echo $form->error($model,'model'); ?>
-        </div>
-
-        <div class="row">
-            <?php echo $form->labelEx($model,'model_id'); ?>
-            <?php echo $form->textField($model,'model_id'); ?>
-            <?php echo $form->error($model,'model_id'); ?>
-        </div>
-
-        <div class="row">
-            <?php echo $form->labelEx($model,'user_id'); ?>
-            <?php echo $form->textField($model,'user_id'); ?>
-            <?php echo $form->error($model,'user_id'); ?>
-        </div>
-
-        <div class="row">
-            <?php echo $form->labelEx($model,'create'); ?>
-            <?php echo $form->textField($model,'create'); ?>
-            <?php echo $form->error($model,'create'); ?>
-        </div>
-
-        <div class="row">
+        <?php echo $form->hiddenField($model,'model',array('size'=>60,'maxlength'=>255)); ?>
+        <?php echo $form->hiddenField($model,'model_id'); ?>
+        <div class="row1">
             <?php echo $form->labelEx($model,'text'); ?>
-            <?php echo $form->textArea($model,'text',array('rows'=>6, 'cols'=>50)); ?>
+            <?php echo $form->textArea($model,'text',array('rows'=>6, 'cols'=>50, 'style'=>'width:500px')); ?>
             <?php echo $form->error($model,'text'); ?>
         </div>
 
-        <div class="row buttons">
-            <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-        </div>
-
+            <?php
+            echo CHtml::ajaxSubmitButton('Отправить',
+                '/comments/create',
+                array(
+                    'type' => 'POST',
+                    'success'=>'js:function(data){ $("div.form-comments").html(data); }',
+                ),
+                array('class'=>'btn btn-primary')
+            );
+            ?>
         <?php $this->endWidget(); ?>
 
     </div><!-- form -->
@@ -77,5 +64,7 @@ echo CHtml::link('Оставить комментарий',
 $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_view_comments',
+    'template'=>'{items}{pager}',
+    'emptyText'=>'',
 ));
 ?>

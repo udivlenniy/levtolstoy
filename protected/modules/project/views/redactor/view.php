@@ -56,4 +56,5 @@ echo CHtml::link('Отправить личное сообщение',
         'style'=>'margin-left:30px;'
     )
 );
+$this->widget('CommentsWidget',array('model_id'=>$model->id, 'model'=>get_class($model)));
 ?>
