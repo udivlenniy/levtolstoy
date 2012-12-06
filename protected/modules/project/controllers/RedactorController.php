@@ -118,24 +118,13 @@ class RedactorController extends  Controller{
             if($_POST['Text']['status_new']=='error' && empty($_POST['Text']['status_new_text'])){
                 $model->addError('status_new_text','Необходимо указать описание ошибок');
             }else{
+                //TODO необходимо сделать проверку по списку проверок, по всем полям из задания(если стоит галочка в проекте для редактора)
+                //TODO сделать запуск проверок по списку проверок по полю для КОПИРАЙТОРА
                 // если редактор выбрал статус ошибка, то проверим чтобы он указал текст ошибки
                 if($_POST['Text']['status_new']=='success'){
-                    // если включены автопроверки для редактора, тогда запускаем их при сохранении задания
-                    if(CheckingImportVars::isEnabledChekingByUser($model->project_id)){
-                        $model->setScenario('checking');
-                    }
-                    if($model->validate()){
-                        // редактор принял выполненное задание копирайтором, всё отлично обновим статус
-                        $model->status = Text::TEXT_ACCEPT_EDITOR;
-                        $model->save();
-                    }else{
-                        $this->render('text_view',array(
-                            'data'=>$data,
-                            'model'=>$model,
-                        ));
-
-                        Yii::app()->end();
-                    }
+                    // редактор принял выполненное задание копирайтором, всё отлично обновим статус
+                    $model->status = Text::TEXT_ACCEPT_EDITOR;
+                    $model->save();
                 }
                 //===========записываем ошибку в БД по данному тексту==============
                 if($_POST['Text']['status_new']=='error' && !empty($_POST['Text']['status_new_text'])){

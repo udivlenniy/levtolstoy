@@ -32,12 +32,6 @@
         if($field['import_var_id']==Yii::app()->params['key_words']){
             $keyWords[]=$field['import_var_value'];//.PHP_EOL
         }else{
-            // если есть значение из POST массива, то выводим его в форме, вместо того значения, чтобы есть в БД(видимо при сохранении есть ошибки, при заполнении полей)
-            if(isset($_POST['ImportVarsValue'][$field['id']])){
-                $field['import_var_value'] = $_POST['ImportVarsValue'][$field['id']];
-            }
-            //<div class="alert alert-block alert-error">
-
             // по каждому полю делаем запрос на выборку настроек по полю
             $sqlRule = 'SELECT {{import_vars_shema}}.edit,{{import_vars_shema}}.visible,{{import_vars_shema}}.wysiwyg
                         FROM {{import_vars_shema}}

@@ -18,6 +18,6 @@ class Spelling{
     // запуск проверки по поиску ошибок орфографии  в тексте
     public function run(){
 
-        return array('result'=>false, 'msg'=>'Очень много орфографических ошибок обнаружено при проверке текста');
+        return array('result'=>true, 'msg'=>'');
     }
 }

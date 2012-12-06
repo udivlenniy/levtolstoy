@@ -123,18 +123,25 @@ class CopywriterController extends  Controller{
 
         $data = Yii::app()->db->createCommand($sql)->queryAll();
 
+        // ошибки при проверке задания по разным проверкам
+        $errors = '';
+
         // отправили POST на обновление данных по данному тексту
         if(isset($_POST['Text'])){
             //echo '<pre>'; print_r($_POST); die();
             $model->attributes = $_POST['Text'];
 
             // если в настройках проекта указано, что для копирайтора включены проверки по полям, тогда проверяем поля по проверкам
-            if(CheckingImportVars::isEnabledChekingByUser($model->project_id)){
-                $model->setScenario('checking');
-            }
+            $project = Yii::app()->db->createCommand('SELECT * FROM {{project}} WHERE check_copywriter="1" AND id="'.$model->project_id.'"')->queryRow();
+            if(!empty($project)){
+                // цикл по полям из формы, из задания с проверкой на ошибки
+                foreach($_POST['ImportVarsValue'] as $j=>$row){
+                    $errors.=CheckingImportVars::checkingFieldByRules($j, $row, $project['id']);
+                }
 
+            }
             // нет ошибок, всё отлично - обновим содержимое задания
-            if($model->validate()){
+            if(empty($errors)){
                 // цикл по полям, с обновлением значением полей
                 foreach($_POST['ImportVarsValue'] as $i=>$val){
                     // SQL запрос на обновление данных
@@ -161,6 +168,7 @@ class CopywriterController extends  Controller{
         $this->render('text_view',array(
             'data'=>$data,
             'model'=>$model,
+            'errors'=>$errors,
         ));
     }
 
