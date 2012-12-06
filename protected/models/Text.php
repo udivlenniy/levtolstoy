@@ -10,6 +10,9 @@
  */
 class Text extends CActiveRecord
 {
+    // метка ошибок, при проверке данных по выбранным проверкам в задании, храним массив ошибок по всем полям
+    public $detail_error;
+
     // список статуосв текста, в процессе его написнаия
     const TEXT_NEW_DISABLED_COPY = -1;// необходимая метка для последовательного открытия доступа копирайтора к текстам
     const TEXT_NEW = 1; // новый текст, только что создали, после импорта файла
@@ -69,11 +72,41 @@ class Text extends CActiveRecord
             // проверка заполнения текста ошибки, при выборе что есть ошибки в заполненной задании копирайтором
             array('status_new_text', 'description_error'),
 			array('project_id, status', 'numerical', 'integerOnly'=>true),
+            array('detail_error', 'chekingFields', 'on'=>'checking'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, project_id, status', 'safe', 'on'=>'search'),
 		);
 	}
+
+    /*
+     * метод проверки запуска проверок по полям из задания
+     * по каждому полю из POST массива
+     */
+    public function chekingFields(){
+        if(!$this->hasErrors()){
+            $errors_main = array();
+            //$val - значение этого поля
+            //$i - ID поля из ImportVars
+            foreach($_POST['ImportVarsValue'] as $i=>$val){
+                // запускаем проверку по полю и находим ошибки, если есть
+                $errors = CheckingImportVars::checkingFieldByRules($i, $val, $this->project_id, $this->id);
+                // если не пустое значение ошибок, тогда записываем ошибку в общий список ошибок по проверке в задании
+                if(!empty($errors)){
+                    $errors_main[] = array('id'=>$i, 'error'=>$errors);
+                }
+            }
+            // обнаружили ошибки при проверке полей
+            if(!empty($errors_main)){
+                $this->addError('error','Обнаружены ошибки при проверке данных:');
+                $this->detail_error = $errors_main;
+
+                return false;
+            }
+            return true;
+        }
+    }
+
     /*
      * если редактор выбрал статус ошибки, то должен указать описание этой ошибки для проверяемого текста - задания копирайтора
      */

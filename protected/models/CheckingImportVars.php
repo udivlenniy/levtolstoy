@@ -213,7 +213,7 @@ class CheckingImportVars extends CActiveRecord
      * по ID "tbl_text_data" определяем какой это тип внутренней переменной и прописаны по ней в проекте проверки
      * если прописаны проверки, то запускаем классы соотвествующих проверок и обрабатываем значение из поля
      */
-    public static function checkingFieldByRules($fieldID, $valueField, $projectID){
+    public static function checkingFieldByRules($fieldID, $valueField, $projectID, $text_id){
 
         // сначала находим ID строки в таблице схемы по данному полю и проекту
         $shema = Yii::app()->db->createCommand('SELECT {{import_vars_shema}}.id,{{import_vars_shema}}.label
@@ -227,7 +227,7 @@ class CheckingImportVars extends CActiveRecord
         //$shema[title] - название поля - его заголовок. возможно его использовать при выводе ошибок проверки
 
         // получаем список классов с проверками по которым надо прогнать наше значение из поля
-        $sql = 'SELECT {{checking_import_vars}}.*, {{check}}.title, {{check}}.class_name
+        $sql = 'SELECT {{checking_import_vars}}.*, {{check}}.title, {{check}}.class_name, {{check}}.id AS check_id
                 FROM {{checking_import_vars}},{{check}}
                 WHERE {{checking_import_vars}}.import_var_id="'.$shema['id'].'"
                     AND {{checking_import_vars}}.type="2"
@@ -248,9 +248,44 @@ class CheckingImportVars extends CActiveRecord
             // если есть ошибки - запишим их в общий лог ошибок и выведим их
             if(!$result['result']){
                 $errors.=$result['msg'];
+                // обнаружена ошибка, записываем в Лог ошибок
+                $log = new LogCheking();
+                $log->import_var_id = $fieldID;
+                $log->check_id = $check['check_id'];
+                $log->import_var_value = $valueField;
+                $log->text_id = $text_id;
+                $log->error = $result['msg'];// записываем описание ошибки
+                $log->save();
             }
         }
 
         return $errors;
+    }
+
+    /*
+     * включены ли проверки по даному пользователю
+     * если ROLE=redactor или ROLE=copywriter, смотрим по настройкам в проекте
+     */
+    public static function  isEnabledChekingByUser($project_id){
+        // проверка по редактору
+        if(Yii::app()->user->role==User::ROLE_EDITOR){
+            $sql = 'SELECT id FROM {{project}} WHERE check_editor="1" AND id="'.$project_id.'"';
+            $find = Yii::app()->db->createCommand($sql)->queryRow();
+            if(empty($find)){
+                return false;
+            }else{
+                return true;
+            }
+        }
+        // проверка для копирайтора
+        $sql = 'SELECT id FROM {{project}} WHERE check_copywriter="1" AND id="'.$project_id.'"';
+        $find = Yii::app()->db->createCommand($sql)->queryRow();
+        if(empty($find)){
+            return false;
+        }else{
+            return true;
+        }
+
+        return false;
     }
 }
