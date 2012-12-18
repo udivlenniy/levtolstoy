@@ -31,8 +31,9 @@ class RedactorController extends  Controller{
    	{
    		return array(
    			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-   				'actions'=>array('textlist', 'check','view', 'text'),
-   				'users'=>array('@'), //UserModule::getAdmins(),
+   				'actions'=>array('textlist', 'check','view', 'text','all_make','check_admin','statistics'),
+   				//'users'=>array('@'), //UserModule::getAdmins(),
+                'expression' => 'isset($user->role) && ($user->role==="editor")',
    			),
    			array('deny',  // deny all users
    				'users'=>array('*'),
@@ -45,16 +46,12 @@ class RedactorController extends  Controller{
     public function loadModel($id){
 
         //проверяем есть ли доступ у редактора к выбранному проекту
-        $sql = 'SELECT id FROM {{project_users}} WHERE project_id="'.$id.'" AND user_id="'.Yii::app()->user->id.'"';
-        $find = Yii::app()->db->createCommand($sql)->queryRow();
-
-        //$projectUser = ProjectUsers::model()->findByAttributes(array('user_id'=>Yii::app()->user->id));
-        if(empty($find)){
-           throw new CHttpException(404,'The requested page does not exist.');
-        }
-
+        $criteria=new CDbCriteria;
+        // для супер_админа выводим все проекты, за всё время
+        $criteria->with = array('admin');
+        $criteria->together = true;
         // находим текст с учётом, что к данному тексту подвязан именно текущий юзер-копирайтор
-   		$model = Project::model()->findByPk($id);
+   		$model = Project::model()->findByPk($id,$criteria);
 
    		if($model===null){
             throw new CHttpException(404,'The requested page does not exist.');
@@ -194,22 +191,86 @@ class RedactorController extends  Controller{
         ));
         $this->render('text_list', array('dataProvider'=>$dataProvider));
     }
+
+    /*
+     * проектов на проверке у админа
+     */
+    public function actionCheck_admin(){
+        $criteria=new CDbCriteria;
+        //если пользователь НЕ_СУПЕР_АДМИН, тогда выводим лишь его проекты
+        $criteria->with = array('admin');
+        $criteria->together = true;
+
+        $criteria->compare('t.status',Project::TASK_CHEKING_ADMIN);
+//        $criteria->compare('title',$model->title,true);
+//        $criteria->compare('type_job',$model->type_job,true);
+
+
+        $dataProvider =  new CActiveDataProvider('Project', array(
+            'criteria'=>$criteria,
+            'pagination'=>array(
+                'pageSize'=>Yii::app()->params['perPage'],
+            ),
+        ));
+
+
+        $this->render('statistics', array('dataProvider'=>$dataProvider));
+    }
+    /*
+     * статистика по редактору
+     */
+    public function actionStatistics(){
+
+    }
+
+    /*
+     * всего проектов обработано
+     */
+    public function actionAll_make(){
+        $criteria=new CDbCriteria;
+        //если пользователь НЕ_СУПЕР_АДМИН, тогда выводим лишь его проекты
+        $criteria->with = array('admin');
+        $criteria->together = true;
+
+        $criteria->compare('t.status',Project::TASK_AGREE_ADMIN);
+//        $criteria->compare('title',$model->title,true);
+//        $criteria->compare('type_job',$model->type_job,true);
+
+
+        $dataProvider =  new CActiveDataProvider('Project', array(
+            'criteria'=>$criteria,
+            'pagination'=>array(
+                'pageSize'=>Yii::app()->params['perPage'],
+            ),
+        ));
+
+
+        $this->render('statistics', array('dataProvider'=>$dataProvider));
+    }
+
     /*
      * страница просмотра проектов - редактора
      */
     public function  actionCheck(){
 
-        //выводим список проектов по редактору, к которому они подвязаны
-        $sql = 'SELECT {{project}}.*
-                FROM {{project}},{{project_users}}
-                WHERE {{project_users}}.user_id="'.Yii::app()->user->id.'"
-                    AND {{project}}.id={{project_users}}.project_id
-                ORDER BY {{project}}.id DESC';
+        $criteria=new CDbCriteria;
+        //если пользователь НЕ_СУПЕР_АДМИН, тогда выводим лишь его проекты
+        $criteria->with = array('admin');
+        $criteria->together = true;
 
-        $dataProvider = Yii::app()->db->createCommand($sql)->queryAll();
+        $criteria->compare('t.status',Project::TASK_CHEKING_REDACTOR);
+//        $criteria->compare('title',$model->title,true);
+//        $criteria->compare('type_job',$model->type_job,true);
+
 
         $dataProvider =  new CActiveDataProvider('Project', array(
+            'criteria'=>$criteria,
+            'pagination'=>array(
+                'pageSize'=>Yii::app()->params['perPage'],
+            ),
         ));
+
+
         $this->render('project_list', array('dataProvider'=>$dataProvider));
     }
     /*

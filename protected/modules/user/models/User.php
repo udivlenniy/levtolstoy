@@ -14,7 +14,7 @@ class User extends CActiveRecord
 
 	
 	//TODO: Delete for next version (backward compatibility)
-	const STATUS_BANED=-1;
+	//const STATUS_BANED=-1;
 	
 	/**
 	 * The followings are the available columns in table 'users':
@@ -134,6 +134,9 @@ class User extends CActiveRecord
             ),
             'admin'=>array(
                 'condition'=>'role="'.self::ROLE_ADMIN.'"',
+            ),
+            'all_admin'=>array(
+                'condition'=>'role="'.self::ROLE_ADMIN.'" OR role="'.self::ROLE_SA_ADMIN.'"',
             ),
             'editor'=>array(
                 'condition'=>'role="'.self::ROLE_EDITOR.'"',

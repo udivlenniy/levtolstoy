@@ -58,5 +58,5 @@ $this->menu=array(
 		'data'=>$model,
 		'attributes'=>$attributes,
 	));
-
+$this->widget('MessagesWidget', array('recipient_id'=>$model->id, 'model'=>'User', 'model_id'=>$model->id));
 ?>

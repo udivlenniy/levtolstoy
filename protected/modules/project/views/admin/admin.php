@@ -5,12 +5,6 @@ $this->breadcrumbs=array(
     Yii::t('msg','Projects')=>array(''),
     Yii::t('msg','Manage'),
 );
-
-$this->menu=array(
-	array('label'=>'List Project', 'url'=>array('index')),
-	array('label'=>'Create Project', 'url'=>array('create')),
-);
-
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -40,43 +34,127 @@ $('.search-form form').submit(function(){
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php
+$this->widget('bootstrap.widgets.TbGridView', array(
 	'id'=>'project-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$dataProvider,
     'template'=>'{items}{pager}',
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+		//'id',
 		//'title',
         array(
             'name'=>'title',
             'type'=>'raw',
-            'value'=>'CHtml::link($data->title,array("admin/view","id"=>$data->id))'
+            'value'=>'CHtml::link($data->title,array("admin/view","id"=>$data->id))',
+            'filter' => false,
         ),
-//        array(
-//            'name'=>'type_job',
-//            'type'=>'raw',
-//            'value'=>'CHtml::link($data->type_job,array("admin/view","id"=>$data->id))'
-//        ),
-//        array(
-//            'name'=>'total_cost',
-//            'type'=>'raw',
-//            'value'=>'CHtml::link($data->total_cost,array("admin/view","id"=>$data->id))'
-//        ),
+        array(
+            'name'=>'zipArchive',
+            'type'=>'raw',
+            'value'=>'CHtml::link("Скачать",array("admin/downloadproject","id"=>$data->id))',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'keyWordsProject',
+            'type'=>'raw',
+            'value'=>'CHtml::link("Скачать",array("admin/downloadkeywords","id"=>$data->id))',
+            'filter' => false,
+        ),
+
+        array('name'=>'total_num_char','value'=>'$data->total_num_char','filter' => false,),
+        array('name'=>'total_num_char_fact','value'=>'$data->total_num_char_fact','filter' => false,),
+        array('name'=>'site','value'=>'$data->site','filter' => false,),
+        array('name'=>'upload_project_in_system','value'=>'$data->upload_project_in_system','filter' => false,),
+        array('name'=>'output_project_to_copy','value'=>'$data->output_project_to_copy','filter' => false,),
+        array('name'=>'deadline_copy_to_redactor','value'=>'$data->deadline_copy_to_redactor','filter' => false,),
+        array('name'=>'deadline_redactor_to_admin','value'=>'$data->deadline_redactor_to_admin','filter' => false,),
+        array('name'=>'accept_project_admin','value'=>'$data->accept_project_admin','filter' => false,),
+
+//        'total_num_char',
+//        'total_num_char_fact',
+//        'site',
+//
+//        'upload_project_in_system',
+//        'output_project_to_copy',
+//        'deadline_copy_to_redactor',
+//        'deadline_redactor_to_admin',
+//        'accept_project_admin',
+        array(
+            'name'=>'id',
+            'type'=>'raw',
+            'header'=>'Исполнитель проекта',
+            'value'=>'Project::getLinkUserOfProjectToProfile($data->id,User::ROLE_COPYWRITER)',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'id',
+            'type'=>'raw',
+            'header'=>'Редактор проекта',
+            'value'=>'Project::getLinkUserOfProjectToProfile($data->id,User::ROLE_EDITOR)',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'id',
+            'type'=>'raw',
+            'header'=>'Админ проекта',
+            'value'=>'Project::getLinkUserOfProjectToProfile($data->id,User::ROLE_ADMIN)',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'id',
+            'type'=>'raw',
+            'header'=>'Комментарии к проекту',
+            'value'=>'Chtml::link("Просмотреть", array("/comments/project/", "id"=>$data->id))',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'id',
+            'type'=>'raw',
+            'header'=>'Статус проекта',
+            'value'=>'Project::getStatus($data->status)',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'id',
+            'type'=>'raw',
+            'header'=>'Степень готовности проекта',
+            'value'=>'Project::percentReady($data->status)',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'id',
+            'type'=>'raw',
+            'header'=>'Степень готовности текущей стадии проекта',
+            'value'=>'',
+            'filter' => false,
+        ),
         array(
             'name'=>'deadline',
             'type'=>'raw',
-            'value'=>'CHtml::link($data->deadline,array("admin/view","id"=>$data->id))'
+            'header'=>'Требуемая дата сдачи проекта',
+            'value'=>'$data->deadline',
+            'filter' => false,
         ),
-		//'type_job',
-        //'total_cost',
-      	//'total_num_char',
-		//'description',
-		//'deadline',
-		//'price_th',
-        'uniqueness',
-        'performer_login',
-        'performer_pass',
+        array(
+            'name'=>'id',
+            'header'=>'Стоимость проекта',
+            'type'=>'raw',
+            'value'=>'$data->total_cost*$data->total_num_char',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'performer_login',
+            'value'=>'$data->performer_login',
+            'filter' => false,
+        ),
+        array(
+            'name'=>'performer_pass',
+            'value'=>'$data->performer_pass',
+            'filter' => false,
+        ),
+//        'performer_login',
+//        'performer_pass',
 		/*
 		'total_cost',
 		'total_num_char',
@@ -85,6 +163,8 @@ $('.search-form form').submit(function(){
 		*/
 		array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
+            'htmlOptions' => array('style'=>'width:20px;'),
+            'template'=>'{update}'
 		),
 	),
 )); ?>

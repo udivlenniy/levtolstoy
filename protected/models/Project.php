@@ -24,6 +24,10 @@ class Project extends CActiveRecord
     public $UseTemplate; // использовать выбранный из списка шаблон, для заполнения формы добавления задания
     public $uploadFile; // файл импорта с данными, для формирования задания копирайтору
 
+    public $zipArchive;//Архив с проектом, ссылка на скачивание
+    public $keyWordsProject; //Ключевые слова проекта
+
+
     // список статусов для задания, их много ))
     const CREATE_TASK = 1;//Задание создано – задание создано админом, исполнитель и редактор выбраны
     const PERFORMER = 2; //Заданию назначен исполнитель
@@ -35,7 +39,34 @@ class Project extends CActiveRecord
     const TASK_CHEKING_ADMIN = 8;//Задание проверяется администратором
     const TASK_CANCEL_ADMIN = 9;//Задание отклонено администратором
     const TASK_AGREE_ADMIN = 10;//Задание принято администратором
+    /*
+     * получаем статус проекта
+     * возвращаем его понятное описание
+     */
+    static function getStatus($status){
+        if($status==self::CREATE_TASK){ return "Создано"; }
+        if($status==self::PERFORMER){ return "Выбран исполнитель"; }
+        if($status==self::PERFORMED){ return "Выполняется исполнителем"; }
+        if($status==self::POSTED_TO_PERFORMED){ return "Отправлено исполнителем"; }
+        if($status==self::TASK_CHEKING_REDACTOR){ return "Проверяется редактором"; }
+        if($status==self::TASK_POSTED_TO_REWORK){ return "Отправлено на доработку редактором"; }
+        if($status==self::TASK_AGREE_REDACTOR){ return "Принято редактором"; }
+        if($status==self::TASK_CHEKING_ADMIN){ return "Проверяется администратором"; }
+        if($status==self::TASK_CANCEL_ADMIN){ return "Отклонено администратором"; }
+        if($status==self::TASK_AGREE_ADMIN){ return "Приянто администратором"; }
+    }
 
+    /*
+     * определяем степень готовности проекта
+     */
+    static function percentReady($status){
+        if($status==self::CREATE_TASK || $status==self::PERFORMER){ return '0%'; }
+        if($status==self::PERFORMED || $status==self::POSTED_TO_PERFORMED){ return '30%'; }
+        if($status==self::TASK_CHEKING_REDACTOR || $status==self::TASK_AGREE_REDACTOR){ return '60%'; }
+        if($status==self::TASK_CHEKING_ADMIN){ return '80%'; }
+        if($status==self::TASK_AGREE_ADMIN){ return '100%'; }
+        return '';
+    }
 
     /*
      * степень готовности проекта, расчитываем по статусам
@@ -86,13 +117,16 @@ class Project extends CActiveRecord
 			array('title, type_job, description, deadline, price_th, total_cost, total_num_char, uniqueness, category_id', 'required', 'on'=>'create, update'),
             array('UseTemplate', 'required', 'on'=>'create'),
             array('check_editor,check_copywriter', 'boolean'),
-			array('price_th, total_cost, total_num_char, uniqueness, category_id, status', 'numerical', 'integerOnly'=>true, 'on'=>'create, update'),//deadline,
-			array('title ,type_job, description', 'length', 'max'=>255, 'on'=>'create, update'),
+			array('price_th, total_cost, total_num_char, uniqueness, category_id, status, total_num_char_fact,count_texts', 'numerical', 'integerOnly'=>true, 'on'=>'create, update'),//deadline,
+			array('title ,type_job, description, site', 'length', 'max'=>255, 'on'=>'create, update'),
             array('performer_login, performer_pass', 'length', 'max'=>255),
+
+            array('upload_project_in_system,output_project_to_copy,deadline_copy_to_redactor, deadline_redactor_to_admin, accept_project_admin', 'numerical', 'integerOnly'=>true,),
+
             array('uploadFile', 'file', 'types'=>'csv', 'maxSize'=>1024 * 1024 * 10, 'on'=>'create'),
             // при создании проекта, проверяем есть ли активные редакторы
             array('title', 'issetActiveRedactor'),
-			array('id, title, type_job, description, deadline, price_th, total_cost, total_num_char, uniqueness, category_id', 'safe', 'on'=>'search'),
+			array('id, title, type_job, description, deadline, price_th, total_cost, total_num_char, uniqueness, category_id, total_num_char_fact,count_texts, site', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -125,6 +159,17 @@ class Project extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'category' => array(self::BELONGS_TO, 'Category', 'category_id'),
+//            'admin'=>array(self::MANY_MANY,'User',
+//                'tbl_project_users(project_id,user_id)',
+//                'on'=>'admin.user_id='.Yii::app()->user->getId(),
+//            ),
+
+            //условие по поиска проектов которые подвязаны к админу, т.е. текущему пользователю
+            // отображаем список проектов, текущего админа
+            'admin'=>array(self::MANY_MANY,'User','tbl_project_users(project_id,user_id)',
+                'condition'=>'admin_user.user_id='.Yii::app()->user->getId(),
+            ),
+
 		);
 	}
 
@@ -135,7 +180,7 @@ class Project extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Название задания',
+			'title' => 'Название проекта',
 			'type_job' => 'Тип работы',
 			'description' => 'Описание заказа',
 			'deadline' => 'Срок сдачи заказа',
@@ -150,6 +195,19 @@ class Project extends CActiveRecord
             'performer_pass'=>'Пароль(исполнителя)',
             'check_editor'=>'Включить автопроверки для редактора',
             'check_copywriter'=>'Включить автопроверки для копирайтора',
+            'zipArchive'=>'CSV-файл с проектом',
+            'keyWordsProject'=>'Ключевые слова проекта',
+            'total_num_char_fact'=>'Кол-во знаков в проекте(факт.)',
+            'count_texts'=>'Кол-во текстов в проекте',
+            'site'=>'Сайт проекта',
+
+
+            'upload_project_in_system'=>'Дата и время загрузки проекта в систему', //
+            'output_project_to_copy'=>'Дата и время выдачи проекта копирайтеру',
+            'deadline_copy_to_redactor'=>'Дата сдачи проекта копирайтером редактору',
+            'deadline_redactor_to_admin'=>'Дата сдачи проекта редактором администртору',
+            'accept_project_admin'=>'Дата принятия проекта администратором',
+            //''=>'',
 		);
 	}
 
@@ -194,6 +252,8 @@ class Project extends CActiveRecord
 
                 //$this->author_id=Yii::app()->user->id;
                 $this->status = self::CREATE_TASK;
+                // установим дату загрузки проекта в систему
+                $this->upload_project_in_system = time();
             }else{// редактирование записи
                 //$this->update_time=time();
             }
@@ -213,6 +273,13 @@ class Project extends CActiveRecord
         //10/06/2012
         parent::afterFind();
         $this->deadline = date('d/m/Y',$this->deadline);
+
+        $this->upload_project_in_system = ($this->upload_project_in_system==0)? '': date('d-m-Y H:i:s',$this->upload_project_in_system);
+        $this->output_project_to_copy = ($this->output_project_to_copy==0)? '': date('d-m-Y H:i:s',$this->output_project_to_copy);
+        $this->deadline_copy_to_redactor = ($this->deadline_copy_to_redactor==0)? '': date('d-m-Y H:i:s',$this->deadline_copy_to_redactor);
+        $this->deadline_redactor_to_admin = ($this->deadline_redactor_to_admin==0)? '': date('d-m-Y H:i:s',$this->deadline_redactor_to_admin);
+        $this->accept_project_admin = ($this->accept_project_admin==0)? '': date('d-m-Y H:i:s',$this->accept_project_admin);
+
     }
 
     /*
@@ -234,5 +301,114 @@ class Project extends CActiveRecord
         }
 
         return $result;
+    }
+
+    /*
+     * устанавливаем кол-во текстов(заданий) по проекту,
+     * обновляем эти данные к проекте
+     */
+    public static function updateCount_texts($project_id, $count){
+        $sql = 'UPDATE {{project}} SET count_texts="'.(int)$count.'" WHERE id="'.$project_id.'"';
+        Yii::app()->db->createCommand($sql)->execute();
+    }
+
+    /*
+     * после сохранения задания, обновляем общее фактическое кол-во символов в проекте
+     * т.е. это то кол-во символов по тем полям, которые доступны для редактирования копирайтором
+     * вначале получаем список полей доступных для редактирования копирайтором в проекте
+     * очищаем от пробелов и HTMl кода и считает кол-во символов
+     */
+    static function updateCountTextFact($project_id){
+        // выбираем все задания
+        $sql = 'SELECT {{text_data}}.import_var_value
+                FROM {{text}},{{text_data}},{{import_vars_shema}}
+                WHERE {{text}}.project_id="'.$project_id.'"
+                    AND {{text_data}}.text_id={{text}}.id
+                    AND {{import_vars_shema}}.import_var_id={{text_data}}.import_var_id
+                    AND {{import_vars_shema}}.shema_type="1"
+                    AND {{import_vars_shema}}.num_id="'.$project_id.'"
+                    AND {{import_vars_shema}}.visible="1"
+                    AND {{import_vars_shema}}.edit="1"';
+
+        $data = Yii::app()->db->createCommand($sql)->queryAll();
+        // перебираем в цикле список полей доступных для редактирования копирайтору и очищаем их от пробелов и тегов
+        $count = 0;
+        foreach($data as $row){
+            $text = str_replace(' ', '', strip_tags($row['import_var_value']));
+            $count+=strlen($text);
+        }
+        // теперь обновим фактическое кол-во символов в проекте
+        Yii::app()->db->createCommand('UPDATE {{project}} SET total_num_char_fact="'.$count.'" WHERE id="'.$project_id.'"')->execute();
+    }
+
+    /*
+     * метод заполняет соотвеств. поля по разных ситуацих при изменении данных в проекте
+     * статик событие после сохранения данных в проекта
+     * вызываем везде где изменяем данные проекта
+     * в самом методе прописываем условия обнуления данных по статистике
+     * СУТЬ - если в каком задании изменились данные, то нужно обработать
+     * все вытекающие из этого события ситуации и обновление статусов и счётчиков
+     */
+    //TODO вызывать во всех местах изменения проекта или заданий из проекта+дописать все условия изменения и обновления полей статусов+доп. полей по датам
+    static function afterChangeDataInProject($project_id){
+        // обновляем  кол-во символов ФАКТИЧЕСКОЕ по всём проекте
+        Project::updateCountTextFact($project_id);
+    }
+    /*
+     * логин+ссылка на профайл пользователя
+     */
+    public static function getLinkUserOfProjectToProfile($project_id, $role){
+        // формируем условие WHERE по полю ROLE
+        if($role==User::ROLE_ADMIN){
+            $where = '({{users}}.role="'.User::ROLE_ADMIN.'" OR {{users}}.role="'.User::ROLE_SA_ADMIN.'")';
+        }else{
+            $where = '{{users}}.role="'.$role.'"';
+        }
+
+
+        $sql = 'SELECT {{users}}.username,{{users}}.id
+                FROM {{users}},{{project_users}}
+                WHERE '.$where.'
+                    AND {{users}}.id={{project_users}}.user_id
+                    AND {{project_users}}.project_id="'.$project_id.'"';
+        $find = Yii::app()->db->createCommand($sql)->queryRow();
+
+        return CHtml::link($find['username'], array('/user/admin/view','id'=>$find['id']));
+    }
+
+    /*
+     * подсчитываем кол-во проектов для пунктов меню РЕДАКТОРА
+     * $type - 1 - всего проектов обработано редатоктором
+     * $type - 2 - проектов в проверке
+     * $type - 3 - проектов на проверке у админа
+     */
+    public static function getCountProjectOfRedactorMenu($type){
+        if($type==1){
+            $sql='SELECT {{project}}.id AS count
+                  FROM {{project_users}},{{project}}
+                  WHERE  {{project_users}}.user_id="'.Yii::app()->user->id.'"
+                    AND {{project}}.id={{project_users}}.project_id
+                    AND  {{project}}.status="'.Project::TASK_AGREE_ADMIN.'"';
+        }elseif($type==2){
+            $sql='SELECT {{project}}.id AS count
+                  FROM {{project_users}},{{project}}
+                  WHERE  {{project_users}}.user_id="'.Yii::app()->user->id.'"
+                    AND {{project}}.id={{project_users}}.project_id
+                    AND  {{project}}.status="'.Project::TASK_CHEKING_REDACTOR.'"';
+        }elseif($type==3){
+            $sql='SELECT {{project}}.id AS count
+                  FROM {{project_users}},{{project}}
+                  WHERE  {{project_users}}.user_id="'.Yii::app()->user->id.'"
+                    AND {{project}}.id={{project_users}}.project_id
+                    AND  {{project}}.status="'.Project::TASK_CHEKING_ADMIN.'"';
+        }else{
+            return '';
+        }
+        $row = Yii::app()->db->createCommand($sql)->queryRow();
+        if(empty($row['count'])){
+            return 0;
+        }else{
+            $row['count'];
+        }
     }
 }

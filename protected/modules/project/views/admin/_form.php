@@ -111,8 +111,12 @@
                 echo $form->dropDownList($model,'category_id',CHtml::listData(Category::getArrayCategory(), 'id', 'title'),array('empty' =>'Не выбрано значение'));
             ?>
     		<?php echo $form->error($model,'category_id'); ?>
-    	</div>
-
+    </div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'site'); ?>
+        <?php echo $form->textField($model,'site',array('size'=>60,'maxlength'=>255));?>
+        <?php echo $form->error($model,'site'); ?>
+    </div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'type_job'); ?>
 		<?php

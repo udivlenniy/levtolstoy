@@ -56,6 +56,7 @@ class Messages extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -121,5 +122,11 @@ class Messages extends CActiveRecord
         }
     }
 
+    public function onBeforeValidate($event) {
+        // устанавливаем некие перменные, если они не указаны
+        if(empty($this->create)){ $this->create = time(); }
+
+        if(empty($this->author_id)){ $this->author_id = Yii::app()->user->id; }
+    }
 
 }

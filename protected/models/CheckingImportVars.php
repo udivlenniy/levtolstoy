@@ -212,8 +212,9 @@ class CheckingImportVars extends CActiveRecord
     /*
      * по ID "tbl_text_data" определяем какой это тип внутренней переменной и прописаны по ней в проекте проверки
      * если прописаны проверки, то запускаем классы соотвествующих проверок и обрабатываем значение из поля
+     * $key_words - список ключевиков разделён. запятой, для отправки запросов на сервер для программ проверок по правилам
      */
-    public static function checkingFieldByRules($fieldID, $valueField, $projectID, $text_id){
+    public static function checkingFieldByRules($fieldID, $valueField, $projectID, $text_id, $key_words){
 
         // сначала находим ID строки в таблице схемы по данному полю и проекту
         $shema = Yii::app()->db->createCommand('SELECT {{import_vars_shema}}.id,{{import_vars_shema}}.label
@@ -239,23 +240,35 @@ class CheckingImportVars extends CActiveRecord
         //$data[title] - название проверки, по которой мы будем проверять содержимое поля
         //$data[class_name] - имя класса который будет запускать проверку по содержимому поля
 
+        // флаг ошибок при проверках
         $errors = '';
-        foreach($data as $check){
-            $class = new $check['class_name'];
-            $class->sourceText = $valueField;
-            $class->title = $check['title'];
-            $result = $class->run();
-            // если есть ошибки - запишим их в общий лог ошибок и выведим их
-            if(!$result['result']){
-                $errors.=$result['msg'];
-                // обнаружена ошибка, записываем в Лог ошибок
-                $log = new LogCheking();
-                $log->import_var_id = $fieldID;
-                $log->check_id = $check['check_id'];
-                $log->import_var_value = $valueField;
-                $log->text_id = $text_id;
-                $log->error = $result['msg'];// записываем описание ошибки
-                $log->save();
+
+        // если не указан адрес сервера значит апускаем проверки локально, под каждый тип проверки - свой класс
+        if(empty(Yii::app()->params['cheking_url'])){
+            foreach($data as $check){
+                $class = new $check['class_name'];
+                $class->sourceText = $valueField;
+                $class->title = $check['title'];
+                $result = $class->run();
+                // если есть ошибки - запишим их в общий лог ошибок и выведим их
+                if(!$result['result']){
+                    $errors.=$result['msg'];
+                    // обнаружена ошибка, записываем в Лог ошибок
+                    $log = new LogCheking();
+                    $log->import_var_id = $fieldID;
+                    $log->check_id = $check['check_id'];
+                    $log->import_var_value = $valueField;
+                    $log->text_id = $text_id;
+                    $log->error = $result['msg'];// записываем описание ошибки
+                    $log->save();
+                }
+            }
+        }else{
+            // запускаем проверки НЕ локально, а через проги, которые будут отдавать ответ о результатах проверок
+            foreach($data as $check){
+                //для каждой проверки отправляем POST запрос на сервер для получения результатов проверки по тексту
+                $curl = new Curl(Yii::app()->params['cheking_url'], $text_id, $check['check_id'], $key_words, $valueField);
+
             }
         }
 

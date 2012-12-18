@@ -10,7 +10,7 @@ $this->widget('bootstrap.widgets.TbMenu',array(
             array('label'=>'Пользователи', 'url'=>array('/user/admin')),
             array('label'=>'Категории', 'url'=>array('/category/')),
             array('label'=>'Сообщения', 'url'=>array('/messages/')),
-            array('label'=>'Проекты', 'url'=>array('/project/admin/')),
+            array('label'=>'Мониторинг заданий', 'url'=>array('/project/admin/')),
             array('label'=>'Шаблоны', 'url'=>array('/project/template/')),
             array('label'=>'Выход ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest)
 

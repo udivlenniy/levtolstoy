@@ -88,9 +88,13 @@ class Text extends CActiveRecord
             $errors_main = array();
             //$val - значение этого поля
             //$i - ID поля из ImportVars
+
+            // получаем список ключевиков по данному заданию
+            $key_words = TextData::getKeyWordsByComa($this->id);
+
             foreach($_POST['ImportVarsValue'] as $i=>$val){
                 // запускаем проверку по полю и находим ошибки, если есть
-                $errors = CheckingImportVars::checkingFieldByRules($i, $val, $this->project_id, $this->id);
+                $errors = CheckingImportVars::checkingFieldByRules($i, $val, $this->project_id, $this->id, $key_words);
                 // если не пустое значение ошибок, тогда записываем ошибку в общий список ошибок по проверке в задании
                 if(!empty($errors)){
                     $errors_main[] = array('id'=>$i, 'error'=>$errors);

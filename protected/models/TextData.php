@@ -89,4 +89,23 @@ class TextData extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    /*
+     *  получаем список ключевиков по заданию, с разделителем запятая
+     * $text_id - ID задания
+     */
+    static function getKeyWordsByComa($text_id){
+        $sql = 'SELECT import_var_value FROM {{text_data}} WHERE text_id="'.$text_id.'" AND import_var_id="'.Yii::app()->params['key_words'].'"';
+        $array = Yii::app()->db->createCommand($sql)->queryAll();
+        $result = '';
+        foreach($array as $i=>$row){
+            if($i==(sizeof($array)-1)){
+                $result.=$row['import_var_value'];
+            }else{
+                $result.=$row['import_var_value'].',';
+            }
+        }
+
+        return $result;
+    }
 }

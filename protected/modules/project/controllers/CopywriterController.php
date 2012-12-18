@@ -32,7 +32,8 @@ class CopywriterController extends  Controller{
    		return array(
    			array('allow', // allow admin user to perform 'admin' and 'delete' actions
    				'actions'=>array('index','update','downloadfile','text'),
-   				'users'=>array('@'), //UserModule::getAdmins(),
+   				//'users'=>array('@'), //UserModule::getAdmins(),
+                'expression' => 'isset($user->role) && ($user->role==="copywriter")',
    			),
    			array('deny',  // deny all users
    				'users'=>array('*'),
@@ -152,6 +153,14 @@ class CopywriterController extends  Controller{
                                                 WHERE num="'.$numNext.'"
                                                     AND project_id="'.$model->project_id.'"')
                                                 ->execute();
+                // первый текст в проекте, прошёл автомат. проверки - установим дату и время в проекте
+                if($model->num==1){
+                    $sql_update_project = 'UPDATE {{project}} SET output_project_to_copy="'.time().'" WHERE id="'.$model->project_id.'"';
+                    Yii::app()->db->createCommand($sql_update_project)->execute();
+                }
+
+
+                //
 
                 // редирект на список заданий, а текущее становится не доступным
                 $this->redirect(array('index'));
@@ -178,7 +187,10 @@ class CopywriterController extends  Controller{
         // находим текст с учётом, что к данному тексту подвязан именно текущий юзер-копирайтор
    		$model = Text::model()->findByPk($id,
                  'project_id=:project_id AND (status=:status OR status=:status1)',
-                 array(':project_id'=>$projectUser->project_id, ':status'=>Text::TEXT_NEW, ':status1'=>Text::TEXT_NOT_ACCEPT_EDITOR)
+                 array(':project_id'=>$projectUser->project_id,
+                     ':status'=>Text::TEXT_NEW,
+                     ':status1'=>Text::TEXT_NOT_ACCEPT_EDITOR
+                 )
         );
 
    		if($model===null){

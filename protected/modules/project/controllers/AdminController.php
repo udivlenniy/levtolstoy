@@ -31,8 +31,9 @@ class AdminController extends Controller{
    	{
    		return array(
    			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-   				'actions'=>array('index','delete','create','update','view','uploadfile','selecttemplate','text','deletekeyword','textlist'),
-   				'users'=>UserModule::getAdmins(),
+   				'actions'=>array('index','delete','create','update','view','uploadfile','selecttemplate','text','deletekeyword','textlist','downloadkeywords','downloadproject'),
+   				//'users'=>UserModule::getAdmins(),
+                'expression' => 'isset($user->role) && ($user->role==="super_administrator"||$user->role==="administrator")',
    			),
    			array('deny',  // deny all users
    				'users'=>array('*'),
@@ -42,6 +43,48 @@ class AdminController extends Controller{
     /*
      * просматриваем
      */
+
+    /*
+     * загрузка ключевых слов в TXT файл по проекту и отдача его на скачивание
+     * $id - это ID проекта, по которому хотим сохранить ключевики
+     */
+    public function actionDownloadkeywords($id){
+        //отключить профайлеры
+        $this->disableProfilers();
+        // находим все ключевые слова по проекту и сохраняем данные в файл
+        $sql = 'SELECT {{text_data}}.import_var_value
+                FROM {{text}}, {{text_data}}
+                WHERE {{text}}.project_id="'.$id.'"
+                    AND {{text}}.id={{text_data}}.text_id
+                    AND {{text_data}}.import_var_id="'.Yii::app()->params['key_words'].'"';
+
+        $data = Yii::app()->db->createCommand($sql)->queryAll();
+
+        $path = Yii::getPathOfAlias('webroot.upload').DIRECTORY_SEPARATOR.'key_words.txt';
+
+        $fp=fopen($path ,"w+");
+        foreach($data as $key => $value){
+            fwrite($fp,$value['import_var_value']."\r\n");
+        }
+        fclose($fp);
+
+        // отдаем файл
+        Yii::app()->request->sendFile(basename($path),file_get_contents($path));
+    }
+
+    /*
+     * загрузка результирующего файла с обработанными текстами
+     * на основании той схемы которую настроили при создании проекта
+     */
+    public function actionDownloadproject($id){
+        $export = new Export();
+        $export->project = $id;
+        $path = $export->saveToCSV($export->preparation());
+        //отключить профайлеры
+        $this->disableProfilers();
+        // отдаем файл
+        Yii::app()->request->sendFile(basename($path),file_get_contents($path));
+    }
 
     /**
    	 *выводим список ссылок на тексты по данному заданию
@@ -378,9 +421,13 @@ class AdminController extends Controller{
         // сначала находим созданного копирайтора в таблице юзеров и его удаляем, а потом подвязки юзеров к проекту
         $copyWriter = Yii::app()->db->createCommand($sqlFindCopyWriter)->queryRow();
 
-        // удаляем пользователя из таблицы ЮЗЕРОВ(удаляем копирайтора)
+
         if(!empty($copyWriter)){
-            Yii::app()->db->createCommand('DELETE FROM {{users}} WHERE id="'.$copyWriter['user_id'].'"')->execute();
+            // удаляем пользователя из таблицы ЮЗЕРОВ(удаляем копирайтора)
+            //Yii::app()->db->createCommand('DELETE FROM {{users}} WHERE id="'.$copyWriter['user_id'].'"')->execute();
+
+            // БЛОКИРУЕМ КОПИРАЙТОРА
+            Yii::app()->db->createCommand('UPDATE {{users}} SET status="'.User::STATUS_BANED.'" WHERE id="'.$copyWriter['user_id'].'"')->execute();
         }
 
         // удаляем пользователей подвязанных к проекту(исполнители) - ПОДВЯЗКИ юзеров
@@ -394,15 +441,42 @@ class AdminController extends Controller{
    	/**
    	 * Lists all models.
    	 */
-   	public function actionIndex()
-   	{
-        $model=new Project('search');
+   	public function actionIndex(){
+
+        $model = new Project('search');
         $model->unsetAttributes();  // clear any default values
-        if(isset($_GET['Project']))
+        if(isset($_GET['Project'])){
             $model->attributes=$_GET['Project'];
+        }
+
+        $criteria=new CDbCriteria;
+        //если пользователь НЕ_СУПЕР_АДМИН, тогда выводим лишь его проекты
+        if(Yii::app()->user->role!=User::ROLE_SA_ADMIN){
+            // для супер_админа выводим все проекты, за всё время
+            $criteria->with = array('admin');
+            $criteria->together = true;
+        }
+        $criteria->compare('id',$model->id);
+        $criteria->compare('title',$model->title,true);
+        $criteria->compare('type_job',$model->type_job,true);
+        $criteria->compare('description',$model->description,true);
+        $criteria->compare('deadline',$model->deadline);
+        $criteria->compare('price_th',$model->price_th);
+        $criteria->compare('total_cost',$model->total_cost);
+        $criteria->compare('total_num_char',$model->total_num_char);
+        $criteria->compare('uniqueness',$model->uniqueness);
+        $criteria->compare('category_id',$model->category_id);
+
+        $dataProvider =  new CActiveDataProvider('Project', array(
+           'criteria'=>$criteria,
+           'pagination'=>array(
+               'pageSize'=>Yii::app()->params['perPage'],
+           ),
+        ));
 
         $this->render('admin',array(
             'model'=>$model,
+            'dataProvider'=>$dataProvider,
         ));
    	}
 
@@ -426,9 +500,16 @@ class AdminController extends Controller{
    	 * If the data model is not found, an HTTP exception will be raised.
    	 * @param integer the ID of the model to be loaded
    	 */
-   	public function loadModel($id)
-   	{
-   		$model=Project::model()->findByPk($id);
+   	public function loadModel($id){
+        $criteria = '';
+        // если НЕ_СУПЕР_АДМИН тогда используем условие при поиске моделе
+        if(Yii::app()->user->role!=User::ROLE_SA_ADMIN){
+            $criteria=new CDbCriteria;
+            // для супер_админа выводим все проекты, за всё время
+            $criteria->with = array('admin');
+            $criteria->together = true;
+        }
+   		$model=Project::model()->findByPk($id, $criteria);
    		if($model===null)
    			throw new CHttpException(404,'The requested page does not exist.');
    		return $model;

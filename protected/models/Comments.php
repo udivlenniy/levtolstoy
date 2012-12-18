@@ -56,6 +56,7 @@ class Comments extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+            'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -108,5 +109,26 @@ class Comments extends CActiveRecord
     {
         parent::afterFind();
         $this->create = date('d-m-Y H:i:s' ,$this->create);
+    }
+
+    public function scopes()
+    {
+        return array(
+            'admin'=>array(
+                'condition'=>'user.role="'.User::ROLE_ADMIN.'" OR user.role="'.User::ROLE_SA_ADMIN.'"',//
+                //'order'=>'t.id DESC',
+                'limit'=>Yii::app()->params['perPage'],
+            ),
+            'redactor'=>array(
+                'condition'=>'user.role="'.User::ROLE_EDITOR.'"',
+                //'order'=>'id DESC',
+                'limit'=>Yii::app()->params['perPage'],
+            ),
+            'copywriter'=>array(
+                'condition'=>'user.role="'.User::ROLE_COPYWRITER.'"',
+                //'order'=>'id DESC',
+                'limit'=>Yii::app()->params['perPage'],
+            ),
+        );
     }
 }

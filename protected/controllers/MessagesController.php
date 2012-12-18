@@ -27,17 +27,18 @@ class MessagesController extends Controller
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
-			),
+//			array('allow',  // allow all users to perform 'index' and 'view' actions
+//				'actions'=>array('index','view'),
+//				'users'=>array('*'),
+//			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','view','index'),//,'update'
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'actions'=>array('admin','delete', 'project'),
+				//'users'=>array('admin'),
+                'expression' => 'isset($user->role) && ($user->role==="super_administrator"||$user->role==="administrator")',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -60,24 +61,28 @@ class MessagesController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-//	public function actionCreate()
-//	{
-//		$model=new Messages;
-//
-//		// Uncomment the following line if AJAX validation is needed
-//		// $this->performAjaxValidation($model);
-//
-//		if(isset($_POST['Messages']))
-//		{
-//			$model->attributes=$_POST['Messages'];
-//			if($model->save())
-//				$this->redirect(array('view','id'=>$model->id));
-//		}
-//
+	public function actionCreate(){
+
+		$model = new Messages;
+
+		if(isset($_POST['Messages'])){
+
+			$model->attributes=$_POST['Messages'];
+            if($model->validate()){
+                $model->save();
+                Yii::app()->user->setFlash('msg','Спасибо, ваше сообщение успешно отправлено');
+                $this->renderPartial('messages', array('model'=>new Messages));
+                Yii::app()->end();
+            }else{
+                $this->renderPartial('messages', array('model'=>$model), false, true);
+                Yii::app()->end();
+            }
+		}
+
 //		$this->render('create',array(
 //			'model'=>$model,
 //		));
-//	}
+	}
 
 	/**
 	 * Updates a particular model.

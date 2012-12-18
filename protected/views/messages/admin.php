@@ -50,13 +50,13 @@ $('.search-form form').submit(function(){
             'value'=>'CHtml::link($data->create,array("view","id"=>$data->id))',
             'filter'=>'',
         ),
-        array(
-            'name'=>'model',
-            'header'=>'Тип',
-            'type'=>'raw',
-            'value'=>'CHtml::link(Messages::getHeaderMsg($data->model, $data->model_id),array("view","id"=>$data->id))',
-            'filter'=>false,
-        ),
+//        array(
+//            'name'=>'model',
+//            'header'=>'Тип',
+//            'type'=>'raw',
+//            'value'=>'CHtml::link(Messages::getHeaderMsg($data->model, $data->model_id),array("view","id"=>$data->id))',
+//            'filter'=>false,
+//        ),
         array(
             'name'=>'msg_text',
             'type'=>'raw',

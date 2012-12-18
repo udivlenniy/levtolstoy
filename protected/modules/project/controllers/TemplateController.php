@@ -33,7 +33,8 @@ class TemplateController extends Controller{
         return array(
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
                 'actions'=>array('admin','delete','create','update','view', 'index','uploadfile'),
-                'users'=>UserModule::getAdmins(),
+                //'users'=>UserModule::getAdmins(),
+                'expression' => 'isset($user->role) && ($user->role==="super_administrator"||$user->role==="administrator")',
             ),
             array('deny',  // deny all users
                 'users'=>array('*'),

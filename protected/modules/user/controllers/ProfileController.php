@@ -4,7 +4,34 @@ class ProfileController extends Controller
 {
 	public $defaultAction = 'profile';
 	public $layout='//layouts/column2';
-
+    public function filters()
+    {
+        return CMap::mergeArray(parent::filters(),array(
+            'accessControl', // perform access control for CRUD operations
+        ));
+    }
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules()
+    {
+        return array(
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('profile','update'),
+				'users'=>array('@'),
+			),
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions'=>array('edit','changepassword','create','update','view'),
+                //'users'=>UserModule::getAdmins(),
+                'expression' => 'isset($user->role) && ($user->role==="super_administrator"||$user->role==="administrator")',
+            ),
+            array('deny',  // deny all users
+                'users'=>array('*'),
+            ),
+        );
+    }
 	/**
 	 * @var CActiveRecord the currently loaded data model instance.
 	 */

@@ -19,11 +19,17 @@ $this->widget('bootstrap.widgets.TbGridView', array(
             'value'=>'CHtml::link(MyText::lenghtWords($data["description"]),array("redactor/view/","id"=>$data["id"]))'
         ),
         array(
+            'name'=>'id',
+            'header'=>'Копирайтор',
+            'type'=>'raw',
+            'value'=>'CHtml::link(Project::getLinkUserOfProjectToProfile($data["id"],User::ROLE_EDITOR),array("redactor/view/","id"=>$data["id"]))'
+        ),
+        array(
             'name'=>'total_num_char',
             'header'=>'Кол-во знаков',
             'type'=>'raw',
             'value'=>'CHtml::link($data["total_num_char"],array("redactor/view/","id"=>$data["id"]))'
-        ), //
+        ),
         array(
             'name'=>'id',
             'header'=>'Кол-во текстов',
@@ -32,7 +38,8 @@ $this->widget('bootstrap.widgets.TbGridView', array(
         ),
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
-            'template'=>'{view}'
+            'template'=>'{view}',
+            'visible'=>false,
         ),
     ),
 )); ?>

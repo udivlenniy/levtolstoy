@@ -78,7 +78,7 @@ class ProjectUsers extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
+		//$criteria->compare('id',$this->id);
 		$criteria->compare('project_id',$this->project_id);
 		$criteria->compare('user_id',$this->user_id);
 

@@ -51,6 +51,19 @@ echo CHtml::link('Отправить личное сообщение',
         'style'=>'margin-left:30px;'
     )
 );
+echo CHtml::link("Скачать CSV-файл с проектом",
+                array("admin/downloadproject","id"=>$model->id),
+                array(
+                    'style'=>'margin-left:30px;'
+                )
 
+    );
+echo CHtml::link("Скачать ключевые слова проекта",
+    array("admin/downloadkeywords","id"=>$model->id),
+    array(
+        'style'=>'margin-left:30px;'
+    )
+
+);
 $this->widget('CommentsWidget',array('model_id'=>$model->id, 'model'=>get_class($model)));
 ?>

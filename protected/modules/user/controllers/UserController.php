@@ -26,7 +26,8 @@ class UserController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				'users'=>array('*'),
+				//'users'=>array('*'),
+                'expression' => 'isset($user->role) && ($user->role==="super_administrator")',
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
