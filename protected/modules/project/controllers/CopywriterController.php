@@ -251,14 +251,7 @@ class CopywriterController extends  Controller{
     public function actionDisabledfields(){
         //инициализация AJAX запроса от пользователю
         if(Yii::app()->request->isAjaxRequest){
-            //если загрузилась модель, значит у юзера есть доступ к заданию и все статусы и доступы верны
-            $model = $this->loadModel($_POST['text_id']);
-            if(!empty($model)){
-                //смотрим какое кол-во проверок есть по данному текстовому полю в настройках проекта
 
-                //и сравним с кол-вом успешных проверок, что уже пройдено
-
-            }
         }
     }
 }
