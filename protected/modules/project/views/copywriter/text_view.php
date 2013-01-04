@@ -195,20 +195,16 @@
         function disabled_fields(){
             // перебираем все поля, которые пользователь может заполнять
             $('textarea[name^=ImportVarsValue]').each(function () {
-               alert(this.id+'|'+this.name);
+               //alert(this.id+'|'+this.name);
                 $.ajax({
                     url: '/project/copywriter/disabledfields',
                     type: "POST",
                     dataType: "json",
-                    data:"js:this.name&project_id=1",
+                    data:"field="+this.name+"&project_id="+$('#Text_project_id').val()+'&text_id='+$('#Text_id').val(),
                     success: function(data) {
-                        $('#amount').text(data.count+'%');
-                        $('#progress').progressbar('option', 'value', data.count);
-                        if(data.count < 100) {
-                            setTimeout(progress, speed);
-                        }else{
-                            clearInterval(progress);
-                            $('#loading').hide();
+                        // если поле прошло все проверки и всё ОК, делаем его недоступным
+                        if(data.result!=''){
+                            this.attr("disabled", "disabled");
                         }
                     }
                 });
