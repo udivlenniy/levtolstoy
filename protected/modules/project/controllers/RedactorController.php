@@ -31,7 +31,7 @@ class RedactorController extends  Controller{
    	{
    		return array(
    			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-   				'actions'=>array('textlist', 'check','view', 'text','all_make','check_admin','statistics'),
+   				'actions'=>array('textlist', 'check','view', 'text','all_make','check_admin','statistics','reject','agree'),
    				//'users'=>array('@'), //UserModule::getAdmins(),
                 'expression' => 'isset($user->role) && ($user->role==="editor")',
    			),
@@ -106,50 +106,25 @@ class RedactorController extends  Controller{
                     AND {{import_vars}}.id={{text_data}}.import_var_id';
 
         $data = Yii::app()->db->createCommand($sql)->queryAll();
-
+        //-------------------------------------------------------------
+        // причина отклоения проекта
+        $reject = new RejectProject();
+        $reject->model_id = $model->id;
+        $reject->model = get_class($model);// к какой моделе подвязано
+        //-------------------------------------------------------------
         // отправили POST на обновление данных по данному тексту
         if(isset($_POST['Text'])){
 
             $model->attributes = $_POST['Text'];
 
-            if($_POST['Text']['status_new']=='error' && empty($_POST['Text']['status_new_text'])){
-                $model->addError('status_new_text','Необходимо указать описание ошибок');
-            }else{
-                // если редактор выбрал статус ошибка, то проверим чтобы он указал текст ошибки
-                if($_POST['Text']['status_new']=='success'){
-                    // если включены автопроверки для редактора, тогда запускаем их при сохранении задания
-                    if(CheckingImportVars::isEnabledChekingByUser($model->project_id)){
-                        $model->setScenario('checking');
-                    }
-                    if($model->validate()){
-                        // редактор принял выполненное задание копирайтором, всё отлично обновим статус
-                        $model->status = Text::TEXT_ACCEPT_EDITOR;
-                        $model->save();
-                    }else{
-                        $this->render('text_view',array(
-                            'data'=>$data,
-                            'model'=>$model,
-                        ));
-
-                        Yii::app()->end();
-                    }
-                }
-                //===========записываем ошибку в БД по данному тексту==============
-                if($_POST['Text']['status_new']=='error' && !empty($_POST['Text']['status_new_text'])){
-                    // установим новый статус, что НЕ принято редактором
-                    $model->status = Text::TEXT_NOT_ACCEPT_EDITOR;
-                    $model->save();
-
-                    // подвязываем ошибку к тексту
-                    $error = new Errors();
-                    $error->user_id = Yii::app()->user->id;
-                    $error->model = 'Text';
-                    $error->type = $_POST['type_error'];
-                    $error->error_text = $_POST['Text']['status_new_text'];
-                    $error->model_id = $model->id;
-                    $error->create = time();
-                    $error->save();
-                }
+            // если включены автопроверки для редактора, тогда запускаем их при сохранении задания
+            if(CheckingImportVars::isEnabledChekingByUser($model->project_id)){
+                $model->setScenario('checking');
+            }
+            if($model->validate()){
+                // редактор принял выполненное задание копирайтором, всё отлично обновим статус
+                $model->status = Text::TEXT_ACCEPT_EDITOR;
+                $model->save();
                 // цикл по полям, с обновлением значением полей
                 foreach($_POST['ImportVarsValue'] as $i=>$val){
                     // SQL запрос на обновление данных
@@ -163,6 +138,7 @@ class RedactorController extends  Controller{
         $this->render('text_view',array(
             'data'=>$data,
             'model'=>$model,
+            'reject'=>$reject,
         ));
     }
 
@@ -200,11 +176,7 @@ class RedactorController extends  Controller{
         //если пользователь НЕ_СУПЕР_АДМИН, тогда выводим лишь его проекты
         $criteria->with = array('admin');
         $criteria->together = true;
-
         $criteria->compare('t.status',Project::TASK_CHEKING_ADMIN);
-//        $criteria->compare('title',$model->title,true);
-//        $criteria->compare('type_job',$model->type_job,true);
-
 
         $dataProvider =  new CActiveDataProvider('Project', array(
             'criteria'=>$criteria,
@@ -227,15 +199,15 @@ class RedactorController extends  Controller{
      * всего проектов обработано
      */
     public function actionAll_make(){
+
+        //$model = new Project();, 'model'=>$model
+
+
         $criteria=new CDbCriteria;
         //если пользователь НЕ_СУПЕР_АДМИН, тогда выводим лишь его проекты
         $criteria->with = array('admin');
         $criteria->together = true;
-
-        $criteria->compare('t.status',Project::TASK_AGREE_ADMIN);
-//        $criteria->compare('title',$model->title,true);
-//        $criteria->compare('type_job',$model->type_job,true);
-
+        $criteria->condition = 't.status!='.Project::TASK_CHEKING_REDACTOR;
 
         $dataProvider =  new CActiveDataProvider('Project', array(
             'criteria'=>$criteria,
@@ -244,9 +216,51 @@ class RedactorController extends  Controller{
             ),
         ));
 
-
         $this->render('statistics', array('dataProvider'=>$dataProvider));
     }
+
+    /*
+     * отклонение проекта редактором
+     */
+    public function actionReject(){
+        // причина отклоения проекта
+        $reject = new RejectProject();
+
+        if(isset($_POST['RejectProject'])){
+            $reject->attributes = $_POST['RejectProject'];
+            if($reject->validate()){
+                //====при отклонении задания из проекта, укажим статус задания======
+                if($reject->model == 'Text'){
+                    // изменили статус задания
+                    $text = Text::model()->findByPk($reject->model_id);
+                    $text->status = Text::TEXT_NOT_ACCEPT_EDITOR;
+                    $text->save();
+                    // изменим статус проекта на "Задание проверяется редактором"
+                    Project::afterChangeDataInProject($text->project_id, Project::TASK_CHEKING_REDACTOR, $text->num);
+                }
+                //==при отклонении проекта, запишим это событие и изменим статус
+                if($reject->model == 'Project'){
+                    // изменим статус проекта, при его отклонении
+                     // изменим статус проекта на "задание отправлено на доработку редактором"
+                    Project::afterChangeDataInProject($reject->model_id, Project::TASK_POSTED_TO_REWORK, '');
+                }
+
+                //=====записываем ошибку в общий лог ошибок===================
+                $error = new Errors();
+                $error->model = $reject->model;
+                $error->type = $_POST['type_error'];
+                $error->error_text = $reject->msg_text;
+                $error->model_id = $reject->model_id;
+                $error->save();
+                Yii::app()->user->setFlash('reject','Спасибо, успешно отклонили');
+                $this->renderPartial('reject', array('reject'=>new RejectProject()));
+                Yii::app()->end();
+            }
+        }
+        $this->renderPartial('reject', array('reject'=>$reject), false, true);
+        Yii::app()->end();
+    }
+
 
     /*
      * страница просмотра проектов - редактора
@@ -286,7 +300,12 @@ class RedactorController extends  Controller{
         $msg->model = get_class($model);// к какой моделе подвязано сообщение
         $msg->model_id = $model->id;
         $msg->is_new = 1;
-
+        //-------------------------------------------------------------
+        // причина отклоения проекта
+        $reject = new RejectProject();
+        $reject->model_id = $model->id;
+        $reject->model = get_class($model);// к какой моделе подвязано
+        //-------------------------------------------------------------
         $this->performAjaxValidation($msg);
 
         if(isset($_POST['Messages'])){
@@ -303,7 +322,7 @@ class RedactorController extends  Controller{
             }
         }
 
-        $this->render('view', array('model'=>$model, 'msg'=>$msg));
+        $this->render('view', array('model'=>$model, 'msg'=>$msg, 'reject'=>$reject));
     }
     /*
      * ajax - валидация формы данных при оптравке личных сообщений
@@ -314,6 +333,21 @@ class RedactorController extends  Controller{
         {
             echo CActiveForm::validate($model);
             Yii::app()->end();
+        }
+    }
+
+    /*
+     *  принимаем проект - от лица редактора
+     */
+    public function actionAgree(){
+        if(Yii::app()->request->isPostRequest){
+            // проверяем может ли редактор принять проект, все ли условия выполнены для этого
+            if(Project::canAgreeProject($_POST['project'])){
+                Project::afterChangeDataInProject($_POST['project'], Project::TASK_AGREE_REDACTOR,'');
+                echo 'Проект успешно принят редактором';
+            }else{
+                echo 'Нет возможности принять проект, задания в проекте должны быть все приняты редактором';
+            }
         }
     }
 }

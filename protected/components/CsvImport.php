@@ -71,6 +71,11 @@ class CsvImport{
 
         $last_text_id = 0;
         $counterText = 1;
+
+        //echo '<pre>'; print_r($arrayData); die();
+
+        $can_create_text = true;
+
         //на основании полученной схемы преобразоваем массив из файла в соотвествие внутренним-переменным системы
         foreach($arrayData as $i=>$row){// цикл по строчкам файла импорта
 
@@ -82,8 +87,9 @@ class CsvImport{
             $sizeRow = CsvImport::plenumArray($row);
             // если одна строка - значит это ключевое слово, если 0 - значит пропускаем
             if($sizeRow == 0){
+                $can_create_text = true;
                 continue;
-            }elseif($sizeRow==1){
+            }elseif($sizeRow>0 && $can_create_text==false){
                 // обработка ключевого слова по тексту
                 // цикл по столбцам строки из файла
                 for($j=0;$j<count($row);$j++){
@@ -106,7 +112,7 @@ class CsvImport{
                     $dataText->import_var_value = $column;
                     $dataText->save();
                 }
-            }elseif($sizeRow>1){
+            }elseif($sizeRow>0 && $can_create_text==true){
                 // создание нового текста - на задание
                 // каждая строка - это новый текст, поэтому создаём текст и подвязываем к нему заполненные переменные
                 $textTask = new Text();
@@ -115,6 +121,10 @@ class CsvImport{
                 $textTask->status = Text::TEXT_NEW_DISABLED_COPY;
                 $textTask->num = $counterText;// записываем тексты по порядку, как добавляем
                 $textTask->save();
+
+                // запрет на добавление текстов
+                $can_create_text = false;
+
                 $last_text_id = $textTask->id;
 
                 $counterText++;

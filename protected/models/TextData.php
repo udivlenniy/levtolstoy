@@ -108,4 +108,23 @@ class TextData extends CActiveRecord
 
         return $result;
     }
+
+    /*
+     * получаем список СВЕДЕНИЙ из задания через запятую
+     * $text_id - ID задания
+     */
+    static function getProposedByComa($text_id){
+        $sql = 'SELECT import_var_value FROM {{text_data}} WHERE text_id="'.$text_id.'" AND import_var_id="'.Yii::app()->params['reduction'].'"';
+        $array = Yii::app()->db->createCommand($sql)->queryAll();
+        $result = '';
+        foreach($array as $i=>$row){
+            if($i==(sizeof($array)-1)){
+                $result.=$row['import_var_value'];
+            }else{
+                $result.=$row['import_var_value'].',';
+            }
+        }
+
+        return $result;
+    }
 }

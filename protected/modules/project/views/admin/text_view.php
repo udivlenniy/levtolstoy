@@ -4,9 +4,11 @@
 	'id'=>'text-form',
 	'enableAjaxValidation'=>false,
 )); ?>
-    <!-- цикл по полям со значениями, кроме ключевых слов, ключевики выводим отдельно с отдельном диве, для скрывания и ссылка для скачивания ключевиков -->
+    <!-- цикл по полям со значениями, кроме ключевых слов и сведений, ключевики выводим отдельно с отдельном диве, для скрывания и ссылка для скачивания ключевиков -->
     <?php
     $formElements = '';
+    // список сведений - обработанных ключевиков
+    $reductions = array();
     $keyWords = '<div id="tbl_key_words" style="width: 750px; overflow: auto; height: 165px; border: 1px solid;"><table border="1">';
     $counterKeyWords = 0;
 
@@ -40,6 +42,10 @@
                 )
             );
             $keyWords.='<tr class="del_link"><td><div class="row"><label for="'.$row['title'].'">Ключевое слово</label>'.$input.$del_link.'</div></td></tr>';
+        }elseif($row['import_var_id']==Yii::app()->params['reduction']){
+            if(!empty($row['import_var_value'])){
+                $reductions[] = $row['import_var_value'];
+            }
         }else{
             $input = CHtml::textField('ImportVarsValue['.$row['id'].']',$row['import_var_value']);
             $formElements.='<div class="row"><label for="'.$row['title'].'">'.$row['title'].'</label>'.$input.'</div>';
@@ -52,6 +58,11 @@
         if($counterKeyWords!=0){
             echo $keyWords;
         }
+        // если в задании есть "СВЕДЕНИЯ" - выводим их на экран в ввиде списка
+        if(!empty($reductions)){
+            $select_reduction = CHtml::dropDownList('reductions_form','',$reductions, array('size'=>10, 'style'=>'width:500px;'));
+            echo '<div class="row"><label for="сведения">Сведения</label>'.$select_reduction.'</div>';//$reductions
+        }
      ?>
 
     <div class="row">
@@ -62,13 +73,33 @@
     <div class="row buttons">
    		<?php
            $this->widget('bootstrap.widgets.TbButton',array(
-           	'label' => $model->isNewRecord ? 'Добавить' : 'Сохранить',
+           	'label' => $model->isNewRecord ? 'Добавить' : 'Принять задание',
             'buttonType'=>'submit',
            	'type' => 'submit',
            	'size' => 'large'
            ));
+        echo CHtml::link('Отклонить задание',
+            '#',
+            array(
+                'data-toggle'=>'modal',
+                'data-target'=>'#rejectProject',
+                'style'=>'margin-left:50px;'
+            )
+        );
            ?>
    	</div>
+    <?php
+    $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'rejectProject')); ?>
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h4>Отклонить задание:</h4>
+    </div>
+    <div class="modal-body">
+        <?php $this->renderPartial('reject', array('reject'=>$reject));?>
+    </div>
+    <?php $this->endWidget();
+
+    ?>
 <?php $this->endWidget(); ?>
     <div class="row">
         <?php $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'myModal')); ?>

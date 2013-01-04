@@ -86,4 +86,27 @@ class ProjectUsers extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    /*
+     * находим ID пользователю подвязанного к проекту с учётом его роли
+     */
+    static function getUserByProject($project_id, $role){
+
+        // формируем условие WHERE по полю ROLE
+        if($role==User::ROLE_ADMIN){
+            $where = '({{users}}.role="'.User::ROLE_ADMIN.'" OR {{users}}.role="'.User::ROLE_SA_ADMIN.'")';
+        }else{
+            $where = '{{users}}.role="'.$role.'"';
+        }
+
+        $sql = 'SELECT {{users}}.username,{{users}}.id
+                FROM {{users}},{{project_users}}
+                WHERE '.$where.'
+                    AND {{users}}.id={{project_users}}.user_id
+                    AND {{project_users}}.project_id="'.$project_id.'"';
+
+        $find = Yii::app()->db->createCommand($sql)->queryRow();
+
+        return $find;
+    }
 }

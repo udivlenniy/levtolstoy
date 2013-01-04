@@ -12,7 +12,10 @@
     <!-- цикл по полям со значениями, кроме ключевых слов, ключевики выводим отдельно с отдельном диве, для скрывания и ссылка для скачивания ключевиков -->
     <?php
     $formElements = '';
+    // список ключевиков по заданию
     $keyWords = array();
+    // список сведений - обработанных ключевиков
+    $reductions = array();
 
     //выбираем для удобного отображения копирайтору этих элементов шаблона
     $h1='';
@@ -31,6 +34,10 @@
         //формируем элементы формы ключевики выводим сгруппировано
         if($field['import_var_id']==Yii::app()->params['key_words']){
             $keyWords[]=$field['import_var_value'];//.PHP_EOL
+        }elseif($field['import_var_id']==Yii::app()->params['reduction']){
+            if(!empty($field['import_var_value'])){
+                $reductions[] = $field['import_var_value'];
+            }
         }else{
             // если есть значение из POST массива, то выводим его в форме, вместо того значения, чтобы есть в БД(видимо при сохранении есть ошибки, при заполнении полей)
             if(isset($_POST['ImportVarsValue'][$field['id']])){
@@ -98,42 +105,63 @@
     $select = CHtml::dropDownList('keywords_form','',$keyWords, array('size'=>10, 'style'=>'width:500px;'));
     echo '<div class="row"><label for="Ключевые слова">Ключевые слова</label>'.$select.'</div>';
 
+    // если в задании есть "СВЕДЕНИЯ" - выводим их на экран в ввиде списка
+    if(sizeof($reductions)>0){
+        $select_reduction = CHtml::dropDownList('reductions_form','',$reductions, array('size'=>10, 'style'=>'width:500px;'));
+        echo '<div class="row"><label for="сведения">Сведения</label>'.$select_reduction.'</div>';//$reductions
+    }
+
     echo $forma;
     ?>
+
     <div class="row">
-   		<?php echo $form->hiddenField($model,'project_id'); ?>
+        <?php echo $form->hiddenField($model,'project_id'); ?>
         <?php echo $form->hiddenField($model,'status'); ?>
         <?php echo $form->hiddenField($model,'id'); ?>
-   	</div>
-    <div class="row">
-        <?php echo CHtml::label('Установить статус', 'input');?>
-        <?php
-            echo $form->dropDownList($model,'status_new',array('success' => 'Принято редактором','error' => 'Ошибка'));
-        ?>
     </div>
-    <div class="row" id="status_new_text_row">
-        <?php
-            echo CHtml::label('Описание ошибки:', 'error_description');
-            echo $form->textArea($model,'status_new_text',array('rows'=>5, 'cols'=>3, 'id'=>'status_new_text'));
-            echo '<br>';
-            echo CHtml::label('Тип ошибки:', 'error_type');
-            echo CHtml::listBox('type_error','1' , Errors::getListErrors(), array('size'=>1));
-        ?>
-    </div>
+
     <div class="row buttons">
    		<?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');
            $this->widget('bootstrap.widgets.TbButton',array(
-           	'label' => $model->isNewRecord ? 'Добавить' : 'Сохранить',
+           	'label' => $model->isNewRecord ? 'Добавить' : 'Принять задание',
             'buttonType'=>'submit',
            	'type' => 'action',
            	'size' => 'large'
            ));
+
+            echo CHtml::link('Отклонить задание',
+                '#',
+                array(
+                'data-toggle'=>'modal',
+                'data-target'=>'#rejectProject',
+                'style'=>'margin-left:50px;'
+                )
+            );
         ?>
    	</div>
 <?php $this->endWidget(); ?>
+<?php
+    $this->beginWidget('bootstrap.widgets.TbModal', array('id'=>'rejectProject')); ?>
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h4>Отклонить задание:</h4>
+    </div>
+    <div class="modal-body">
+        <?php $this->renderPartial('reject', array('reject'=>$reject));?>
+    </div>
+    <?php $this->endWidget();
 
+?>
 </div><!-- form -->
 <?php $this->widget('CommentsWidget',array('model_id'=>$model->id, 'model'=>get_class($model))); ?>
+
+<?php
+    // отображаем ссылку для отклонения до момента принятия задания редактором
+    if(Project::getStatusInDB($model->project_id)<Project::TASK_AGREE_REDACTOR){
+        $this->widget('ErrorsWidget',array('model_id'=>$model->id, 'model'=>get_class($model)));
+    }
+
+?>
 <script type="text/javascript">
     $(document).ready(
         function(){

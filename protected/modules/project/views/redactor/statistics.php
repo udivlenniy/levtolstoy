@@ -17,22 +17,11 @@ $this->widget('bootstrap.widgets.TbGridView', array(
         array(
             'name'=>'title',
             'type'=>'raw',
-            'value'=>'CHtml::link($data->title,array("admin/view","id"=>$data->id))'
+            'value'=>'CHtml::link($data->title,array("redactor/view","id"=>$data->id))'
         ),
-//        array(
-//            'name'=>'zipArchive',
-//            'type'=>'raw',
-//            'value'=>'CHtml::link("Скачать",array("admin/view","id"=>$data->id))'
-//        ),
-//        array(
-//            'name'=>'keyWordsProject',
-//            'type'=>'raw',
-//            'value'=>'CHtml::link("Скачать",array("admin/view","id"=>$data->id))'
-//        ),
         'total_num_char',
         'total_num_char_fact',
         'site',
-
         'upload_project_in_system',
         'output_project_to_copy',
         'deadline_copy_to_redactor',

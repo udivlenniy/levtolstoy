@@ -35,7 +35,7 @@ echo CHtml::link('Отправить личное сообщение',
 			'name' => 'id',
             'header'=>'Заголовок',
 			'type'=>'raw',
-			'value' => '$data["title"]',
+			'value' => 'Text::getTitleText($data["title"],$data["num"])',
 		),
         array(
             'name' => 'status',

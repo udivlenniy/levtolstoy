@@ -15,7 +15,7 @@
 </div>
 <?php endif; ?>
 <?php //else: ?>
-        <div class="form">
+        <div class="form" id="msg">
             <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
             'id'=>'messages-form',
             'enableAjaxValidation'=>false,
@@ -43,9 +43,9 @@
                         //'dataType'=>'json',
                         //'data'=>'js:$("#upload-file-form").serialize()',
                         //'data'=>'js:jQuery(this).parents("form").serialize()',
-                        'success'=>'js:function(data){ $("div.form").html(data); }',
+                        'success'=>'js:function(data){ $("div#msg").html(data); }',
                         ),
-                        array('class'=>'btn btn-primary')
+                        array('class'=>'btn btn-primary', 'id'=>uniqid())
                     );
 //                $this->widget('bootstrap.widgets.TbButton', array(
 //                'type'=>'primary',

@@ -68,8 +68,8 @@ class User extends CActiveRecord
             array('create_at', 'default', 'value' => date('Y-m-d H:i:s'), 'setOnEmpty' => true, 'on' => 'insert'),
             array('lastvisit_at', 'default', 'value' => '0000-00-00 00:00:00', 'setOnEmpty' => true, 'on' => 'insert'),
 			array('username,  superuser, status, role', 'required'),
-			array('superuser, status', 'numerical', 'integerOnly'=>true),
-			array('id, username, password,  activkey, create_at, lastvisit_at, superuser, status', 'safe', 'on'=>'search'),
+			array('superuser, status, rate', 'numerical', 'integerOnly'=>true),
+			array('id, username, password,  activkey, create_at, lastvisit_at, superuser, status, rate', 'safe', 'on'=>'search'),
 		):((Yii::app()->user->id==$this->id)?array(
 			array('username', 'required'),
 			array('username', 'length', 'max'=>20, 'min' => 3,'message' => UserModule::t("Incorrect username (length between 3 and 20 characters).")),
@@ -110,6 +110,7 @@ class User extends CActiveRecord
 			'superuser' => UserModule::t("Superuser"),
 			'status' => UserModule::t("Status"),
             'role'=>'Набор прав',
+            'rate'=>'Ставка(за 1К знаков)',
 		);
 	}
 	
@@ -143,7 +144,7 @@ class User extends CActiveRecord
             ),
 
             'notsafe'=>array(
-            	'select' => 'id, username, password, activkey, create_at, lastvisit_at, superuser, status, role',
+            	'select' => 'id, username, password, activkey, create_at, lastvisit_at, superuser, status, role, rate',
             ),
         );
     }
@@ -152,7 +153,7 @@ class User extends CActiveRecord
     {
         return CMap::mergeArray(Yii::app()->getModule('user')->defaultScope,array(
             'alias'=>'user',
-            'select' => 'user.id, user.username, user.create_at, user.lastvisit_at, user.superuser, user.status, user.role',
+            'select' => 'user.id, user.username, user.create_at, user.lastvisit_at, user.superuser, user.status, user.role, user.rate',
         ));
     }
 	
@@ -336,5 +337,18 @@ class User extends CActiveRecord
         return $data['id'];
     }
 
+    /*
+     * определяем является ли текущий пользователь АДМИН или СУПЕР_АДМИНОМ
+     */
+    static function isAdmin(){
+        if(Yii::app()->user->isGuest){
+            return false;
+        }else{
+            if(Yii::app()->user->role==User::ROLE_ADMIN || Yii::app()->user->role==User::ROLE_SA_ADMIN){
+                return true;
+            }
+        }
 
+        return false;
+    }
 }

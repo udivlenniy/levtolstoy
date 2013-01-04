@@ -169,6 +169,22 @@
 	</div>
 
     <div class="row">
+        <?php echo $form->labelEx($model,'dopysk'); ?>
+        <?php echo $form->textField($model,'dopysk');?>
+        <?php echo $form->error($model,'dopysk'); ?>
+    </div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'sickness'); ?>
+        <?php echo $form->textField($model,'sickness');?>
+        <?php echo $form->error($model,'sickness'); ?>
+    </div>
+    <div class="row">
+        <?php echo $form->labelEx($model,'tolerance'); ?>
+        <?php echo $form->textField($model,'tolerance');?>
+        <?php echo $form->error($model,'tolerance'); ?>
+    </div>
+
+    <div class="row">
         <?php echo $form->checkBox($model,'check_editor'); ?>
         <?php echo $form->label($model,'check_editor', array('style'=>'width:350px;')); ?>
     </div>

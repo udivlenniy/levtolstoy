@@ -26,35 +26,6 @@ class CommentsWidget extends CWidget{
         $criteria->compare('model_id',$this->model_id);
         $criteria->order = 'id DESC';
 
-        // отправили POST запрос на добавление нового комментария
-//        if(isset($_POST['Comments'])){
-//            $model->attributes = $_POST['Comments'];
-//            if($model->validate()){
-//
-//                $model->save();
-//
-//                $dataProvider=new CActiveDataProvider('Comments', array(
-//                    'criteria'=>$criteria,
-//                    'pagination'=>array(
-//                        'pageSize'=>Yii::app()->params['perPage'],
-//                    ),
-//                ));
-//
-//                Yii::app()->user->setFlash('msg','Спасибо, ваш комментарий успешно отправлен');
-//                $this->renderPartial('comments', array('model'=>$model,'dataProvider'=>$dataProvider,));
-//                Yii::app()->end();
-//            }else{
-//                $dataProvider=new CActiveDataProvider('Comments', array(
-//                    'criteria'=>$criteria,
-//                    'pagination'=>array(
-//                        'pageSize'=>Yii::app()->params['perPage'],
-//                    ),
-//                ));
-//                $this->renderPartial('comments', array('model'=>$model,'dataProvider'=>$dataProvider,));
-//                Yii::app()->end();
-//            }
-//        }
-
         $dataProvider=new CActiveDataProvider('Comments', array(
             'criteria'=>$criteria,
             'pagination'=>array(

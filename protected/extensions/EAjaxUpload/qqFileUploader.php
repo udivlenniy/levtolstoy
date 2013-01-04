@@ -142,6 +142,8 @@ class qqFileUploader {
 
         if ($this->file->save($uploadDirectory . $filename . '.' . $ext)){
 
+            //file_put_contents('save.txt',$uploadDirectory . $filename . '.' . $ext);
+
             $content = file_get_contents($uploadDirectory . $filename . '.' . $ext);
             // parse CSV
             $csv = new CsvImport($uploadDirectory . $filename . '.' . $ext);
@@ -175,6 +177,7 @@ class qqFileUploader {
 
             return array('success'=>true,'filename'=>$filels);
         } else {
+            //file_put_contents('not_save.txt',$uploadDirectory . $filename . '.' . $ext);
             return array('error'=> 'Could not save uploaded file.' .
                 'The upload was cancelled, or server error encountered');
         }

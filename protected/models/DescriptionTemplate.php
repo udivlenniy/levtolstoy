@@ -1,22 +1,4 @@
 <?php
-
-/**
- * This is the model class for table "{{description_template}}".
- *
- * The followings are the available columns in table '{{description_template}}':
- * @property integer $id
- * @property integer $category_id
- * @property string $title
- * @property string $title_job
- * @property string $type_job
- * @property string $description
- * @property integer $deadline
- * @property integer $price_th
- * @property integer $uniqueness
- *
- * The followings are the available model relations:
- * @property Category $category
- */
 class DescriptionTemplate extends CActiveRecord
 {
     public $uploadfile_temp; // переменная для валидации формы при добавлении формы шаблона
@@ -44,19 +26,16 @@ class DescriptionTemplate extends CActiveRecord
 	 */
 	public function rules()
 	{
-		// NOTE: you should only define rules for those attributes that
-		// will receive user inputs.
 		return array(
 			//array('category_id, title, title_job, type_job, description, deadline, price_th, uniqueness', 'required'),
+            //
             array('title,category_id', 'required'),
 			array('deadline, category_id,  price_th, uniqueness', 'numerical', 'integerOnly'=>true),
-			array(' title, title_job, type_job', 'length', 'max'=>255),
+			array('title, title_job, type_job', 'length', 'max'=>255),
             array('description','length', 'max'=>6000),
 
             array('uploadfile_temp', 'uploaded_file'),
 
-			// The following rule is used by search().
-			// Please remove those attributes that should not be searched.
 			array('id, category_id, title, title_job, type_job, description, deadline, price_th, uniqueness', 'safe', 'on'=>'search'),
 		);
 	}
@@ -147,10 +126,6 @@ class DescriptionTemplate extends CActiveRecord
                 //$this->update_time=time();
             }
 
-            //echo 'deadline='.$this->deadline.'<br>'; die();
-
-
-
             return true;
         }else{
             return false;
@@ -162,4 +137,12 @@ class DescriptionTemplate extends CActiveRecord
         parent::afterFind();
         $this->deadline = date('d/m/Y',$this->deadline);
     }
+
+    public function onBeforeValidate($event) {
+        if(!empty($this->deadline) && $this->deadline!=0){
+
+        }
+    }
+
+
 }

@@ -28,18 +28,29 @@ class Errors extends CActiveRecord
     /*
      * список-массив типов-ошибок
      */
-    public static function getListErrors(){
-        return array(
-            self::PUNCTUATION=>'Пунктуация',
-            self::SPELLING=>'Орфография',
-            self::UNIQUE=>'Уникальность контента',
-            self::DENSITY_KEYS=>'Плотность вхождения ключей',
-            self::ACCURACY_KEYS=>'Точность вхождения ключей',
-            self::ORDER_KEYS=>'Порядок следования ключей',
-            self::DISTANCE_KEYWORDS=>'Расстояние между словами в ключевике',
-            self::UNIFORM_DISTRIBUTION=>'Равномерность распределения ключей',
-            self::OTHER=>'Другой тип ошибки',
-        );
+    public static function getListErrors($error_id=''){
+
+        if(!empty($error_id)){
+            return Errors::getErrorDesc($error_id);
+        }else{
+            return array(
+                self::PUNCTUATION=>'Пунктуация',
+                self::SPELLING=>'Орфография',
+                self::UNIQUE=>'Уникальность контента',
+                self::DENSITY_KEYS=>'Плотность вхождения ключей',
+                self::ACCURACY_KEYS=>'Точность вхождения ключей',
+                self::ORDER_KEYS=>'Порядок следования ключей',
+                self::DISTANCE_KEYWORDS=>'Расстояние между словами в ключевике',
+                self::UNIFORM_DISTRIBUTION=>'Равномерность распределения ключей',
+                self::OTHER=>'Другой тип ошибки',
+            );
+        }
+    }
+
+    static function getErrorDesc($error_type){
+        $list = Errors::getListErrors();
+        $find = $list[$error_type];
+        return $find;
     }
 
 	/**
@@ -95,11 +106,12 @@ class Errors extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_id' => 'User',
+			'user_id' => 'Автор',
 			'model' => 'Model',
-			'error_text' => 'Error Text',
+			'error_text' => 'Описание ошибки',
 			'model_id' => 'Model',
-			'create' => 'Create',
+			'create' => 'Дата',
+            'type'=>'Тип',
 		);
 	}
 
@@ -125,4 +137,17 @@ class Errors extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    public function onBeforeValidate($event) {
+        // устанавливаем некие перменные, если они не указаны
+        if(empty($this->create)){ $this->create = time(); }
+
+        if(empty($this->user_id)){ $this->user_id = Yii::app()->user->id; }
+    }
+
+    protected function afterFind()
+    {
+        parent::afterFind();
+        $this->create=date('d-m-Y H:i:s', $this->create);
+    }
 }

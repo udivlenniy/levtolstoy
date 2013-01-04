@@ -19,8 +19,8 @@ class Text extends CActiveRecord
     const TEXT_AVTO_CHECK = 2; // прошёл автоматические проверки и нет ошибок по тексту
     const TEXT_ACCEPT_EDITOR = 3; // принят текст редактором
     const TEXT_NOT_ACCEPT_EDITOR = 4; // задание не прияното редактором, есть ошибки
-
-
+    const TEXT_ACCEPT_ADMIN = 5; // задание принято админом
+    const TEXT_NOT_ACCEPT_ADMIN = 6; // задание НЕ принято админом, отклонено
 
     public $status_new;// для установки статуса редактором при проверке задания от копирайтора
     public $status_new_text;// описание ошибки
@@ -37,7 +37,11 @@ class Text extends CActiveRecord
 
         if($status==self::TEXT_ACCEPT_EDITOR){ return 'Принят редактором'; }
 
-        if($status==self::TEXT_NOT_ACCEPT_EDITOR){ return 'Не принят редактором'; }
+        if($status==self::TEXT_ACCEPT_ADMIN){ return 'Принято админом'; }
+
+        if($status==self::TEXT_NOT_ACCEPT_ADMIN){ return 'Не принято админом'; }
+
+        if($status==self::TEXT_NOT_ACCEPT_EDITOR){ return 'Не принято редактором'; }
     }
 
 
@@ -89,24 +93,26 @@ class Text extends CActiveRecord
             //$val - значение этого поля
             //$i - ID поля из ImportVars
 
-            // получаем список ключевиков по данному заданию
-            $key_words = TextData::getKeyWordsByComa($this->id);
-
             foreach($_POST['ImportVarsValue'] as $i=>$val){
+
+                $val = trim(strip_tags($val));
+
                 // запускаем проверку по полю и находим ошибки, если есть
-                $errors = CheckingImportVars::checkingFieldByRules($i, $val, $this->project_id, $this->id, $key_words);
+                //$errors = CheckingImportVars::checkingFieldByRules($i, $val, $this->project_id, $this->id, $key_words, $project);
                 // если не пустое значение ошибок, тогда записываем ошибку в общий список ошибок по проверке в задании
-                if(!empty($errors)){
-                    $errors_main[] = array('id'=>$i, 'error'=>$errors);
+                if(empty($val)){
+                    $this->addError('error','Обнаружены ошибки при проверке данных:');
+                    $this->detail_error = array('Необходимо заполнить все поля задания');
+                    break;
+                    return false;
                 }
             }
-            // обнаружили ошибки при проверке полей
-            if(!empty($errors_main)){
-                $this->addError('error','Обнаружены ошибки при проверке данных:');
-                $this->detail_error = $errors_main;
 
-                return false;
+            // если нет ошибок, тогда запускаем очередь проверок
+            if(!$this->hasErrors()){
+                Queue::queueStart($this->id, $this->project_id);
             }
+
             return true;
         }
     }
@@ -115,7 +121,7 @@ class Text extends CActiveRecord
      * если редактор выбрал статус ошибки, то должен указать описание этой ошибки для проверяемого текста - задания копирайтора
      */
     public function description_error(){
-        file_put_contents('error.txt',$this->status_new);
+        //file_put_contents('error.txt',$this->status_new);
         // если редактор установил что есть ошибки, то должен указать описание ошибки
         if($this->status_new=='error'){
 
@@ -204,5 +210,35 @@ class Text extends CActiveRecord
     public static function setNewStatusText($TextId, $status){
         $sql = 'UPDATE {{text}} SET status="'.$status.'" WHERE id="'.$TextId.'"';
         Yii::app()->db->createCommand($sql)->execute();
+    }
+
+    protected function afterSave()
+    {
+        parent::afterSave();
+
+        // редактор принял задание от копирайтора
+        if(Yii::app()->user->role==User::ROLE_EDITOR && $this->status==Text::TEXT_ACCEPT_EDITOR){
+            // изменим статус проекта на "Задание проверяется редактором"
+            Project::afterChangeDataInProject($this->project_id, Project::TASK_CHEKING_REDACTOR, $this->num);
+        }
+
+        // админ принимает или отклонит хотя бы одно задание, тогда установим-ЗАДАНИЕ_ПРОВЕРЯЕТСЯ_АДМИНОМ
+        if(User::isAdmin() && $this->status==Text::TEXT_ACCEPT_ADMIN){
+            // изменим статус проекта на "Задание проверяется админом"
+            Project::afterChangeDataInProject($this->project_id, Project::TASK_CHEKING_ADMIN, $this->num);
+        }
+    }
+
+    /*
+     * формируем заголовок задания из TITLE параметра задания, если он есть
+     * а если нет тогда ЗАДАНИЕ №по порядоку
+     */
+    static function getTitleText($title, $num){
+
+        if(empty($title)){
+            return 'Задание №'.$num;
+        }else{
+            return $title;
+        }
     }
 }

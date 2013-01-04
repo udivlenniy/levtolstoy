@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Александр
- * Date: 09.11.12
- * Time: 12:32
- * To change this template use File | Settings | File Templates.
- */
 Yii::import("application.modules.user.UserModule");
 class CopywriterController extends  Controller{
     public $defaultAction = 'index';
@@ -31,7 +24,7 @@ class CopywriterController extends  Controller{
    	{
    		return array(
    			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-   				'actions'=>array('index','update','downloadfile','text'),
+   				'actions'=>array('index','update','downloadfile','text', 'check', 'disabledfields'),
    				//'users'=>array('@'), //UserModule::getAdmins(),
                 'expression' => 'isset($user->role) && ($user->role==="copywriter")',
    			),
@@ -65,7 +58,11 @@ class CopywriterController extends  Controller{
           foreach($data as $i=>$row){
             // если статус у задания НОВЫЙ, не_принят_редактором - т.е. доступный для копирайтора, тогда показываем ему ссылку на задание
             if($row['status']==Text::TEXT_NEW || $row['status']==Text::TEXT_NOT_ACCEPT_EDITOR){
-                $row['title'] = CHtml::link($row["title"],array("copywriter/text","id"=>$row["id"]));
+                if(empty($row['title'])){
+                    $row['title'] = CHtml::link(Text::getTitleText($row["title"],$row["num"]),array("copywriter/text","id"=>$row["id"]));
+                }else{
+                    $row['title'] = CHtml::link($row["title"],array("copywriter/text","id"=>$row["id"]));
+                }
             }
 
             $result[] = $row;
@@ -114,6 +111,15 @@ class CopywriterController extends  Controller{
         Yii::app()->bootstrap->registerAssetCss('redactor.css');
       	Yii::app()->bootstrap->registerAssetJs('redactor.min.js');
         Yii::app()->bootstrap->registerAssetJs('locales/redactor.ru.js');
+
+        Yii::app()->clientScript->registerScript('loading', '
+            $("#loading").bind("ajaxSend", function(){
+                $(this).show();
+            }).bind("ajaxComplete", function(){
+                //$(this).hide();
+            });
+        ', CClientScript::POS_READY);
+
         // используем данные из модели, для проверки соотвествия - проекта - тексту и доступов по юзеру
         $model = $this->loadModel($id);
         // sql-запрос на выборку полей с данными для выбранного текста
@@ -153,14 +159,14 @@ class CopywriterController extends  Controller{
                                                 WHERE num="'.$numNext.'"
                                                     AND project_id="'.$model->project_id.'"')
                                                 ->execute();
-                // первый текст в проекте, прошёл автомат. проверки - установим дату и время в проекте
                 if($model->num==1){
-                    $sql_update_project = 'UPDATE {{project}} SET output_project_to_copy="'.time().'" WHERE id="'.$model->project_id.'"';
-                    Yii::app()->db->createCommand($sql_update_project)->execute();
+                    //обновим статус у проекта, после сохранения изменений в проекте
+                    // установим статус - ВЫПОЛНЯЕТСЯ исполнителем, т.е. прошёл автомат. проверки первое задание копирайтора
+                    Project::afterChangeDataInProject($model->project_id, Project::PERFORMED, $model->num);
+                }else{
+                    // установим статус - ОТПРАВЛЕНО_На_ПРОВЕРКУ_ИСПОЛНИТЕЛЕМ
+                    Project::afterChangeDataInProject($model->project_id, Project::POSTED_TO_PERFORMED, $model->num);
                 }
-
-
-                //
 
                 // редирект на список заданий, а текущее становится не доступным
                 $this->redirect(array('index'));
@@ -210,6 +216,42 @@ class CopywriterController extends  Controller{
         {
             echo CActiveForm::validate($model);
             Yii::app()->end();
+        }
+    }
+
+    /*
+     * контроллер запуска проверок по заданию
+     */
+    public function actionCheck(){
+        //проверка запроса и валидация данных
+        if(Yii::app()->request->isAjaxRequest){
+
+            // находим МОДЕЛЬ-задания по текущему юзеру и доступу, чтобы запукал на проверку лишь своё задание
+            $text = $this->loadModel($_POST['Text']['id']);
+
+            // запускаем очередь из проверок или дозапускаем процесс проверок
+            Queue::queueStart($text->id, $text->project_id);
+
+
+            //получаем общий процент выполнения проверок от общего кол-ва запущенных
+            $count = Queue::getProgressByText($text->id);
+
+            echo json_encode(array('count'=>$count));
+        }else{
+            throw new CHttpException(404,'The requested page does not exist.');
+        }
+    }
+
+    /*
+     * проверяем доступность для редактирования поля из формы задания
+     * поля прошедшие все автомат. проверки успешно делаем недоступными, для экономии запросов к ПС
+     * по каждому полю из задания, котор. может править пользователь делае проверку
+     * в зависимости от статуса задания и проекта, проверяем доступность для юзера по полю
+     */
+    public function actionDisabledfields(){
+        //инициализация AJAX запроса от пользователю
+        if(Yii::app()->request->isAjaxRequest){
+
         }
     }
 }

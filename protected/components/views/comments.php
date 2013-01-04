@@ -60,11 +60,17 @@ echo CHtml::link('Оставить комментарий',
         'style'=>'margin-left:30px;'
     )
 );
+?>
+<h4>Список комментариев:</h4>
+<?
 // выводим список комментариев
 $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_view_comments',
     'template'=>'{items}{pager}',
-    'emptyText'=>'',
+    'emptyText'=>'Нет комментариев',
+    //'pager'=>array(
+    //    'class'=>'pagination',
+    //)
 ));
 ?>

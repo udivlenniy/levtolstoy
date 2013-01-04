@@ -72,9 +72,9 @@ return array(
             'responsiveCss' => true,
         ),
 		// uncomment the following to enable URLs in path-format
-        'cache'=>array(
-            'class'=>'system.caching.CFileCache',
-        ),
+//        'cache'=>array(
+//            'class'=>'system.caching.CFileCache',
+//        ),
 		'urlManager'=>array(
 			'urlFormat'=>'path',
 			'rules'=>array(
@@ -103,7 +103,7 @@ return array(
             'enableProfiling'=>true,
             // показываем значения параметров
             'enableParamLogging' => true,
-            'schemaCachingDuration'=>36000,
+            //'schemaCachingDuration'=>36000,
 		),
 
 		'errorHandler'=>array(
@@ -149,6 +149,8 @@ return array(
         'title'=>3,
         // ID аттрибута - ключевые слова в таблице {{import_vars}}
         'key_words'=>1,
+        // ID аттрибута - сведения, обработанные ключевики,в таблице {{import_vars}}
+        'reduction'=>2,
         'h1'=>10,
         'h2'=>11,
         'h3'=> 12,
@@ -157,6 +159,6 @@ return array(
         'content3'=> 9,
         'not_import'=>22,
         // если пустое значение, значит при проверках запускаем классы под каждую проверку, а не отправляем запросы к прогам
-        'cheking_url'=>'http://some_host.com',
+        'cheking_url'=>'',
 	),
 );

@@ -213,8 +213,9 @@ class CheckingImportVars extends CActiveRecord
      * по ID "tbl_text_data" определяем какой это тип внутренней переменной и прописаны по ней в проекте проверки
      * если прописаны проверки, то запускаем классы соотвествующих проверок и обрабатываем значение из поля
      * $key_words - список ключевиков разделён. запятой, для отправки запросов на сервер для программ проверок по правилам
+     * $project - массив данных о проекте
      */
-    public static function checkingFieldByRules($fieldID, $valueField, $projectID, $text_id, $key_words){
+    public static function checkingFieldByRules($fieldID, $valueField, $projectID, $text_id, $key_words, $project){
 
         // сначала находим ID строки в таблице схемы по данному полю и проекту
         $shema = Yii::app()->db->createCommand('SELECT {{import_vars_shema}}.id,{{import_vars_shema}}.label
@@ -268,7 +269,14 @@ class CheckingImportVars extends CActiveRecord
             foreach($data as $check){
                 //для каждой проверки отправляем POST запрос на сервер для получения результатов проверки по тексту
                 $curl = new Curl(Yii::app()->params['cheking_url'], $text_id, $check['check_id'], $key_words, $valueField);
-
+                // заполняем недостающие параметры для запуска проверок
+                $curl->dopysk = $project['dopysk'];
+                $curl->total_num_char = $project['total_num_char'];
+                $curl->unique = $project['uniqueness'];
+                $curl->sickness = $project['sickness'];
+                $curl->tolerance = $project['tolerance'];
+                // отправляем запрос на удалённый сервер, для проверrb по тексту
+                $result = $curl->post();// результат проверки
             }
         }
 
@@ -290,15 +298,48 @@ class CheckingImportVars extends CActiveRecord
                 return true;
             }
         }
-        // проверка для копирайтора
-        $sql = 'SELECT id FROM {{project}} WHERE check_copywriter="1" AND id="'.$project_id.'"';
-        $find = Yii::app()->db->createCommand($sql)->queryRow();
-        if(empty($find)){
-            return false;
-        }else{
-            return true;
+
+        // проверка по копирайтору
+        if(Yii::app()->user->role == User::ROLE_COPYWRITER){
+            $sql = 'SELECT id FROM {{project}} WHERE check_copywriter="1" AND id="'.$project_id.'"';
+            $find = Yii::app()->db->createCommand($sql)->queryRow();
+            if(empty($find)){
+                return false;
+            }else{
+                return true;
+            }
         }
 
         return false;
+    }
+
+    /*
+     * получаем список проверок по полю из ЗАДАНИЯ
+     */
+    static function getChekingListByFieldID($fieldID,$projectID){
+
+        // сначала находим ID строки в таблице схемы по данному полю и проекту
+        $shema = Yii::app()->db->createCommand('SELECT {{import_vars_shema}}.id,{{import_vars_shema}}.label
+                                                FROM {{text_data}},{{import_vars_shema}}
+                                                WHERE {{import_vars_shema}}.import_var_id={{text_data}}.import_var_id
+                                                    AND {{text_data}}.id="'.$fieldID.'"
+                                                    AND {{import_vars_shema}}.shema_type="1"
+                                                    AND {{import_vars_shema}}.num_id="'.$projectID.'"')->queryRow();
+
+        //$shema[id] - ID из таблицы СХЕМ-import_vars_shema, схема настроек по данному полю
+        //$shema[title] - название поля - его заголовок. возможно его использовать при выводе ошибок проверки
+
+        // получаем список классов с проверками по которым надо прогнать наше значение из поля
+        $sql = 'SELECT {{checking_import_vars}}.*, {{check}}.title, {{check}}.class_name, {{check}}.id AS check_id
+                FROM {{checking_import_vars}},{{check}}
+                WHERE {{checking_import_vars}}.import_var_id="'.$shema['id'].'"
+                    AND {{checking_import_vars}}.type="2"
+                    AND {{checking_import_vars}}.selected="1"
+                    AND {{check}}.id={{checking_import_vars}}.checked_id
+                    AND {{checking_import_vars}}.model_id="'.$projectID.'"';
+
+        $data = Yii::app()->db->createCommand($sql)->queryAll();
+
+        return $data;
     }
 }

@@ -64,6 +64,8 @@ $this->widget('bootstrap.widgets.TbGridView', array(
 
         array('name'=>'total_num_char','value'=>'$data->total_num_char','filter' => false,),
         array('name'=>'total_num_char_fact','value'=>'$data->total_num_char_fact','filter' => false,),
+        array('name'=>'count_texts','value'=>'$data->count_texts','filter' => false,),
+
         array('name'=>'site','value'=>'$data->site','filter' => false,),
         array('name'=>'upload_project_in_system','value'=>'$data->upload_project_in_system','filter' => false,),
         array('name'=>'output_project_to_copy','value'=>'$data->output_project_to_copy','filter' => false,),

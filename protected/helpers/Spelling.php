@@ -17,7 +17,11 @@ class Spelling{
 
     // запуск проверки по поиску ошибок орфографии  в тексте
     public function run(){
+        if(empty($this->sourceText)){
+            return array('result'=>false, 'msg'=>'Не заполнены все необходимые поля в форме');
+        }else{
+            return array('result'=>true, 'msg'=>'');
+        }
 
-        return array('result'=>false, 'msg'=>'Очень много орфографических ошибок обнаружено при проверке текста');
     }
 }

@@ -31,7 +31,10 @@ class AdminController extends Controller{
    	{
    		return array(
    			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-   				'actions'=>array('index','delete','create','update','view','uploadfile','selecttemplate','text','deletekeyword','textlist','downloadkeywords','downloadproject'),
+   				'actions'=>array('index','delete','create','update','view','uploadfile','selecttemplate',
+                                'text','deletekeyword','textlist','downloadkeywords','downloadproject',
+                                'agree', 'reject'
+                   ),
    				//'users'=>UserModule::getAdmins(),
                 'expression' => 'isset($user->role) && ($user->role==="super_administrator"||$user->role==="administrator")',
    			),
@@ -124,7 +127,12 @@ class AdminController extends Controller{
            $msg->model = get_class($model);// к какой моделе подвязано сообщение
            $msg->model_id = $model->id;
            $msg->is_new = 1;
-
+           //-------------------------------------------------------------
+           // причина отклоения проекта
+           $reject = new RejectProject();
+           $reject->model_id = $model->id;
+           $reject->model = get_class($model);// к какой моделе подвязано
+           //-------------------------------------------------------------
            $this->performAjaxValidation($msg);
 
            if(isset($_POST['Messages'])){
@@ -141,7 +149,7 @@ class AdminController extends Controller{
                }
            }
 
-           $this->render('view', array('model'=>$model, 'msg'=>$msg));
+           $this->render('view', array('model'=>$model, 'msg'=>$msg, 'reject'=>$reject));
    	}
 
     /*
@@ -181,6 +189,13 @@ class AdminController extends Controller{
 
         $data = Yii::app()->db->createCommand($sql)->queryAll();
 
+        //-------------------------------------------------------------
+        // причина отклоения проекта
+        $reject = new RejectProject();
+        $reject->model_id = $model->id;
+        $reject->model = get_class($model);// к какой моделе подвязано
+        //-------------------------------------------------------------
+
         // отправили POST на обновление данных по данному тексту
         if(isset($_POST['Text'])){
             $model->attributes = $_POST['Text'];
@@ -197,6 +212,7 @@ class AdminController extends Controller{
         $this->render('text_view',array(
             'data'=>$data,
             'model'=>$model,
+            'reject'=>$reject,
         ));
     }
     /*
@@ -255,9 +271,12 @@ class AdminController extends Controller{
                     // поле создания проекта - генерируем логин и пасс для исполнителя и создаём копирайтора и подвязываем его к проекту
                     $access = User::createCopywriter($model->id);
 
+                    // получаем кол-во заданий по проекту и записываем его в проект
+                    $countProject = Text::getCountTextByProject($model->id);
+
                     //допишим логин и пароль исполнителя к проекту
                     $sqlUpdate = 'UPDATE {{project}}
-                                    SET performer_login="'.$access['login'].'", performer_pass="'.$access['pass'].'"
+                                    SET performer_login="'.$access['login'].'", performer_pass="'.$access['pass'].'", count_texts="'.$countProject.'"
                                     WHERE id="'.$model->id.'"';
 
                     Yii::app()->db->createCommand($sqlUpdate)->execute();
@@ -320,7 +339,21 @@ class AdminController extends Controller{
             // получаем список проверок
             $listCheking = CheckingImportVars::getChekingList();
 
+            // если пустое значение кол-ва заданий в проекте, то посчитаем и запишим кол-во заданий по проекту
+            if($model->count_texts==0 || empty($model->count_texts)){
+                // получаем кол-во заданий по проекту и записываем его в проект
+                $model->count_texts = Text::getCountTextByProject($model->id);
+            }
+
    			$model->attributes=$_POST['Project'];
+
+            // преобразование даты из формата 30/11/2012 в UNIXTIME
+            //if(!empty($_POST['Project']['deadline']) && $_POST['Project']['deadline']!=0){
+            if(!empty($model->deadline)){
+                $parse_date = explode('/',$_POST['Project']['deadline']);
+                $model->deadline = mktime(0, 0, 0,  $parse_date[1],$parse_date[0], intval($parse_date[2]));
+            }
+            //}
    			if($model->save()){
                // цикл по полям и их соотвествиям
                $cnt = 1;
@@ -539,4 +572,64 @@ class AdminController extends Controller{
    			Yii::app()->end();
    		}
    	}
+
+    /*
+     *  принимаем проект - от лица редактора
+     */
+    public function actionAgree(){
+        if(Yii::app()->request->isPostRequest){
+            // проверяем может ли редактор принять проект, все ли условия выполнены для этого
+            if(Project::canAgreeProject($_POST['project'])){
+                Project::afterChangeDataInProject($_POST['project'], Project::TASK_AGREE_ADMIN,'');
+                echo 'Проект успешно принят администратором';
+            }else{
+                echo 'Нет возможности принять проект, задания в проекте должны быть все приняты администратором';
+            }
+        }
+    }
+
+    /*
+       * отклонение проекта АДМИНОМ проекта
+       */
+    public function actionReject(){
+
+        // причина отклоения проекта
+        $reject = new RejectProject();
+
+        if(isset($_POST['RejectProject'])){
+            $reject->attributes = $_POST['RejectProject'];
+            if($reject->validate()){
+                //====при отклонении задания из проекта, укажим статус задания======
+                if($reject->model == 'Text'){
+
+                    // изменили статус задания
+                    $text = Text::model()->findByPk($reject->model_id);
+                    $text->status = Text::TEXT_NOT_ACCEPT_ADMIN;
+                    $text->save();
+
+                    // изменим статус проекта на "Задание проверяется редактором"
+                    Project::afterChangeDataInProject($text->project_id, Project::TASK_CHEKING_ADMIN, $text->num);
+                }
+                //==при отклонении проекта, запишим это событие и изменим статус
+                if($reject->model == 'Project'){
+                    // изменим статус проекта, при его отклонении
+                    // изменим статус проекта на "задание отправлено на доработку АДМИНОМ"
+                    Project::afterChangeDataInProject($reject->model_id, Project::TASK_CANCEL_ADMIN, '');
+                }
+
+                //=====записываем ошибку в общий лог ошибок===================
+                $error = new Errors();
+                $error->model = $reject->model;
+                $error->type = $_POST['type_error'];
+                $error->error_text = $reject->msg_text;
+                $error->model_id = $reject->model_id;
+                $error->save();
+                Yii::app()->user->setFlash('reject','Спасибо, успешно отклонили');
+                $this->renderPartial('reject', array('reject'=>new RejectProject()));
+                Yii::app()->end();
+            }
+        }
+        $this->renderPartial('reject', array('reject'=>$reject), false, true);
+        Yii::app()->end();
+    }
 }
